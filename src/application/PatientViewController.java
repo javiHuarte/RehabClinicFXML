@@ -17,26 +17,26 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import pojos.Patient;
+import pojos.Patientfxml;
 
 public class PatientViewController implements Initializable {
 
-	@FXML private TableView<Patient> patientTable = null;
+	@FXML private TableView<Patientfxml> patientTable = null;
 
-	@FXML private TableColumn<Patient, Integer> idColumn;
-	@FXML private TableColumn<Patient, String> nameColumn;
-	@FXML private TableColumn<Patient, String> sexColumn;
-	@FXML private TableColumn<Patient, String> nifColumn;
-	@FXML private TableColumn<Patient, String> emailColumn;
-	@FXML private TableColumn<Patient, String> adressColumn;
-	@FXML private TableColumn<Patient, String> internColumn;
-	@FXML private TableColumn<Patient, String> phoneNumberColumn;
-	@FXML private TableColumn<Patient, LocalDate> dobColumn;
+	@FXML private TableColumn<Patientfxml, Integer> idColumn;
+	@FXML private TableColumn<Patientfxml, String> nameColumn;
+	@FXML private TableColumn<Patientfxml, String> sexColumn;
+	@FXML private TableColumn<Patientfxml, String> nifColumn;
+	@FXML private TableColumn<Patientfxml, String> emailColumn;
+	@FXML private TableColumn<Patientfxml, String> adressColumn;
+	@FXML private TableColumn<Patientfxml, String> internColumn;
+	@FXML private TableColumn<Patientfxml, String> phoneNumberColumn;
+	@FXML private TableColumn<Patientfxml, LocalDate> dobColumn;
 
 
 	@FXML private Button editPatientButton;
 	
-	private ObservableList<Patient> patients = FXCollections.observableArrayList();
+	private ObservableList<Patientfxml> patients = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -47,15 +47,15 @@ public class PatientViewController implements Initializable {
 
 	//patientTable.setEditable(true);
 
-	idColumn.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
-	nameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
-	sexColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("sex"));
-	nifColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("nif"));
-	emailColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("email"));
-	adressColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("adress"));
-	phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
-	internColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("intern"));
-	dobColumn.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("dob"));
+	idColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, Integer>("id"));
+	nameColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("name"));
+	sexColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("sex"));
+	nifColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("nif"));
+	emailColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("email"));
+	adressColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("adress"));
+	phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("phoneNumber"));
+	internColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("intern"));
+	dobColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, LocalDate>("dob"));
 
 	//set  the table editable in order to update it
 	patientTable.setEditable(true);
@@ -79,7 +79,7 @@ public class PatientViewController implements Initializable {
 	public void editButtonPushed(ActionEvent event) throws IOException{
 
 		SceneChanger sc = new SceneChanger();
-		Patient patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
+		Patientfxml patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
 		NewPatientController npc = new NewPatientController();
 		sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient, npc);
 	}
@@ -92,7 +92,7 @@ public void patientSelected(){
 
 public void changeNameCellEvent (CellEditEvent edditedCell){
 
-		Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+		Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 		patientSelected.setName(edditedCell.getNewValue().toString());
 
 	}
@@ -100,67 +100,67 @@ public void changeNameCellEvent (CellEditEvent edditedCell){
 
 public void changeNifCellEvent (CellEditEvent edditedCell){
 
-		Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+		Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 		patientSelected.setNif(edditedCell.getNewValue().toString());
 
 	}
 
 public void changeEmailCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	patientSelected.setEmail(edditedCell.getNewValue().toString());
 
 }
 
 public void changePhoneNumberCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	patientSelected.setPhoneNumber(edditedCell.getNewValue().toString());
 
 }
 
 public void changeAdressCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	patientSelected.setAdress(edditedCell.getNewValue().toString());
 
 }
 
 public void changeInternCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	patientSelected.setIntern(edditedCell.getNewValue().toString());
 
 }
 
 public void changeSexCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	patientSelected.setSex(edditedCell.getNewValue().toString());
 
 }
 
 public void changeDobCellEvent (CellEditEvent edditedCell){
 
-	Patient patientSelected = patientTable.getSelectionModel().getSelectedItem();
+	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
 	//patientSelected.setSex(edditedCell.getNewValue());
 
 }
 
-public ObservableList<Patient>loadPatients(){
+public ObservableList<Patientfxml>loadPatients(){
 
 
 
-		Patient patient1 = new Patient(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
-		Patient patient2 = new Patient(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
+		Patientfxml patient1 = new Patientfxml(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
+		Patientfxml patient2 = new Patientfxml(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
 
 
-		patients.add(new Patient(3, "javi", "55555", "male",LocalDate.of(2019, Month.AUGUST, 30), "madrid", "jjhua@gmail.com", "662223636", "YES" ));
+		patients.add(new Patientfxml(3, "javi", "55555", "male",LocalDate.of(2019, Month.AUGUST, 30), "madrid", "jjhua@gmail.com", "662223636", "YES" ));
 		patients.add(patient2);
 		patients.add(patient1);
 
 
-		patients.add(new Patient(4, "javi", "55555", "male", LocalDate.of(2019, Month.AUGUST, 30), "paseo del barcelona 2", "jjhua@gmail.com", "662223636", "YES"));
+		patients.add(new Patientfxml(4, "javi", "55555", "male", LocalDate.of(2019, Month.AUGUST, 30), "paseo del barcelona 2", "jjhua@gmail.com", "662223636", "YES"));
 
 
 		return patients;

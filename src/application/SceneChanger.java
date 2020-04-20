@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import pojos.Patient;
+import pojos.Patientfxml;
 
 public class SceneChanger {
 
@@ -38,7 +38,7 @@ public class SceneChanger {
 
 	//this method change scenes and preload the next scene with a patient object
 
-	public void changeScenesWithData(ActionEvent event, String viewName, String title, Patient patient, ControllerClass controllerClass) throws IOException{
+	public void changeScenesWithData(ActionEvent event, String viewName, String title, Patientfxml patient, ControllerClass controllerClass) throws IOException{
 
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(viewName));
