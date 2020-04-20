@@ -165,6 +165,7 @@ public void comprobarData(){
 	if(validData==false){
 
 		Alert warning = new Alert(Alert.AlertType.WARNING);
+//hola
 
 
 	}
