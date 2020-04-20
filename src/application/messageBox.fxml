@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MessageBoxController">
+   <children>
+      <Label fx:id="messageLabel" layoutX="121.0" layoutY="24.0" prefHeight="21.0" prefWidth="285.0" />
+      <Label fx:id="detailsLabel" layoutX="121.0" layoutY="62.0" prefHeight="31.0" prefWidth="285.0" />
+      <ImageView fx:id="alertImage" fitHeight="72.0" fitWidth="82.0" layoutX="28.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="158.0" layoutY="109.0" mnemonicParsing="false" onAction="#closeButton" prefHeight="31.0" prefWidth="105.0" text="Ok" />
+   </children>
+</AnchorPane>

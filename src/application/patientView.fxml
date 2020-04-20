@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="391.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PatientViewController">
+   <children>
+      <BorderPane prefHeight="391.0" prefWidth="910.0">
+         <center>
+            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="305.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="112.0" text="ID" />
+                <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="113.0" text="Name" />
+                  <TableColumn fx:id="nifColumn" minWidth="0.0" prefWidth="0.0" text="Nif" />
+                  <TableColumn fx:id="sexColumn" prefWidth="105.0" text="Sex" />
+                  <TableColumn fx:id="dobColumn" minWidth="9.0" prefWidth="117.0" text="Dob" />
+                  <TableColumn fx:id="adressColumn" minWidth="9.0" prefWidth="117.0" text="Adress" />
+                  <TableColumn fx:id="phoneNumberColumn" minWidth="9.0" prefWidth="117.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" minWidth="9.0" prefWidth="117.0" text="Email" />
+                  <TableColumn fx:id="internColumn" minWidth="9.0" prefWidth="117.0" text="Intern" />
+              </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button mnemonicParsing="false" onAction="#newPatientButton" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
+                  <Button fx:id="editPatientButton" mnemonicParsing="false" onAction="#editButtonPushed" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
+              </items>
+            </ToolBar>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
