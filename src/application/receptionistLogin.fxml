@@ -33,7 +33,7 @@
             <Button mnemonicParsing="false" onAction="#listAll" prefHeight="31.0" prefWidth="339.0" text="List All Patients" GridPane.rowIndex="2" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="searchByButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="280.0" text="Search By:" />
+                  <Button fx:id="searchByButton" mnemonicParsing="false" onAction="#searchBy" prefHeight="31.0" prefWidth="280.0" text="Search By:" />
                   <ChoiceBox fx:id="searchByChoiceBox" prefWidth="150.0" />
                </children>
             </HBox>

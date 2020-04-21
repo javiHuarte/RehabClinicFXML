@@ -5,9 +5,12 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,8 +18,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import pojos.Patient;
 
 public class PatientViewController implements Initializable {
@@ -35,8 +40,10 @@ public class PatientViewController implements Initializable {
 
 
 	@FXML private Button editPatientButton;
-	
+	@FXML TextField txtSearch;
+
 	private ObservableList<Patient> patients = FXCollections.observableArrayList();
+	FilteredList filter = new FilteredList(patients, e->true);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -76,7 +83,7 @@ public class PatientViewController implements Initializable {
 
 //if the editbutton es pushed, pass the selected patient to the newPatientView and preload it with data
 
-	public void editButtonPushed(ActionEvent event) throws IOException{
+	public void editButtonPushed(ActionEvent event){
 
 		SceneChanger sc = new SceneChanger();
 		Patient patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
@@ -89,6 +96,12 @@ public void patientSelected(){
 
 		editPatientButton.setDisable(false);
 	}
+
+public void backButton(ActionEvent event){
+
+	SceneChanger sceneChanger = new SceneChanger();
+	sceneChanger.changeScenes(event, "receptionistLogin.fxml", "Receptionist Login");
+}
 
 public void changeNameCellEvent (CellEditEvent edditedCell){
 
@@ -172,6 +185,29 @@ public void newPatientButton(ActionEvent event) throws IOException{
 		SceneChanger sceneChanger = new SceneChanger();
 		sceneChanger.changeScenes(event, "newPatient.fxml", "New Patient");
 	}
+
+public void search(KeyEvent event){
+
+	txtSearch.textProperty().addListener((observable, oldValue, newValue) ->{
+
+		filter.setPredicate((Predicate<? super Patient>) (Patient patient) -> {
+
+				if(newValue.isEmpty() || newValue==null){
+					return true;
+				}
+				else if(patient.getName().contains(newValue)){
+					return true;
+				}
+
+		return false;
+		});
+
+		SortedList sort = new SortedList(filter);
+		sort.comparatorProperty().bind(patientTable.comparatorProperty());
+		patientTable.setItems(sort);
+
+	});
+}
 
 
 
