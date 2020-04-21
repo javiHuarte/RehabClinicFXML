@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
-import pojos.Patient;
+import pojos.Patientfxml;
 
 public class PatientViewController implements Initializable {
 

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Patient {
+public class Patientfxml {
 
 	SimpleIntegerProperty id;
 	SimpleStringProperty name, nif,sex, adress, email, phoneNumber, intern;
@@ -74,7 +74,7 @@ public class Patient {
 				+ ", phoneNumber=" + phoneNumber + ", intern=" + intern + ", dob=" + dob + "]";
 	}
 
-	public Patient(Integer id, String name, String nif, String sex, LocalDate dob, String adress, String email, String phoneNumber, String intern) {
+	public Patientfxml(Integer id, String name, String nif, String sex, LocalDate dob, String adress, String email, String phoneNumber, String intern) {
 		super();
 		this.id = new SimpleIntegerProperty(id);
 		this.name =  new SimpleStringProperty(name);

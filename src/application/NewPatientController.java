@@ -36,7 +36,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import pojos.Patient;
+import pojos.Patientfxml;
 
 public class NewPatientController implements Initializable, ControllerClass {
 
@@ -51,7 +51,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 
 private File imageFile;
-private Patient patient;
+private Patientfxml patient;
 
 
 @Override
@@ -113,7 +113,7 @@ public void introducePatient(){
 
 	if(result.get() ==okButton){
 
-		Patient patient = new Patient(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
+		Patientfxml patient = new Patientfxml(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
 		System.out.println(patient);
 
 }
@@ -239,7 +239,7 @@ public void clear(){
 }
 
 @Override
-public void preloadData(Patient patient) {
+public void preloadData(Patientfxml patient) {
 	// TODO Auto-generated method stub
 
 	this.patient = patient;
