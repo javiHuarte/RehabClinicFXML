@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -22,6 +24,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import pojos.Patient;
 
 public class ReceptionistLoginController implements Initializable{
 
@@ -78,29 +81,42 @@ public class ReceptionistLoginController implements Initializable{
 		sc.changeScenes(event, "patientView.fxml", "List All Patients");
 	}
 
-	public void SearchBy(ActionEvent event){
+	public void searchBy(ActionEvent event){
 
 	String choice =	this.searchByChoiceBox.getValue();
 
-	System.out.print("hola");
-	if(choice.equals("ID")){
-		searchById(event);
+
+	if(choice.equals("Name")){
+		searchByName(event);
 		}else{
-			System.out.print("hola");
+		searchById(event);
 		}
 
 	}
 
 	public void searchById(ActionEvent event){
 
-		String id = this.txtSearchBy.getText();
 
-		//Boolean comprobacion = comprobarId(id);
 
-		//if(comprobacion==false){
+	}
 
-		//MessageBoxController messageBox = new MessageBoxController();
-	//	messageBox.show("Wrong Introduced Data", "ID must be a number!");
+	public void searchByName(ActionEvent event){
+
+		String name = this.txtSearchBy.getText();
+
+
+		Patient patient1 = new Patient(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
+		Patient patient2 = new Patient(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
+
+		if(name.equals("juan")){
+
+			SceneChanger sc = new SceneChanger();
+			NewPatientController npc = new NewPatientController();
+			sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient1, npc);
+		}else{
+			System.out.println("nada d enada");
+		}
+
 		}
 
 

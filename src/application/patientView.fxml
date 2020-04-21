@@ -9,7 +9,7 @@
    <children>
       <BorderPane prefHeight="391.0" prefWidth="910.0">
          <center>
-            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="305.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="295.0" prefWidth="910.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="112.0" text="ID" />
                 <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="113.0" text="Name" />
@@ -26,11 +26,21 @@
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" onAction="#newPatientButton" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
+                  <Button mnemonicParsing="false" onAction="#backButton" prefHeight="31.0" prefWidth="85.0" text="Back" />
+                  <Region prefHeight="31.0" prefWidth="489.0" />
                   <Button fx:id="editPatientButton" mnemonicParsing="false" onAction="#editButtonPushed" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
+                <Button mnemonicParsing="false" onAction="#newPatientButton" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
               </items>
             </ToolBar>
          </bottom>
+         <top>
+            <AnchorPane prefHeight="43.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="23.0" layoutY="11.0" prefHeight="21.0" prefWidth="123.0" text="Search By Name:" />
+                  <TextField fx:id="txtSearch" layoutX="146.0" layoutY="6.0" onKeyReleased="#search" />
+               </children>
+            </AnchorPane>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>
