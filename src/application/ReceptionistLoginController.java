@@ -24,7 +24,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import pojos.Patient;
+import pojos.Patientfxml;
 
 public class ReceptionistLoginController implements Initializable{
 
@@ -105,8 +105,8 @@ public class ReceptionistLoginController implements Initializable{
 		String name = this.txtSearchBy.getText();
 
 
-		Patient patient1 = new Patient(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
-		Patient patient2 = new Patient(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
+		Patientfxml patient1 = new Patientfxml(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
+		Patientfxml patient2 = new Patientfxml(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
 
 		if(name.equals("juan")){
 
