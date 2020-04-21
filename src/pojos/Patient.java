@@ -11,7 +11,7 @@ public class Patient {
 	SimpleStringProperty name, nif,sex, adress, email, phoneNumber, intern;
 	LocalDate dob;
 
-
+//hola ihv
 
 
 	public void setId(SimpleIntegerProperty id) {
