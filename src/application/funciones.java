@@ -4,16 +4,19 @@ import javafx.scene.control.Alert;
 
 public class funciones {
 
-	public void validarInteger(String string){
+	public boolean validarInteger (String string){
 
 		try{
 
 			Integer.parseInt(string);
-		}catch(NumberFormatException e){
 
-			this.crearWarningBox("Wrong introduced Data", "The data requierd is an Intger");
 
+		}catch(Exception e){
+			return true;
 		}
+		//return false si está bien
+		return false;
+
 	}
 
 
