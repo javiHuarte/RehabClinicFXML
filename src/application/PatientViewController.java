@@ -34,8 +34,8 @@ public class PatientViewController implements Initializable {
 	@FXML private TableColumn<Patientfxml, String> nifColumn;
 	@FXML private TableColumn<Patientfxml, String> emailColumn;
 	@FXML private TableColumn<Patientfxml, String> adressColumn;
-	@FXML private TableColumn<Patientfxml, String> internColumn;
-	@FXML private TableColumn<Patientfxml, String> phoneNumberColumn;
+	@FXML private TableColumn<Patientfxml, Boolean> internColumn; ///antes era un string
+	@FXML private TableColumn<Patientfxml, Integer> phoneNumberColumn;
 	@FXML private TableColumn<Patientfxml, LocalDate> dobColumn;
 
 
@@ -60,8 +60,8 @@ public class PatientViewController implements Initializable {
 	nifColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("nif"));
 	emailColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("email"));
 	adressColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("adress"));
-	phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("phoneNumber"));
-	internColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, String>("intern"));
+	phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, Integer>("phoneNumber"));
+	internColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, Boolean>("intern"));
 	dobColumn.setCellValueFactory(new PropertyValueFactory<Patientfxml, LocalDate>("dob"));
 
 	//set  the table editable in order to update it
