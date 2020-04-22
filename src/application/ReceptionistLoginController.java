@@ -96,8 +96,19 @@ public class ReceptionistLoginController implements Initializable{
 
 	public void searchById(ActionEvent event){
 
+		String stringId = txtSearchBy.getText();
 
+		try{
+		Integer id = Integer.parseInt(stringId);
+		}catch (NumberFormatException e) {
 
+			Alert warning = new Alert(Alert.AlertType.ERROR);
+			warning.setTitle("Error Message");
+			warning.setHeaderText("Wrong Introduced Data");
+			warning.setContentText("ID has to be an integer");
+			warning.showAndWait();
+
+		}
 	}
 
 	public void searchByName(ActionEvent event){
@@ -114,24 +125,17 @@ public class ReceptionistLoginController implements Initializable{
 			NewPatientController npc = new NewPatientController();
 			sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient1, npc);
 		}else{
-			System.out.println("nada d enada");
-		}
+			Alert info = new Alert(Alert.AlertType.INFORMATION);
+			info.setTitle("Information Message");
+			info.setHeaderText("Check the introduced Data");
+			info.setContentText("The patient does not exist");
+			info.showAndWait();
+
 
 		}
 
-
-
-	/*public boolean comprobarId(String id){
-
-		try{
-
-			Integer id1 = Integer.parseInt(id);
-		}catch(NumberFormatException e){
-			return false;
 		}
 
-		return true;
-	}*/
 
 	public void signOut(ActionEvent event){
 

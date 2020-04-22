@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -21,10 +22,14 @@
    <bottom>
       <HBox prefHeight="54.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#backToLogin" text="Back" />
-            <Region onMouseClicked="#introducePatient" prefHeight="34.0" prefWidth="386.0" />
-            <Button mnemonicParsing="false" onMouseClicked="#clear" prefHeight="31.0" prefWidth="59.0" text="Clear" />
-            <Button mnemonicParsing="false" onMouseClicked="#introducePatient" text="Add" />
+            <ToolBar prefHeight="48.0" prefWidth="627.0">
+              <items>
+                  <Button mnemonicParsing="false" onAction="#backToLogin" prefHeight="31.0" prefWidth="64.0" text="Back" />
+                  <Region prefHeight="31.0" prefWidth="360.0" />
+                  <Button mnemonicParsing="false" onMouseClicked="#clear" prefHeight="31.0" prefWidth="59.0" text="Clear" />
+                  <Button mnemonicParsing="false" onMouseClicked="#introducePatient" prefHeight="31.0" prefWidth="63.0" text="Add" />
+              </items>
+            </ToolBar>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -32,12 +37,13 @@
       </HBox>
    </bottom>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="306.0" prefWidth="313.0">
+            <GridPane prefHeight="295.0" prefWidth="421.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="113.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="180.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="195.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="45.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -66,21 +72,58 @@
                   <DatePicker fx:id="dobPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="txtName" promptText="Patient´s name" GridPane.columnIndex="1" />
                   <TextField fx:id="txtIntern" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="lblNameError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNifError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDobError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblPhoneError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAdressError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblEmailError" prefHeight="21.0" prefWidth="29.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="29.0" />
                </children>
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
                </padding>
             </GridPane>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <VBox prefHeight="289.0" prefWidth="173.0" spacing="10.0">
                <children>
-                  <ImageView fx:id="imageView" fitHeight="124.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onAction="#changeDefaultImage" text="Change Deafult Image" />
+                  <ImageView fx:id="imageView" fitHeight="130.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onAction="#changeDefaultImage" prefHeight="31.0" prefWidth="125.0" text="Change Image" underline="true" />
                </children>
                <HBox.margin>
                   <Insets left="50.0" top="15.0" />
                </HBox.margin>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="10.0" right="15.0" />
+         </padding>
       </HBox>
    </center>
 </BorderPane>
