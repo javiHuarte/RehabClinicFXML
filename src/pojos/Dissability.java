@@ -5,18 +5,28 @@ import java.io.Serializable;
 public class Dissability implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8019087939231325067L;
 	private Integer id;
+	private String name;
 	private String type;
 	private String severity;
 	private String extra_info;
 	private String affected_area;
-	
+
 	public Dissability() {
 		super();
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -47,7 +57,7 @@ public class Dissability implements Serializable {
 	public void setAffected_area(String affected_area) {
 		this.affected_area = affected_area;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,11 +81,24 @@ public class Dissability implements Serializable {
 			return false;
 		return true;
 	}
+
+
+	public Dissability(Integer id, String name, String type, String severity, String extra_info, String affected_area) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.severity = severity;
+		this.extra_info = extra_info;
+		this.affected_area = affected_area;
+	}
+
 	@Override
 	public String toString() {
-		return "Dissability [id=" + id + ", type=" + type + ", severity=" + severity + ", extra_info=" + extra_info
-				+ ", affected_area=" + affected_area + "]";
+		return "Dissability [id=" + id + ", name=" + name + ", type=" + type + ", severity=" + severity
+				+ ", extra_info=" + extra_info + ", affected_area=" + affected_area + "]";
 	}
-	
-	
+
+
+
 }
