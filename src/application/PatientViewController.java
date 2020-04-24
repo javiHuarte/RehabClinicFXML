@@ -143,7 +143,7 @@ public void changeAdressCellEvent (CellEditEvent edditedCell){
 public void changeInternCellEvent (CellEditEvent edditedCell){
 
 	Patientfxml patientSelected = patientTable.getSelectionModel().getSelectedItem();
-	patientSelected.setIntern(edditedCell.getNewValue().toString());
+	//patientSelected.setIntern(edditedCell.getNewValue().toString());
 
 }
 

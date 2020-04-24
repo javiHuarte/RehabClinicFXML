@@ -56,7 +56,7 @@ public class SQLiteManager implements DBManager {
 			stmt1 = c.createStatement();
 			String sql1 = "CREATE TABLE department " + "(id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
 					+ "budget REAL NOT NULL," + "floor INTEGER NOT NULL,"
-					+ "boss_id INTEGER NOT NULL REFERENCES employee(id) ON UPDATE CASCADE ON DELETE SET NULL)";
+					+ "boss_id INTEGER REFERENCES medical_professional(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class SQLitePacientManager implements PacientManager {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				Date dob = rs.getDate("dob");
+				Date sqlDob = rs.getDate("dob");
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -66,7 +67,9 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-				Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+				LocalDate dob = sqlDob.toLocalDate();
+
+			Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex); //catar esto
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
@@ -89,7 +92,7 @@ public class SQLitePacientManager implements PacientManager {
 				int pacient_id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				Date dob = rs.getDate("dob");
+				Date sqlDob = rs.getDate("dob");
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -97,7 +100,9 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-			newPacient = new Pacient(pacient_id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+				LocalDate dob = sqlDob.toLocalDate();
+
+			newPacient = new Pacient(pacient_id, pacientName,dob,nie,email,sex,phone, adress, active, intern);
 
 		} catch (Exception e) {
 			e.printStackTrace();

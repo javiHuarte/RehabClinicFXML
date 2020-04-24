@@ -48,7 +48,7 @@ public class Pacient implements Serializable{
 	}
 
 	public Pacient(Integer id, String name, LocalDate dob, String nie, String email, String sex, Integer phoneNumber,
-			String adress) {
+			String adress, Boolean active, Boolean intern) {
 		super();
 		this.id = new SimpleIntegerProperty(id);
 		this.name =  new SimpleStringProperty(name);
@@ -58,6 +58,8 @@ public class Pacient implements Serializable{
 		this.email = new SimpleStringProperty(email);
 		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 		this.adress = new SimpleStringProperty(adress);
+		this.active = new SimpleBooleanProperty(active);
+		this.intern = new SimpleBooleanProperty(intern);
 	}
 
 
