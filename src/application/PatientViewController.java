@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import pojos.Pacient;
 import pojos.Patientfxml;
 
 public class PatientViewController implements Initializable {
@@ -86,9 +87,9 @@ public class PatientViewController implements Initializable {
 	public void editButtonPushed(ActionEvent event){
 
 		SceneChanger sc = new SceneChanger();
-		Patientfxml patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
+		//Pacient patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
 		NewPatientController npc = new NewPatientController();
-		sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient, npc);
+		//sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient, npc);
 	}
 
 //if a patient has been selected in the table, enable editPatientButon
