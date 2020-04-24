@@ -17,7 +17,6 @@ public class funciones {
 	}
 
 
-
 public void crearWarningBox(String header, String message){
 
 	Alert alert = new Alert(Alert.AlertType.WARNING);
