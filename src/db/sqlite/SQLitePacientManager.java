@@ -25,7 +25,7 @@ public class SQLitePacientManager implements PacientManager {
 		try {
 			String sql = "INSERT INTO pacient (name, sex ,nie, email, active ,intern, adress , phone) "
 					+ "VALUES (?,?,?,?,?,?,?,?);";
-			
+
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, pacient.getName());
 			prep.setString(2, pacient.getSex());
@@ -59,13 +59,13 @@ public class SQLitePacientManager implements PacientManager {
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
 				Date dob = rs.getDate("dob");
-				String nie = rs.getString("nie");		
+				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
 				Boolean intern = rs.getBoolean("intern");
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
-				
+
 				Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
 				pacientList.add(newPacient);
 			}
@@ -74,41 +74,41 @@ public class SQLitePacientManager implements PacientManager {
 		}
 		return pacientList;
 	}
-	
+
 	@Override
 	public Pacient searchById (Integer id) {
-		
+
 		Pacient newPacient = null;
-		
+
 		try {
 			String sql = "SELECT * FROM pacient WHERE id LIKE ?;";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, id);
 			ResultSet rs = prep.executeQuery();
-			
+
 				int pacient_id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
 				Date dob = rs.getDate("dob");
-				String nie = rs.getString("nie");		
+				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
 				Boolean intern = rs.getBoolean("intern");
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
-				
+
 			newPacient = new Pacient(pacient_id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
-				
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 	 return newPacient;
 	}
-	
-	@Override 
+
+	@Override
 	public void deleteById (Integer id) {
-		
+
 		try {
 		String sql = "DELETE FROM pacient WHERE id= ?";
 		PreparedStatement prep = c.prepareStatement(sql);
@@ -121,12 +121,12 @@ public class SQLitePacientManager implements PacientManager {
 
 		@Override
 	public void updatePacient(Pacient pacient) {
-		
+
 		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";
 		PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
-			
+
 			prep.setString(1, pacient.getName());
 			prep.setBoolean(2, pacient.getIntern());
 			prep.setString(3, pacient.getNie());
@@ -135,17 +135,17 @@ public class SQLitePacientManager implements PacientManager {
 			prep.setInt(6, pacient.getPhoneNumber());
 			prep.setString(7, pacient.getAdress());
 			prep.setString(8, pacient.getSex());
-			prep.setInt(9, pacient.getId());		
+			prep.setInt(9, pacient.getId());
 			prep.executeUpdate();
 			System.out.println("Update finished.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	
+
 
 
 

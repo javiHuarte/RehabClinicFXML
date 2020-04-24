@@ -37,6 +37,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import pojos.Pacient;
 import pojos.Patientfxml;
 
 public class NewPatientController implements Initializable, ControllerClass {
@@ -59,7 +60,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 	private Label lblNameError, lblAdressError, lblDobError, lblPhoneError, lblEmailError, lblNifError;
 
 	private File imageFile;
-	private Patientfxml patient;
+	private Pacient patient;
+	private funciones funciones = new funciones();
+	private DBConnection dbConnection = new DBConnection();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -84,17 +87,17 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 	public void introducePatient() {
 
-		System.out.println("hola");
-
+		//Pedir datos del paciente
 		String name = txtName.getText();
-		String nif = txtNif.getText();
-		String phoneNumber = txtPhoneNumber.getText();
-		String adress = txtAdress.getText();
-		String email = txtEmail.getText();
 		String sex = sexChoiceBox.getValue();
 		LocalDate dob = dobPicker.getValue();
-		String intern = "yes"; // miraaaar esto
-		Integer id = 1; // ojo
+		String nif = txtNif.getText();
+		String email = txtEmail.getText();
+		String adress = txtAdress.getText();
+		String phoneNumber = txtPhoneNumber.getText();
+
+		//String intern = "yes"; // miraaaar esto
+		//predefinido active TRUE
 
 		Boolean validData = comprobarData();
 
@@ -122,8 +125,10 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 			if (result.get() == okButton) {
 
-				Patientfxml patient = new Patientfxml(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
-				System.out.println(patient);
+				Pacient pacient = new Pacient(name,true, nif,true, email, Integer.parseInt(phoneNumber), adress,"male" );
+				dbConnection.addPacient(pacient);
+				//Patientfxml patient = new Patientfxml(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
+
 			}
 		}
 	}
@@ -164,7 +169,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 			validData = false;
 			this.lblDobError.setText(" *");
-			
+
 		}
 
 		if (this.txtAdress.getText().equals("")) {
@@ -173,7 +178,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 			this.lblAdressError.setText(" *");
 		}
 
-		if (this.txtPhoneNumber.getText().equals("")) {
+		if (this.txtPhoneNumber.getText().equals("") || funciones.validarInteger(this.txtPhoneNumber.getText()) ) {
 
 			validData = false;
 			this.lblPhoneError.setText(" *");
@@ -262,7 +267,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 	}
 
 	@Override
-	public void preloadData(Patientfxml patient) {
+	public void preloadData(Pacient patient) {
 		// TODO Auto-generated method stub
 
 		this.patient = patient;
@@ -270,11 +275,11 @@ public class NewPatientController implements Initializable, ControllerClass {
 		// this.titledPane.setText("Edit Patient");
 
 		this.txtName.setText(patient.getName());
-		this.txtNif.setText(patient.getNif());
+		this.txtNif.setText(patient.getNie());
 		this.txtAdress.setText(patient.getAdress());
 		this.txtEmail.setText(patient.getEmail());
-		this.txtPhoneNumber.setText(patient.getPhoneNumber());
-		this.dobPicker.setValue(patient.getDob());
+		//this.txtPhoneNumber.setText(patient.getPhoneNumber());
+		//this.dobPicker.setValue(patient.getDob());
 		this.sexChoiceBox.setValue(patient.getSex());
 		// falta hacer el intern
 

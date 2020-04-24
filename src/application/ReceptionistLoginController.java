@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -24,6 +25,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import pojos.Pacient;
 import pojos.Patientfxml;
 
 public class ReceptionistLoginController implements Initializable{
@@ -34,6 +36,7 @@ public class ReceptionistLoginController implements Initializable{
 	@FXML private ChoiceBox<String> searchByChoiceBox;
 	@FXML private TextField txtSearchBy;
 	@FXML private Button searchByButton;
+	private DBConnection dbConnection = new DBConnection();
 
 
 	@Override
@@ -116,15 +119,16 @@ public class ReceptionistLoginController implements Initializable{
 		String name = this.txtSearchBy.getText();
 
 
-		Patientfxml patient1 = new Patientfxml(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
-		Patientfxml patient2 = new Patientfxml(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
+		//Patientfxml patient1 = new Patientfxml(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
+		//Patientfxml patient2 = new Patientfxml(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
 
-		if(name.equals("juan")){
+		//if(name.equals("juan")){
 
 			SceneChanger sc = new SceneChanger();
 			NewPatientController npc = new NewPatientController();
-			sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient1, npc);
-		}else{
+			List<Pacient> listaPacient = dbConnection.searchPacientByName(name);
+			sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", listaPacient.get(0), npc);
+		/*}else{
 			Alert info = new Alert(Alert.AlertType.INFORMATION);
 			info.setTitle("Information Message");
 			info.setHeaderText("Check the introduced Data");
@@ -132,7 +136,7 @@ public class ReceptionistLoginController implements Initializable{
 			info.showAndWait();
 
 
-		}
+		}*/
 
 		}
 

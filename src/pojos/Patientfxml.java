@@ -2,13 +2,15 @@ package pojos;
 
 import java.time.LocalDate;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Patientfxml {
 
 	SimpleIntegerProperty id;
-	SimpleStringProperty name, nif,sex, adress, email, phoneNumber, intern;
+	SimpleStringProperty name, nif,sex, adress, email, phoneNumber;
+	SimpleBooleanProperty active, intern;
 	LocalDate dob;
 
 
@@ -54,13 +56,6 @@ public class Patientfxml {
 		this.phoneNumber = new SimpleStringProperty(phoneNumber);
 	}
 
-	public String getIntern() {
-		return intern.get();
-	}
-
-	public void setIntern(String intern) {
-		this.intern = new SimpleStringProperty(intern);
-	}
 
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
