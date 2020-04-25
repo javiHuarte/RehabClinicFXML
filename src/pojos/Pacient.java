@@ -35,7 +35,7 @@ public class Pacient implements Serializable{
 	}
 
 
-	public Pacient(String name, String nie,LocalDate dob, String email, int phoneNumber, String adress, String sex, Boolean intern) {
+	public Pacient(String name, String nie,LocalDate dob, String email, int phoneNumber, String adress, String sex, Boolean intern, Boolean active) {
 		super();
 		this.name =  new SimpleStringProperty(name);
 		this.nie = new SimpleStringProperty(nie);
@@ -44,6 +44,7 @@ public class Pacient implements Serializable{
 		this.adress = new SimpleStringProperty(adress);
 		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 		this.intern = new SimpleBooleanProperty(intern);
+		this.active = new SimpleBooleanProperty(active);
 		this.dob = dob;
 	}
 
@@ -75,6 +76,8 @@ public class Pacient implements Serializable{
 		this.email = new SimpleStringProperty(email);
 		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 		this.adress = new SimpleStringProperty(adress);
+		this.active = new SimpleBooleanProperty(active);
+		this.intern =new SimpleBooleanProperty(intern);
 	}
 
 

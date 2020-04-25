@@ -66,22 +66,6 @@ public class SceneChanger {
 }
 
 
-	public void showMessageBox(){
-
-		Parent root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource("messageBox.fxml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		Scene scene= new Scene(root);
-		Stage window = new Stage();
-		window.setScene(scene);
-		window.setTitle("Message Box");
-
-	}
 
 
 

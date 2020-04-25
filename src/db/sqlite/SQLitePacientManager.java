@@ -23,20 +23,24 @@ public class SQLitePacientManager implements PacientManager {
 	@Override
 	public void add(Pacient pacient) {
 
+
+
 		try {
-			String sql = "INSERT INTO pacient (name, sex ,nie, email, active ,intern, adress , phone) "
-					+ "VALUES (?,?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO pacient (name, sex, dob, nie, email, active ,intern, adress , phone) "
+					+ "VALUES (?,?,?,?,?,?,?,?,?);";
+
+			LocalDate dob = pacient.getDob();
 
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, pacient.getName());
 			prep.setString(2, pacient.getSex());
-			//prep.setDate(3, pacient.getDob());
-			prep.setString(3, pacient.getNie());
-			prep.setString(4, pacient.getEmail());
-			prep.setBoolean(5, pacient.getActive());
-			prep.setBoolean(6, pacient.getIntern());
-			prep.setString(7, pacient.getAdress());
-			prep.setInt(8, pacient.getPhoneNumber());
+			prep.setDate(3, Date.valueOf(dob));
+			prep.setString(4, pacient.getNie());
+			prep.setString(5, pacient.getEmail());
+			prep.setBoolean(6, pacient.getActive());
+			prep.setBoolean(7, pacient.getIntern());
+			prep.setString(8, pacient.getAdress());
+			prep.setInt(9, pacient.getPhoneNumber());
 
 			prep.executeUpdate();
 			prep.close();
@@ -149,6 +153,46 @@ public class SQLitePacientManager implements PacientManager {
 		}
 
 	}
+
+		@Override
+		public List<Pacient> listAll() {
+			// TODO Auto-generated method stub
+
+			List<Pacient> pacients = null;
+			Pacient newPacient;
+
+
+			try {
+				String sql = "SELECT * FROM pacient";
+				PreparedStatement prep = c.prepareStatement(sql);
+				ResultSet rs = prep.executeQuery();
+
+				while (rs.next()){
+					int pacient_id = rs.getInt("id");
+					String pacientName = rs.getString("name");
+					String sex = rs.getString("sex");
+					Date sqlDob = rs.getDate("dob");
+					String nie = rs.getString("nie");
+					String email = rs.getString("email");
+					Boolean active = rs.getBoolean("active");
+					Boolean intern = rs.getBoolean("intern");
+					String adress = rs.getString("adress");
+					int phone = rs.getInt("phone");
+
+					LocalDate dob = sqlDob.toLocalDate();
+
+				newPacient = new Pacient(pacient_id, pacientName,dob,nie,email,sex,phone, adress, active, intern);
+				System.out.print("adios");
+				pacients.add(newPacient);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+
+
+			return pacients;
+		}
 
 
 

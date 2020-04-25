@@ -12,4 +12,5 @@ public interface PacientManager {
 	public List<Pacient> searchByName (String name);
 	public Pacient searchById (Integer id);
 	public void deleteById(Integer id);
+	public List<Pacient> listAll();
 }

@@ -22,9 +22,27 @@ public class DBConnection {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
+		//dbManager.createTables();
+
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.add(pacient);
 		dbManager.disconnect();
+
+	}
+
+	public List<Pacient> listPacients(){
+
+		List<Pacient> pacientList = null;
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		pacientManager = dbManager.getPacientManager();
+
+		pacientList = pacientManager.listAll();
+
+		return pacientList;
+
 
 	}
 
