@@ -145,7 +145,33 @@ public class SQLitePacientManager implements PacientManager {
 
 	}
 
+	public List<Pacient> listAllPacients (){
+		List<Pacient> pacientList = new ArrayList<Pacient>();
+		try{
+			String sql = "SELECT * FROM pacient;";
+			PreparedStatement prep = c.prepareStatement(sql);
+			ResultSet rs = prep.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String pacientName = rs.getString("name");
+				String sex = rs.getString("sex");
+				Date dob = rs.getDate("dob");
+				String nie = rs.getString("nie");
+				String email = rs.getString("email");
+				Boolean active = rs.getBoolean("active");
+				Boolean intern = rs.getBoolean("intern");
+				String adress = rs.getString("adress");
+				int phone = rs.getInt("phone");
 
+				Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+
+				pacientList.add(newPacient);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return pacientList;
+	}
 
 
 

@@ -32,4 +32,10 @@ public class DBConnection {
 
 	}
 
+	public List<Pacient> listAllPacients (){
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		pacientManager = dbManager.getPacientManager();
+		return pacientManager.listAllPacients() ;
+	}
 }
