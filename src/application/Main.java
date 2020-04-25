@@ -29,7 +29,7 @@ public class Main extends Application {
 	private static PacientManager pacientManager;
 
 
-	@Override
+@Override
 	public void start(Stage stage) {
 		try {
 			//BorderPane root = new BorderPane();
