@@ -44,7 +44,7 @@ public class MedicalProfessional implements Serializable {
 		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
 		this.nif =new SimpleStringProperty(nif);
 		this.dep_id = new SimpleIntegerProperty(dep_id);
-		this.department = 	this.nif =new SimpleStringProperty(department);
+		this.department = new SimpleStringProperty(department);
 	}
 
 

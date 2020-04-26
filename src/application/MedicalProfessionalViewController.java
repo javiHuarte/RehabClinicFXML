@@ -63,7 +63,7 @@ public class MedicalProfessionalViewController implements Initializable {
 		emailColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("email"));
 		//contractColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("employee_contractId"));
 	departmentColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("department"));
-		nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
+		//nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
 
 
 	medicalProfessionalTable.setItems(loadMedicalProfessional());

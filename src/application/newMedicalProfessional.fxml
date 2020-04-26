@@ -7,28 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewMedicalProfessionalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewMedicalProfessionalController">
    <top>
       <TitledPane animated="false" text="New Medical Professional" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <GridPane vgap="10.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="347.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,7 +30,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-<<<<<<< HEAD
             <Label text="Name:" />
             <Label text="Nif:" GridPane.rowIndex="1" />
             <Label text="Phone Number:" GridPane.rowIndex="2" />
@@ -56,49 +48,9 @@
             <Label prefHeight="21.0" prefWidth="78.0" text="Email:" GridPane.rowIndex="3" />
             <Label prefHeight="21.0" prefWidth="94.0" text="Department:" GridPane.rowIndex="8" />
             <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-=======
-            <Label text="Name:" GridPane.rowIndex="1" />
-            <Label text="Nif:" GridPane.rowIndex="2" />
-            <Label text="Phone Number:" GridPane.rowIndex="3" />
-            <Label text="Adress:" GridPane.rowIndex="5" />
-            <Label text="Date of Birth:" GridPane.rowIndex="6" />
-            <Label prefHeight="21.0" prefWidth="82.0" text="Specialist:" GridPane.rowIndex="8" />
-            <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="Sex:" GridPane.rowIndex="7" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label prefHeight="21.0" prefWidth="78.0" text="Email:" GridPane.rowIndex="4" />
-            <Label prefHeight="21.0" prefWidth="94.0" text="Department:" GridPane.rowIndex="9" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="Personal Data">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label prefHeight="26.0" prefWidth="164.0" text="Employee Contract" GridPane.rowIndex="10">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label prefHeight="21.0" prefWidth="110.0" text="Salary:" GridPane.rowIndex="11" />
-            <Label prefHeight="21.0" prefWidth="100.0" text="Hours/week:" GridPane.rowIndex="12" />
-            <Label prefHeight="21.0" prefWidth="115.0" text="Starting Date:" GridPane.rowIndex="13" />
-            <Label prefHeight="21.0" prefWidth="113.0" text="Finishing Date:" GridPane.rowIndex="14" />
-            <Label text="Free Days:" GridPane.rowIndex="15" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="15" />
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
          </children>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" />
          </BorderPane.margin>
       </GridPane>
    </center>

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,12 +17,26 @@ import pojos.*;
 
 public class NewMedicalProfessionalController implements Initializable {
 
-private DBConnection dbConnection = new DBConnection();
- @FXML private TextField txtName;
- @FXML private Button addButton;
- @FXML private ChoiceBox departmentsChoiceBox;
+	private DBConnection dbConnection = new DBConnection();
 
+	@FXML private TextField txtName;
+	@FXML private TextField txtNif;
+	@FXML private TextField txtPhoneNumber;
+	@FXML private TextField txtEmail;
+	@FXML private TextField txtAdress;
+	@FXML private TextField txtSpecialist  ;
 
+	@FXML private ChoiceBox<String> sexCoiceBox;
+	@FXML private DatePicker dobPicker;
+
+	@FXML private Button backButton;
+	@FXML private Button clearButton;
+	@FXML private Button addButton;
+
+	//this method saves the medical professional
+	public void addMedicalProfessional(ActionEvent event){
+
+	}
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
@@ -43,8 +58,6 @@ Department dep;
 
 public void addNewMedicalProfessional(){
 
-	 String name = txtName.getText();
-	 System.out.println(name);
 
 }
 
