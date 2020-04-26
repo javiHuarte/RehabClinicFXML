@@ -11,4 +11,5 @@ public interface MedicalProfessionalManager {
 	public void add (MedicalProfessional medicalProfessional);
 	public void deleteById (Integer id);
 	public void updateMedicalProfessional(MedicalProfessional medicalProfessional);
+	public List<MedicalProfessional> listAll();
 }

@@ -61,7 +61,7 @@ public class SQLitePacientManager implements PacientManager {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				Date sqlDob = rs.getDate("dob");
+				//Date sqlDob = rs.getDate("dob");
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -69,10 +69,14 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-				LocalDate dob = sqlDob.toLocalDate();
+				//LocalDate dob = sqlDob.toLocalDate();
 
+<<<<<<< HEAD
 				Pacient newPacient = new Pacient(id, pacientName, dob, intern, nie, active, email, phone, adress, sex); // catar
 																														// esto
+=======
+			Pacient newPacient = new Pacient(id, pacientName,LocalDate.now(), intern, nie,active, email,phone,adress,sex); //catar esto
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
@@ -130,10 +134,12 @@ public class SQLitePacientManager implements PacientManager {
 	@Override
 	public void updatePacient(Pacient pacient) {
 
-		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";
+		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=?, dob = ? WHERE id=?";
 		PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
+
+			LocalDate ld = pacient.getDob();
 
 			prep.setString(1, pacient.getName());
 			prep.setBoolean(2, pacient.getIntern());
@@ -143,7 +149,9 @@ public class SQLitePacientManager implements PacientManager {
 			prep.setInt(6, pacient.getPhoneNumber());
 			prep.setString(7, pacient.getAdress());
 			prep.setString(8, pacient.getSex());
-			prep.setInt(9, pacient.getId());
+			prep.setDate(9, Date.valueOf(ld));
+			prep.setInt(10, 1);
+
 			prep.executeUpdate();
 			System.out.println("Update finished.");
 		} catch (SQLException e) {
@@ -171,11 +179,40 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
+<<<<<<< HEAD
 				//LocalDate localDate = dob.toLocalDate();
+=======
+			List<Pacient> pacients = new ArrayList();
+			Pacient newPacient;
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 
 				Pacient newPacient = new Pacient(id,pacientName,LocalDate.of(1995, Month.APRIL, 9),nie,email,sex,phone, adress, active, intern);
 
+<<<<<<< HEAD
 				pacientList.add(newPacient);
+=======
+			try {
+				String sql = "SELECT * FROM pacient";
+				PreparedStatement prep = c.prepareStatement(sql);
+				ResultSet rs = prep.executeQuery();
+
+				while (rs.next()){
+					int pacient_id = rs.getInt("id");
+					String pacientName = rs.getString("name");
+					String sex = rs.getString("sex");
+					//Date sqlDob = rs.getDate("dob");
+					String nie = rs.getString("nie");
+					String email = rs.getString("email");
+					Boolean active = rs.getBoolean("active");
+					Boolean intern = rs.getBoolean("intern");
+					String adress = rs.getString("adress");
+					int phone = rs.getInt("phone");
+
+					//LocalDate dob = sqlDob.toLocalDate();
+
+				newPacient = new Pacient(pacient_id, pacientName,LocalDate.of(1995,Month.APRIL,9),nie,email,sex,phone, adress, active, intern);
+				pacients.add(newPacient);
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -5,21 +5,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="391.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PatientViewController">
+<AnchorPane prefHeight="391.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PatientViewController">
    <children>
-      <BorderPane prefHeight="391.0" prefWidth="910.0">
+      <BorderPane prefHeight="391.0" prefWidth="1117.0">
          <center>
-            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="295.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="303.0" prefWidth="680.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="112.0" text="ID" />
-                <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="113.0" text="Name" />
-                  <TableColumn fx:id="nifColumn" minWidth="0.0" prefWidth="0.0" text="Nif" />
-                  <TableColumn fx:id="sexColumn" prefWidth="105.0" text="Sex" />
-                  <TableColumn fx:id="dobColumn" minWidth="9.0" prefWidth="117.0" text="Dob" />
-                  <TableColumn fx:id="adressColumn" minWidth="9.0" prefWidth="117.0" text="Adress" />
-                  <TableColumn fx:id="phoneNumberColumn" minWidth="9.0" prefWidth="117.0" text="Phone Number" />
-                  <TableColumn fx:id="emailColumn" minWidth="9.0" prefWidth="117.0" text="Email" />
-                  <TableColumn fx:id="internColumn" minWidth="9.0" prefWidth="117.0" text="Intern" />
+                <TableColumn fx:id="idColumn" prefWidth="47.0" text="ID" />
+                <TableColumn fx:id="nameColumn" onEditCommit="#changeNameCellEvent" prefWidth="178.0" text="Name" />
+                  <TableColumn fx:id="nifColumn" minWidth="0.0" prefWidth="100.0" text="Nif" />
+                  <TableColumn fx:id="sexColumn" prefWidth="68.0" text="Sex" />
+                  <TableColumn fx:id="dobColumn" minWidth="9.0" prefWidth="106.0" text="Dob" />
+                  <TableColumn fx:id="adressColumn" minWidth="9.0" prefWidth="157.0" text="Adress" />
+                  <TableColumn fx:id="phoneNumberColumn" minWidth="9.0" prefWidth="152.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" minWidth="9.0" prefWidth="148.0" text="Email" />
+                  <TableColumn fx:id="internColumn" minWidth="9.0" prefWidth="79.0" text="Intern" />
+                  <TableColumn fx:id="activeColumn" minWidth="9.0" prefWidth="81.0" text="Active" />
               </columns>
             </TableView>
          </center>
@@ -27,14 +28,14 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                   <Button mnemonicParsing="false" onAction="#backButton" prefHeight="31.0" prefWidth="85.0" text="Back" />
-                  <Region prefHeight="31.0" prefWidth="489.0" />
+                  <Region prefHeight="31.0" prefWidth="693.0" />
                   <Button fx:id="editPatientButton" mnemonicParsing="false" onAction="#editButtonPushed" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
                 <Button mnemonicParsing="false" onAction="#newPatientButton" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
               </items>
             </ToolBar>
          </bottom>
          <top>
-            <AnchorPane prefHeight="43.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="43.0" prefWidth="1075.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="23.0" layoutY="11.0" prefHeight="21.0" prefWidth="123.0" text="Search By Name:" />
                   <TextField fx:id="txtSearch" layoutX="146.0" layoutY="6.0" onKeyReleased="#search" />

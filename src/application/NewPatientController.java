@@ -23,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -45,7 +46,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 	@FXML
 	private TextField txtName, txtNif, txtPhoneNumber, txtAdress, txtEmail, txtIntern;
 	@FXML
-	private ChoiceBox<String> sexChoiceBox;
+	private ChoiceBox<String> sexChoiceBox, internChoiceBox;
 	@FXML
 	private RadioButton radioButtonYes, radioButtonNo;
 	@FXML
@@ -58,6 +59,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 	private TitledPane titledPane;
 	@FXML
 	private Label lblNameError, lblAdressError, lblDobError, lblPhoneError, lblEmailError, lblNifError;
+@FXML Button updateButton, addButton;
 
 	private File imageFile;
 	private Pacient patient;
@@ -68,9 +70,27 @@ public class NewPatientController implements Initializable, ControllerClass {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
+		//set update button disable
+
+		this.updateButton.setDisable(true);
+
+		//set addButton not not disable
+
+		this.addButton.setDisable(false);
+
+		//creamos el sexChoiceBox
+
 		ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
 		sexChoiceBox.setItems(sexList);
 		sexChoiceBox.setValue("Male");
+
+		//creamos el internChoiceBox
+
+		ObservableList<String> internList = FXCollections.observableArrayList("No", "Yes");
+		internChoiceBox.setItems(internList);
+		internChoiceBox.setValue("No");
+
+
 
 		// load de default image
 		try {
@@ -95,12 +115,14 @@ public class NewPatientController implements Initializable, ControllerClass {
 		String email = txtEmail.getText();
 		String adress = txtAdress.getText();
 		String phoneNumber = txtPhoneNumber.getText();
+		String internString = internChoiceBox.getValue();
+		Boolean intern;
 
-		//String intern = "yes"; // miraaaar esto
-		//predefinido active TRUE
+		if(internString.equals("Yes")){
+		intern = true;
+		}else intern = false;
 
 		Boolean active = true;
-		Boolean intern = true;
 
 		Boolean validData = comprobarData();
 
@@ -117,24 +139,48 @@ public class NewPatientController implements Initializable, ControllerClass {
 			ButtonType cancelButton = new ButtonType("Cancel");
 
 			TextArea textArea = new TextArea();
-			textArea.setDisable(true);
 			textArea.setText("Name: " + name + ", Dob: " + dob + ", Nif: " + nif + ", Phone Number: " + phoneNumber);
 			alert.getDialogPane().setExpandableContent(textArea);
 
 			alert.getButtonTypes().setAll(okButton, cancelButton);
 			Optional<ButtonType> result = alert.showAndWait();
 
-			// alert.showAndWait();
+
 
 			if (result.get() == okButton) {
 
 				Pacient pacient = new Pacient(name, nif, dob, email, Integer.parseInt(phoneNumber), adress,sex, intern, active);
 				dbConnection.addPacient(pacient);
-				//Patientfxml patient = new Patientfxml(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
 
 			}
 		}
 	}
+
+	public void updatePatient(ActionEvent event){
+
+		//Pedir datos del paciente
+		String name = txtName.getText();
+		String sex = sexChoiceBox.getValue();
+		LocalDate dob = dobPicker.getValue();
+		String nif = txtNif.getText();
+		String email = txtEmail.getText();
+		String adress = txtAdress.getText();
+		String phoneNumber = txtPhoneNumber.getText();
+		String internString = internChoiceBox.getValue();
+		Boolean intern;
+
+		if(internString.equals("Yes")){
+		intern = true;
+		}else intern = false;
+
+		Boolean active = true;
+
+		Pacient pacient = new Pacient(name, nif, dob, email, Integer.parseInt(phoneNumber), adress,sex, intern, active);
+		dbConnection.updatePacient(pacient);
+
+
+	}
+
 
 	public void backToLogin(ActionEvent event) {
 
@@ -267,6 +313,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 		txtEmail.clear();
 		txtPhoneNumber.clear();
 		sexChoiceBox.setValue("Male");
+		this.dobPicker.setValue(LocalDate.now());;
+		this.internChoiceBox.setValue("No");
+		this.sexChoiceBox.setValue("Male");
 	}
 
 	@Override
@@ -274,6 +323,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 		// TODO Auto-generated method stub
 
 		this.patient = patient;
+
+		this.updateButton.setDisable(false);
+		this.addButton.setDisable(true);
 
 		int phoneNumber = patient.getPhoneNumber();
 		String phone = String.valueOf(phoneNumber);
@@ -285,7 +337,11 @@ public class NewPatientController implements Initializable, ControllerClass {
 		this.txtPhoneNumber.setText(phone);
 		this.dobPicker.setValue(patient.getDob());
 		this.sexChoiceBox.setValue(patient.getSex());
-		// falta hacer el intern
+
+		Boolean intern = patient.getIntern();
+		if(intern == true){
+		this.internChoiceBox.setValue("Yes");
+		}else this.internChoiceBox.setValue("No");
 
 		// load the image
 

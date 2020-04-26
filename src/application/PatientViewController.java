@@ -1,9 +1,10 @@
-package application;
+ package application;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -38,6 +39,7 @@ public class PatientViewController implements Initializable {
 	@FXML private TableColumn<Pacient, Boolean> internColumn; ///antes era un string
 	@FXML private TableColumn<Pacient, Integer> phoneNumberColumn;
 	@FXML private TableColumn<Pacient, LocalDate> dobColumn;
+	@FXML private TableColumn<Pacient, Boolean> activeColumn;
 
 	private DBConnection dbConnection = new DBConnection();
 
@@ -59,23 +61,21 @@ public class PatientViewController implements Initializable {
 	idColumn.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("id"));
 	nameColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("name"));
 	sexColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("sex"));
-	nifColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("nif"));
+	nifColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("nie"));
 	emailColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("email"));
 	adressColumn.setCellValueFactory(new PropertyValueFactory<Pacient, String>("adress"));
 	phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("phoneNumber"));
 	internColumn.setCellValueFactory(new PropertyValueFactory<Pacient, Boolean>("intern"));
 	dobColumn.setCellValueFactory(new PropertyValueFactory<Pacient, LocalDate>("dob"));
+	activeColumn.setCellValueFactory(new PropertyValueFactory<Pacient, Boolean>("active"));
+
 
 	//set  the table editable in order to update it
 	patientTable.setEditable(true);
 
 	//load data
 
-
-	//patients.addAll(dbConnection.listPacients());
-	//patientTable.setItems(patients);
-
-	//System.out.println(patients);
+	patientTable.setItems(loadPatients());
 
 	}
 
@@ -84,9 +84,9 @@ public class PatientViewController implements Initializable {
 	public void editButtonPushed(ActionEvent event){
 
 		SceneChanger sc = new SceneChanger();
-		//Pacient patient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
+		Pacient pacient = this.patientTable.getSelectionModel().getSelectedItem(); //return the selected patient in the table
 		NewPatientController npc = new NewPatientController();
-		//sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", patient, npc);
+		sc.changeScenesWithData(event, "newPatient.fxml", "Edit Patient", pacient, npc);
 	}
 
 //if a patient has been selected in the table, enable editPatientButon
@@ -158,20 +158,14 @@ public void changeDobCellEvent (CellEditEvent edditedCell){
 
 }
 
+
+
 public ObservableList<Pacient>loadPatients(){
 
+	List<Pacient> pacientList = null;
+	pacientList = dbConnection.listPacients();
 
-
-		Pacient patient1 = new Pacient(1, "juan",LocalDate.of(1995,Month.APRIL,9), "55555555", "jjhua@gmail.com", "male", 6777778, "paseo", true, false);
-		Pacient patient2 = new Pacient(1, "juan",LocalDate.of(1995,Month.APRIL,9), "55555555", "jjhua@gmail.com", "male", 6777778, "paseo", true, false);
-
-
-		patients.add(patient2);
-		patients.add(patient1);
-
-
-		//patients.add(new Patientfxml(4, "javi", "55555", "male", LocalDate.of(2019, Month.AUGUST, 30), "paseo del barcelona 2", "jjhua@gmail.com", "662223636", "YES"));
-
+	patients.addAll(pacientList);
 
 		return patients;
 

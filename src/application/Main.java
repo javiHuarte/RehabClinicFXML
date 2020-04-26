@@ -1,7 +1,12 @@
-package application;
+ package application;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import application.*;
+import db.interfaces.DBManager;
+import db.interfaces.PacientManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -21,6 +26,11 @@ public class Main extends Application {
 
 	Stage stage;
 
+	private static DBManager dbManager;
+	private static PacientManager pacientManager;
+
+
+
 	@Override
 	public void start(Stage stage) {
 		try {
@@ -30,7 +40,11 @@ public class Main extends Application {
 			//primaryStage.setScene(scene);
 			//primaryStage.show();
 
-		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
+
+		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
+
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newMedicalProfessional.fxml"));
+
 		Scene newMenu = new Scene(menuSceneRoot);
 
 		stage.setScene(newMenu);
@@ -45,7 +59,11 @@ public class Main extends Application {
 		return stage;
 	}
 
-	public static void main(String[] args) {
+
+
+public static void main(String[] args) {
 		launch(args);
+
+
 	}
 }
