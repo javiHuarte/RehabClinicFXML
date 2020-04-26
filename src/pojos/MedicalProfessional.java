@@ -3,60 +3,65 @@ package pojos;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.time.LocalDate;
+
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class MedicalProfessional implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6497160293984561608L;
-	private Integer id;
-	private String name;
-	private Date dob;
-	private String sex;
-	private String profession;
+	private SimpleIntegerProperty id;
+	private SimpleStringProperty name;
+	private LocalDate dob;
+	private SimpleStringProperty  sex;
+	private SimpleStringProperty  profession;
 	private Blob photo;
-	private String email;
-	private String adress;
-	private int phoneNumber;
-	private String nif;
-	private Integer employee_contractId;
-	private Integer dep_id;
-	
-	
+	private SimpleStringProperty  email;
+	private SimpleStringProperty  adress;
+	private SimpleIntegerProperty phoneNumber;
+	private SimpleStringProperty  nif;
+	private SimpleIntegerProperty employee_contractId;
+	private SimpleIntegerProperty dep_id;
+	private SimpleStringProperty  department;
 
-	
-	public MedicalProfessional(Integer id, String name, Date dob, String sex, String profession, String email,
-			String adress, int phoneNumber, String nif, Integer dep_id) {
+
+
+
+	public MedicalProfessional(Integer id, String name, LocalDate dob, String sex, String profession, String email,
+			String adress, int phoneNumber, String nif, Integer dep_id, String department) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.id  = new SimpleIntegerProperty(id);
+		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
-		this.sex = sex;
-		this.profession = profession;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.nif = nif;
-		this.dep_id = dep_id;
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif =new SimpleStringProperty(nif);
+		this.dep_id = new SimpleIntegerProperty(dep_id);
+		this.department = 	this.nif =new SimpleStringProperty(department);
 	}
-	
-	
 
 
-	public MedicalProfessional(String name, Date dob, String sex, String profession, Blob photo, String email,
+
+
+	public MedicalProfessional(String name, LocalDate dob, String sex, String profession, Blob photo, String email,
 			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
-		this.name = name;
+		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
-		this.sex = sex;
-		this.profession = profession;
-		this.photo = photo;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.nif = nif;
-		this.dep_id = dep_id;
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif =new SimpleStringProperty(nif);
+		this.dep_id = new SimpleIntegerProperty(dep_id);
 	}
 
 
@@ -65,14 +70,15 @@ public class MedicalProfessional implements Serializable {
 	public MedicalProfessional(String name, String sex, String profession, String email, String adress, int phoneNumber,
 			String nif, Integer dep_id) {
 		super();
-		this.name = name;
-		this.sex = sex;
-		this.profession = profession;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.nif = nif;
-		this.dep_id = dep_id;
+		this.name =new SimpleStringProperty(name);
+		this.dob = dob;
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif =new SimpleStringProperty(nif);
+		this.dep_id = new SimpleIntegerProperty(dep_id);
 	}
 
 
@@ -84,42 +90,42 @@ public class MedicalProfessional implements Serializable {
 
 
 	public String getNif() {
-		return nif;
+		return nif.get();
 	}
 
 	public void setNif(String nif) {
-		this.nif = nif;
+		this.nif = new SimpleStringProperty(nif);
 	}
-	
+
 	public Integer getId() {
-		return id;
+		return id.get();
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = new SimpleIntegerProperty(id);
 	}
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = new SimpleStringProperty(name);
 	}
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 	public String getSex() {
-		return sex;
+		return sex.get();
 	}
 	public void setSex(String sex) {
-		this.sex = sex;
+		this.sex = new SimpleStringProperty(sex);
 	}
 	public String getProfession() {
-		return profession;
+		return profession.get();
 	}
 	public void setProfession(String profession) {
-		this.profession = profession;
+		this.profession = new SimpleStringProperty(profession);
 	}
 	public Blob getPhoto() {
 		return photo;
@@ -128,48 +134,55 @@ public class MedicalProfessional implements Serializable {
 		this.photo = photo;
 	}
 	public String getEmail() {
-		return email;
+		return email.get();
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = new SimpleStringProperty(email);
 	}
 	public String getAdress() {
-		return adress;
+		return adress.get();
 	}
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.adress = new SimpleStringProperty(adress);
 	}
 	public int getPhoneNumber() {
-		return phoneNumber;
+		return phoneNumber.get();
 	}
 	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 	}
-	
-	
+
+
 	public Integer getEmployee_contractId() {
-		return employee_contractId;
+		return employee_contractId.get();
 	}
 
 
 
 
 	public void setEmployee_contractId(Integer employee_contractId) {
-		this.employee_contractId = employee_contractId;
+		this.employee_contractId = new SimpleIntegerProperty(employee_contractId);
 	}
 
 
 
 
 	public Integer getDep_id() {
-		return dep_id;
+		return dep_id.get();
 	}
 
 
 	public void setDep_id(Integer dep_id) {
-		this.dep_id = dep_id;
+		this.dep_id = new SimpleIntegerProperty(dep_id);
 	}
 
+	public String getDepartment(){
+		return this.department.get();
+	}
+
+	public void setDepartment(String department){
+		this.department = new SimpleStringProperty(department);
+	}
 
 	@Override
 	public int hashCode() {
@@ -207,6 +220,6 @@ public class MedicalProfessional implements Serializable {
 	}
 
 
-	
+
 }
 

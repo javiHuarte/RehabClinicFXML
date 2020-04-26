@@ -1,7 +1,12 @@
  package application;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import application.*;
+import db.interfaces.DBManager;
+import db.interfaces.PacientManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -20,7 +25,10 @@ import pojos.*;
 public class Main extends Application {
 
 	Stage stage;
-	
+	private static DBManager dbManager;
+	private static PacientManager pacientManager;
+
+
 	@Override
 	public void start(Stage stage) {
 		try {
@@ -45,7 +53,11 @@ public class Main extends Application {
 		return stage;
 	}
 
-	public static void main(String[] args) {
+
+
+public static void main(String[] args) {
 		launch(args);
+
+
 	}
 }

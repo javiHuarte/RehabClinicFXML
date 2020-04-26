@@ -70,8 +70,8 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 				int phone = rs.getInt("phone");
 				String nif = rs.getString("nif");
 				Integer dep_id = rs.getInt("dep_id");
-				MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, MedicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
-				medicalProfessionalList.add(newMedicalProfessional);
+				//MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, MedicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
+				//medicalProfessionalList.add(newMedicalProfessional);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,7 +101,7 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 			String nif = rs.getString("nif");
 			Integer dep_id = rs.getInt("dep_id");
 
-			newMedicalProfessional = new MedicalProfessional(medicalProfessional_id, medicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
+		//	newMedicalProfessional = new MedicalProfessional(medicalProfessional_id, medicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,9 +171,8 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 				Integer phone = rs.getInt("phoneNumber");
 				Integer dep_id = rs.getInt("dep_id");
 
-				MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, name, dob,  sex,  profession, email,
-			                                              							adress,phone, nif, dep_id);
-				medicalProfessionalList.add(newMedicalProfessional);
+				//MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, name, dob,  sex,  profession, email,adress,phone, nif, dep_id);
+				//medicalProfessionalList.add(newMedicalProfessional);
 			}
 
 		}catch(Exception e){

@@ -110,10 +110,10 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 			String medical_professionalNIE = rs.getString(15);
 			Integer medical_professionalContract_id = rs.getInt(16);
 			int medical_professionaldep_id = rs.getInt(17);
-			MedicalProfessional newMedicalProfessional = new MedicalProfessional(medical_professionalId,medical_professionalName,
-					medical_professionaldob,medical_professionalSex,medical_professionalProfession,medical_professionalEmail,
-					medical_professionalAdress,medical_professionalPhone,medical_professionalNIE,medical_professionaldep_id);
-			listMedicalProfessional.add(newMedicalProfessional);
+		//	MedicalProfessional newMedicalProfessional = new MedicalProfessional(medical_professionalId,medical_professionalName,
+			//		medical_professionaldob,medical_professionalSex,medical_professionalProfession,medical_professionalEmail,
+			//		medical_professionalAdress,medical_professionalPhone,medical_professionalNIE,medical_professionaldep_id);
+		//	listMedicalProfessional.add(newMedicalProfessional);
 
 
 			int staffId = rs.getInt(18);

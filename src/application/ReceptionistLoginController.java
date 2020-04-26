@@ -103,6 +103,9 @@ public class ReceptionistLoginController implements Initializable{
 
 		try{
 		Integer id = Integer.parseInt(stringId);
+
+
+
 		}catch (NumberFormatException e) {
 
 			Alert warning = new Alert(Alert.AlertType.ERROR);
@@ -110,8 +113,8 @@ public class ReceptionistLoginController implements Initializable{
 			warning.setHeaderText("Wrong Introduced Data");
 			warning.setContentText("ID has to be an integer");
 			warning.showAndWait();
-
 		}
+
 	}
 
 	public void searchByName(ActionEvent event){
@@ -119,10 +122,6 @@ public class ReceptionistLoginController implements Initializable{
 		String name = this.txtSearchBy.getText();
 
 
-		//Patientfxml patient1 = new Patientfxml(1, "juan", "54448314T", "male",LocalDate.of(1995,Month.APRIL,9), "paseo del parque 4", "jjhua@gmail.com", "662223636", "YES");
-		//Patientfxml patient2 = new Patientfxml(2, "yoan", "54448314T", "male", LocalDate.of(1998,Month.APRIL,23), "pase castellana", "jjhua@gmail.com", "662223636", "YES");
-
-		//if(name.equals("juan")){
 
 			SceneChanger sc = new SceneChanger();
 			NewPatientController npc = new NewPatientController();

@@ -32,6 +32,16 @@ public class DBConnection {
 
 	}
 
+	public void updatePacient(Pacient pacient){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		pacientManager = dbManager.getPacientManager();
+		pacientManager.updatePacient(pacient);
+		dbManager.disconnect();
+
+	}
+
 	public List<Pacient> listPacients(){
 
 		List<Pacient> pacientList = null;
