@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class SQLitePacientManager implements PacientManager {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				Date sqlDob = rs.getDate("dob");
+				//Date sqlDob = rs.getDate("dob");
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -71,9 +72,9 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-				LocalDate dob = sqlDob.toLocalDate();
+				//LocalDate dob = sqlDob.toLocalDate();
 
-			Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex); //catar esto
+			Pacient newPacient = new Pacient(id, pacientName,LocalDate.now(), intern, nie,active, email,phone,adress,sex); //catar esto
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
@@ -131,10 +132,12 @@ public class SQLitePacientManager implements PacientManager {
 		@Override
 	public void updatePacient(Pacient pacient) {
 
-		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";
+		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=?, dob = ? WHERE id=?";
 		PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
+
+			LocalDate ld = pacient.getDob();
 
 			prep.setString(1, pacient.getName());
 			prep.setBoolean(2, pacient.getIntern());
@@ -144,7 +147,9 @@ public class SQLitePacientManager implements PacientManager {
 			prep.setInt(6, pacient.getPhoneNumber());
 			prep.setString(7, pacient.getAdress());
 			prep.setString(8, pacient.getSex());
-			prep.setInt(9, pacient.getId());
+			prep.setDate(9, Date.valueOf(ld));
+			prep.setInt(10, 1);
+
 			prep.executeUpdate();
 			System.out.println("Update finished.");
 		} catch (SQLException e) {
@@ -158,7 +163,7 @@ public class SQLitePacientManager implements PacientManager {
 		public List<Pacient> listAll() {
 			// TODO Auto-generated method stub
 
-			List<Pacient> pacients = null;
+			List<Pacient> pacients = new ArrayList();
 			Pacient newPacient;
 
 
@@ -171,7 +176,7 @@ public class SQLitePacientManager implements PacientManager {
 					int pacient_id = rs.getInt("id");
 					String pacientName = rs.getString("name");
 					String sex = rs.getString("sex");
-					Date sqlDob = rs.getDate("dob");
+					//Date sqlDob = rs.getDate("dob");
 					String nie = rs.getString("nie");
 					String email = rs.getString("email");
 					Boolean active = rs.getBoolean("active");
@@ -179,10 +184,9 @@ public class SQLitePacientManager implements PacientManager {
 					String adress = rs.getString("adress");
 					int phone = rs.getInt("phone");
 
-					LocalDate dob = sqlDob.toLocalDate();
+					//LocalDate dob = sqlDob.toLocalDate();
 
-				newPacient = new Pacient(pacient_id, pacientName,dob,nie,email,sex,phone, adress, active, intern);
-				System.out.print("adios");
+				newPacient = new Pacient(pacient_id, pacientName,LocalDate.of(1995,Month.APRIL,9),nie,email,sex,phone, adress, active, intern);
 				pacients.add(newPacient);
 				}
 			} catch (Exception e) {
