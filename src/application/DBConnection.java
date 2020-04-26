@@ -6,6 +6,7 @@ import java.util.List;
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
+import db.interfaces.*;
 import db.sqlite.SQLiteManager;
 import pojos.*;
 
@@ -14,6 +15,7 @@ public class DBConnection {
 	private static DBManager dbManager;
 	private static PacientManager pacientManager;
 	private static DepartmentManager departmentManager;
+	private static MedicalProfessionalManager medicalProfessionalManager;
 
 
 
@@ -88,6 +90,18 @@ public class DBConnection {
 		list = departmentManager.listAll();
 		dbManager.disconnect();
 		return list;
+	}
+	
+	public List<MedicalProfessional> listAllMedicalProfessionals(){
+		
+		List<MedicalProfessional> list = new ArrayList();
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		list = medicalProfessionalManager.listAll();
+		return list;
+		
 	}
 
 }
