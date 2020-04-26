@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
+
 <AnchorPane prefHeight="490.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
-=======
+
 <AnchorPane prefHeight="490.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
+
    <children>
       <BorderPane prefHeight="490.0" prefWidth="918.0">
          <top>
@@ -22,14 +22,13 @@
             </AnchorPane>
          </top>
          <center>
-<<<<<<< HEAD
+
             <TableView fx:id="medicalProfessionaTable" prefHeight="409.0" prefWidth="831.0" BorderPane.alignment="CENTER">
-=======
+
             <TableView fx:id="medicalProfessionalTable" prefHeight="409.0" prefWidth="831.0" BorderPane.alignment="CENTER">
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-<<<<<<< HEAD
+
                 <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="dobColumn" prefWidth="75.0" text="DOB" />
                   <TableColumn fx:id="sexColumn" prefWidth="75.0" text="Sex" />
@@ -50,7 +49,7 @@
                   <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
                   <TableColumn fx:id="contractColumn" prefWidth="100.0" text="Contract" />
                   <TableColumn fx:id="departmentColumn" prefWidth="120.0" text="Department" />
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
+
               </columns>
             </TableView>
          </center>
