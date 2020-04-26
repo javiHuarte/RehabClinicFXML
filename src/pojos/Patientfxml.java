@@ -78,7 +78,7 @@ public class Patientfxml {
 		this.email = new SimpleStringProperty(email);
 		this.adress = new SimpleStringProperty(adress);
 		this.phoneNumber = new SimpleStringProperty(phoneNumber);
-		this.intern = new SimpleStringProperty(intern);
+		//this.intern = new SimpleStringProperty(intern);
 		this.dob = dob;
 	}
 

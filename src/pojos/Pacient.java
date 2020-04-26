@@ -6,95 +6,84 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Pacient implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	
 	
 	private static final long serialVersionUID = 2071328715533081411L;
-	private Integer id;
-	private String name;
-	private Date dob;
-	private Boolean intern;
-	private String nie;
+	private SimpleIntegerProperty id;
+	private SimpleStringProperty name;
+	private LocalDate dob;
+	private SimpleBooleanProperty intern;
+	private SimpleStringProperty  nie;
 	private Blob photo;
-	private Boolean active;
-	private String email;
-	private int phoneNumber;
-	private String adress;
-	private ArrayList<Dissability> dissabilityList = new ArrayList<Dissability> ();	
-	private String sex;
-	
+	private SimpleBooleanProperty active;
+	private SimpleStringProperty  email;
+	private SimpleIntegerProperty phoneNumber;
+	private SimpleStringProperty  adress;
+	private ArrayList<Dissability> dissabilityList = new ArrayList<Dissability> ();
+	private SimpleStringProperty  sex;
+
 	public Pacient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	public Pacient(Integer id, String name) {
+
+	public Pacient(String name, String nie,LocalDate dob, String email, int phoneNumber, String adress, String sex, Boolean intern, Boolean active) {
 		super();
-		this.id = id;
-		this.name = name;
-	}
-
-
-
-	public Pacient(String name, String nie, String email, int phoneNumber, String adress) {
-		super();
-		this.name = name;
-		this.nie = nie;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.adress = adress;
-	}
-	
-	public Pacient(Integer id, String name, Date dob, String nie, String email, int phoneNumber,
-			String adress) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.sex = sex;
+		this.name =  new SimpleStringProperty(name);
+		this.nie = new SimpleStringProperty(nie);
+		this.sex = new SimpleStringProperty(sex);
+		this.email = new SimpleStringProperty(email);
+		this.adress = new SimpleStringProperty(adress);
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
+		this.intern = new SimpleBooleanProperty(intern);
+		this.active = new SimpleBooleanProperty(active);
 		this.dob = dob;
-		this.nie = nie;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.adress = adress;
 	}
 
-	public Pacient(String name) {
+	public Pacient(Integer id, String name, LocalDate dob, String nie, String email, String sex, Integer phoneNumber,
+			String adress, Boolean active, Boolean intern) {
 		super();
-		this.name = name;
-	}		
-	
-	public Pacient(Integer id, String name, Date dob, Boolean intern, String nie, Boolean active, String email,
+		this.id = new SimpleIntegerProperty(id);
+		this.name =  new SimpleStringProperty(name);
+		this.sex = new SimpleStringProperty(sex);
+		this.dob = dob;
+		this.nie = new SimpleStringProperty(nie);
+		this.email = new SimpleStringProperty(email);
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
+		this.adress = new SimpleStringProperty(adress);
+		this.active = new SimpleBooleanProperty(active);
+		this.intern = new SimpleBooleanProperty(intern);
+	}
+
+
+
+	public Pacient(Integer id, String name, LocalDate dob, Boolean intern, String nie, Boolean active, String email,
 			int phoneNumber, String adress, String sex) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.id = new SimpleIntegerProperty(id);
+		this.name =  new SimpleStringProperty(name);
+		this.sex = new SimpleStringProperty(sex);
 		this.dob = dob;
-		this.intern = intern;
-		this.nie = nie;
-		this.active = active;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.adress = adress;
-		this.sex = sex;
+		this.nie = new SimpleStringProperty(nie);
+		this.email = new SimpleStringProperty(email);
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
+		this.adress = new SimpleStringProperty(adress);
+		this.active = new SimpleBooleanProperty(active);
+		this.intern =new SimpleBooleanProperty(intern);
 	}
 
-	public Pacient(String name, Boolean intern, String nie, Boolean active, String email, int phoneNumber,String adress, String sex) {
-		super();
-		this.name = name;
-		this.intern = intern;
-		this.nie = nie;
-		this.active = active;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.adress = adress;
-		this.sex = sex;
-	}
+
+
 
 
 	public Pacient(String name2, String nif, String phoneNumber2, String adress2, String email2, String sex2,
@@ -105,40 +94,40 @@ public class Pacient implements Serializable{
 
 
 	public Integer getId() {
-		return id;
+		return id.get();
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = new SimpleIntegerProperty(id);
 	}
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = new SimpleStringProperty(name);
 	}
 	public String getSex() {
-		return sex;
+		return sex.get();
 	}
 	public void setSex(String sex) {
-		this.sex = sex;
+		this.sex = new SimpleStringProperty(sex);
 	}
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 	public Boolean getIntern() {
-		return intern;
+		return intern.get();
 	}
 	public void setIntern(Boolean intern) {
-		this.intern = intern;
+		this.intern = new SimpleBooleanProperty(intern);
 	}
 	public String getNie() {
-		return nie;
+		return nie.get();
 	}
 	public void setNie(String nie) {
-		this.nie = nie;
+		this.nie = new SimpleStringProperty(nie);
 	}
 	public Blob getPhoto() {
 		return photo;
@@ -147,28 +136,28 @@ public class Pacient implements Serializable{
 		this.photo = photo;
 	}
 	public Boolean getActive() {
-		return active;
+		return active.get();
 	}
 	public void setActive(Boolean active) {
-		this.active = active;
+		this.active = new SimpleBooleanProperty(active);
 	}
 	public String getEmail() {
-		return email;
+		return email.get();
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = new SimpleStringProperty(email);
 	}
 	public int getPhoneNumber() {
-		return phoneNumber;
+		return phoneNumber.get();
 	}
 	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
 	}
 	public String getAdress() {
-		return adress;
+		return adress.get();
 	}
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.adress = new SimpleStringProperty(adress);
 	}
 	public ArrayList<Dissability> getDissabilityList() {
 		return dissabilityList;
@@ -205,7 +194,7 @@ public class Pacient implements Serializable{
 				+ ", nie=" + nie + ", active=" + active + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ ", adress=" + adress + ", dissabilityList=" + dissabilityList + "]";
 	}
-	
-	
-	
+
+
+
 }

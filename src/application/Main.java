@@ -10,10 +10,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.*;
 
 
+import db.interfaces.DBManager;
+import db.interfaces.DepartmentManager;
+import db.interfaces.PacientManager;
+import db.sqlite.SQLiteManager;
+import pojos.*;
+
+
 public class Main extends Application {
 
 	Stage stage;
-//h
+
 	@Override
 	public void start(Stage stage) {
 		try {

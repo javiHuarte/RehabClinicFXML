@@ -99,6 +99,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 		//String intern = "yes"; // miraaaar esto
 		//predefinido active TRUE
 
+		Boolean active = true;
+		Boolean intern = true;
+
 		Boolean validData = comprobarData();
 
 		// create and send the information message
@@ -125,7 +128,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 			if (result.get() == okButton) {
 
-				Pacient pacient = new Pacient(name,true, nif,true, email, Integer.parseInt(phoneNumber), adress,"male" );
+				Pacient pacient = new Pacient(name, nif, dob, email, Integer.parseInt(phoneNumber), adress,sex, intern, active);
 				dbConnection.addPacient(pacient);
 				//Patientfxml patient = new Patientfxml(id, name, nif, sex, dob, adress, email, phoneNumber, intern);
 
@@ -272,14 +275,15 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 		this.patient = patient;
 
-		// this.titledPane.setText("Edit Patient");
+		int phoneNumber = patient.getPhoneNumber();
+		String phone = String.valueOf(phoneNumber);
 
 		this.txtName.setText(patient.getName());
 		this.txtNif.setText(patient.getNie());
 		this.txtAdress.setText(patient.getAdress());
 		this.txtEmail.setText(patient.getEmail());
-		//this.txtPhoneNumber.setText(patient.getPhoneNumber());
-		//this.dobPicker.setValue(patient.getDob());
+		this.txtPhoneNumber.setText(phone);
+		this.dobPicker.setValue(patient.getDob());
 		this.sexChoiceBox.setValue(patient.getSex());
 		// falta hacer el intern
 
