@@ -36,15 +36,15 @@
             <Label text="Adress:" GridPane.rowIndex="4" />
             <Label text="Date of Birth:" GridPane.rowIndex="5" />
             <Label prefHeight="21.0" prefWidth="82.0" text="Specialist:" GridPane.rowIndex="7" />
-            <TextField fx:id="txtName" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtName" promptText="Introduce name" GridPane.columnIndex="1" />
+            <TextField fx:id="txtNif" promptText="Introduce name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtAdress" promptText="Introduce  adress" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtPhoneNumber" promptText="Introduce a phone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dobPicker" promptText="DD/MM/YYYY" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Sex:" GridPane.rowIndex="6" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="sexCoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="txtSpecialist" promptText="specialist" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="txtEmail" promptText="email adress" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label prefHeight="21.0" prefWidth="78.0" text="Email:" GridPane.rowIndex="3" />
             <Label prefHeight="21.0" prefWidth="94.0" text="Department:" GridPane.rowIndex="8" />
             <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
