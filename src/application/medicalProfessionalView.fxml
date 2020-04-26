@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="490.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
-
-<AnchorPane prefHeight="490.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
-
+<AnchorPane prefHeight="391.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
    <children>
-      <BorderPane prefHeight="490.0" prefWidth="918.0">
+      <BorderPane prefHeight="391.0" prefWidth="1117.0">
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" text="Back" />
+                  <Region prefHeight="31.0" prefWidth="693.0" />
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
+               </items>
+            </ToolBar>
+         </bottom>
+         <center>
+            <TableView fx:id="medicalProfessionalTable" prefHeight="303.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="47.0" text="ID" />
+                  <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Name" />
+                  <TableColumn fx:id="nifColumn" minWidth="0.0" prefWidth="100.0" text="Nif" />
+                  <TableColumn fx:id="sexColumn" prefWidth="68.0" text="Sex" />
+                  <TableColumn fx:id="dobColumn" minWidth="9.0" prefWidth="106.0" text="Dob" />
+                  <TableColumn fx:id="adressColumn" minWidth="9.0" prefWidth="157.0" text="Adress" />
+                  <TableColumn fx:id="phoneColumn" minWidth="9.0" prefWidth="152.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" minWidth="9.0" prefWidth="148.0" text="Email" />
+                  <TableColumn fx:id="specialtyColumn" minWidth="9.0" prefWidth="79.0" text="Speciality" />
+                  <TableColumn fx:id="departmentColumn" minWidth="9.0" prefWidth="81.0" text="Department" />
+               </columns>
+            </TableView>
+         </center>
          <top>
-            <AnchorPane prefHeight="43.0" prefWidth="846.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="43.0" prefWidth="1075.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="22.0" layoutY="8.0" prefHeight="26.0" prefWidth="125.0" text="Search By Name: " />
-                  <TextField fx:id="txtSearch" layoutX="157.0" layoutY="6.0" onKeyReleased="#search" />
+                  <Label layoutX="23.0" layoutY="11.0" prefHeight="21.0" prefWidth="123.0" text="Search By Name:" />
+                  <TextField fx:id="txtSearch" layoutX="146.0" layoutY="6.0" onKeyReleased="#search" />
                </children>
             </AnchorPane>
          </top>
-         <center>
-
-            <TableView fx:id="medicalProfessionaTable" prefHeight="409.0" prefWidth="831.0" BorderPane.alignment="CENTER">
-
-            <TableView fx:id="medicalProfessionalTable" prefHeight="409.0" prefWidth="831.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-
-                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="dobColumn" prefWidth="75.0" text="DOB" />
-                  <TableColumn fx:id="sexColumn" prefWidth="75.0" text="Sex" />
-                  <TableColumn fx:id="specialtyColumn" prefWidth="100.0" text="Specialty" />
-                  <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Phone" />
-                  <TableColumn fx:id="adressColumn" prefWidth="75.0" text="Adress" />
-                  <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
-                  <TableColumn fx:id="contractColumn" prefWidth="100.0" text="Contract" />
-                  <TableColumn fx:id="departmentColumn" prefWidth="120.0" text="Department" />
-                  <TableColumn fx:id="nifColumn" prefWidth="75.0" text="NIF" />
-=======
-                <TableColumn fx:id="nameColumn" prefWidth="55.0" text="Name" />
-                  <TableColumn fx:id="dobColumn" minWidth="0.0" prefWidth="170.0" text="DOB" />
-                  <TableColumn fx:id="sexColumn" minWidth="0.0" prefWidth="0.0" text="Sex" />
-                  <TableColumn fx:id="specialtyColumn" prefWidth="100.0" text="Specialty" />
-                  <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Phone" />
-                  <TableColumn fx:id="adressColumn" prefWidth="75.0" text="Adress" />
-                  <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
-                  <TableColumn fx:id="contractColumn" prefWidth="100.0" text="Contract" />
-                  <TableColumn fx:id="departmentColumn" prefWidth="120.0" text="Department" />
-
-              </columns>
-            </TableView>
-         </center>
-         <bottom>
-            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <items>
-                <Button fx:id="backButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text="Back" />
-              </items>
-            </ToolBar>
-         </bottom>
       </BorderPane>
    </children>
-   <effect>
-      <Blend />
-   </effect>
 </AnchorPane>
