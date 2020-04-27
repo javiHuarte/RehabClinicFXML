@@ -35,7 +35,7 @@ public void addDepartment(ActionEvent event){
 
 
 	Department department = new Department(name, floor, budget);
-	System.out.println(department);
+	//System.out.println(department);
 
 	this.dbConnection.addDepartment(department);
 
