@@ -91,17 +91,17 @@ public class DBConnection {
 		dbManager.disconnect();
 		return list;
 	}
-	
+
 	public List<MedicalProfessional> listAllMedicalProfessionals(){
-		
+
 		List<MedicalProfessional> list = new ArrayList();
 		dbManager = new SQLiteManager();
 		dbManager.connect();
-		
+
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		list = medicalProfessionalManager.listAll();
 		return list;
-		
+
 	}
 
 }
