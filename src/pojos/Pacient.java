@@ -15,6 +15,8 @@ public class Pacient implements Serializable{
 	/**
 	 *
 	 */
+	
+	
 	private static final long serialVersionUID = 2071328715533081411L;
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty name;

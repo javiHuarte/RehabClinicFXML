@@ -51,7 +51,7 @@ public class DBConnection {
 
 		pacientManager = dbManager.getPacientManager();
 
-		pacientList = pacientManager.listAll();
+		pacientList = pacientManager.listAllPacients();
 
 		return pacientList;
 
@@ -65,6 +65,14 @@ public class DBConnection {
 		pacientManager = dbManager.getPacientManager();
 		return pacientManager.searchByName(name) ;
 
+	}
+
+
+	public List<Pacient> listAllPacients (){
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		pacientManager = dbManager.getPacientManager();
+		return pacientManager.listAllPacients() ;
 	}
 
 	public void addDepartment(Department department){
@@ -103,5 +111,6 @@ public class DBConnection {
 		return list;
 		
 	}
+
 
 }

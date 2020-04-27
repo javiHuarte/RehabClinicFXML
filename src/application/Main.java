@@ -25,8 +25,10 @@ import pojos.*;
 public class Main extends Application {
 
 	Stage stage;
+
 	private static DBManager dbManager;
 	private static PacientManager pacientManager;
+
 
 
 	@Override
@@ -38,7 +40,11 @@ public class Main extends Application {
 			//primaryStage.setScene(scene);
 			//primaryStage.show();
 
+
+		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
+
 		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newMedicalProfessional.fxml"));
+
 		Scene newMenu = new Scene(menuSceneRoot);
 
 		stage.setScene(newMenu);
