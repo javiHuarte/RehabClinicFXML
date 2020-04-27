@@ -24,7 +24,7 @@ public class DBConnection {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
-		//dbManager.createTables();
+		dbManager.createTables();
 
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.add(pacient);

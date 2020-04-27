@@ -25,8 +25,10 @@ import pojos.*;
 public class Main extends Application {
 
 	Stage stage;
+
 	private static DBManager dbManager;
 	private static PacientManager pacientManager;
+
 
 
 	@Override

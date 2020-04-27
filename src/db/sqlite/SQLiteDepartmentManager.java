@@ -29,8 +29,12 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 	public void add(Department department) {
 
 		try {
-			String sql = "INSERT INTO department (name, budget ,floor) "
-					+ "VALUES (?,?,?);";
+
+			String sql = "INSERT INTO department (name, budget ,floor,boss_id)"
+					+ "VALUES (?,?,?,?);";
+
+
+
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, department.getName());
 			prep.setFloat(2, department.getBudget());
