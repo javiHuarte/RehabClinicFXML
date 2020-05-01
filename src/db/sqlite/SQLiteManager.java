@@ -55,7 +55,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt1 = c.createStatement();
 			String sql1 = "CREATE TABLE department " + "(id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
-					+ "budget REAL NOT NULL," + "floor INTEGER NOT NULL,"
+					+ "budget INTEGER NOT NULL," + "floor INTEGER NOT NULL,"
 					+ "boss_id INTEGER REFERENCES medical_professional(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 
 			stmt1.executeUpdate(sql1);
@@ -139,11 +139,11 @@ public class SQLiteManager implements DBManager {
 		Statement stmt7;
 		try {
 			stmt7 = c.createStatement();
-			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY," + "name TEXT NOT NULL,"
+			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
 					+ "dob TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
 					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB," + "sex TEXT NOT NULL,"
-					+ "contract_id INTEGER NOT NULL REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
-					+ "dep_id INTEGER NOT NULL REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
+					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
+					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 			stmt7.executeUpdate(sql7);
 			stmt7.close();
 		} catch (SQLException e) {

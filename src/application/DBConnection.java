@@ -16,6 +16,7 @@ public class DBConnection {
 	private static PacientManager pacientManager;
 	private static DepartmentManager departmentManager;
 	private static MedicalProfessionalManager medicalProfessionalManager;
+	private static StaffManager staffManager;
 
 
 
@@ -24,7 +25,7 @@ public class DBConnection {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
-		//dbManager.createTables();
+		dbManager.createTables();
 
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.add(pacient);
@@ -92,6 +93,15 @@ public class DBConnection {
 		return list;
 	}
 
+	public void deleteDepartment(Integer id){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		departmentManager = dbManager.getDepartmentManager();
+		departmentManager.deleteById(id);
+		dbManager.disconnect();
+	}
+
 	public List<MedicalProfessional> listAllMedicalProfessionals(){
 
 		List<MedicalProfessional> list = new ArrayList();
@@ -101,6 +111,21 @@ public class DBConnection {
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		list = medicalProfessionalManager.listAll();
 		return list;
+
+	}
+
+	public void addStaff(Staff staff){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		System.out.println(staff);
+
+		//dbManager.createTables();
+
+		staffManager = dbManager.getStaffManager();
+		staffManager.add(staff);
+		dbManager.disconnect();
 
 	}
 
