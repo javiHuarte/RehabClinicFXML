@@ -89,7 +89,7 @@ public class departmentViewController implements Initializable {
 
 
 
-	//inicializamos la tabla
+	//inicializamos la tabla aa
 
 	departmentsTable.setItems(loadDepartments());
 
