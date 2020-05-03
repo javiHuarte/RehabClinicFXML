@@ -43,7 +43,7 @@ public class Main extends Application {
 
 		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
 
-		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newMedicalProfessional.fxml"));
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("mdView.fxml"));
 
 		Scene newMenu = new Scene(menuSceneRoot);
 

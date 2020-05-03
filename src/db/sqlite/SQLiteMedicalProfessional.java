@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,15 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 	@Override
 	public void add(MedicalProfessional medicalProfessional) {
 
-
+		System.out.println(medicalProfessional);
 
 
 		try {
-			String sql = "INSERT INTO medical_professional(name, sex, profession, email, adress, phone, nie, dep_id)"
+			//String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif,dep_id, dob)"
+			String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif, dob)"
 					+ "VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement prep = c.prepareStatement(sql);
+			LocalDate bob = LocalDate.now();
 
 			prep.setString(1, medicalProfessional.getName());
 			//prep.setDate(2, medicalProfessional.getDob());
@@ -40,7 +43,8 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 			prep.setString(5, medicalProfessional.getAdress());
 			prep.setInt(6, medicalProfessional.getPhoneNumber());
 			prep.setString(7, medicalProfessional.getNif());
-			prep.setInt(8, medicalProfessional.getDep_id());
+			//prep.setInt(8, medicalProfessional.getDep_id());
+			prep.setDate(8, Date.valueOf(bob));
 
 			prep.executeUpdate();
 			prep.close();
