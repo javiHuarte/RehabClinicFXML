@@ -3,72 +3,69 @@ package pojos;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Staff implements Serializable{
-	
-	
+
+
 	private static final long serialVersionUID = 9189858390611804805L;
-	
-	private Integer id;
-	private String name;
-	private Date dob;
-	private String profession;
-	private String email;
-	private String adress;
-	private int phoneNumber;
+
+	private SimpleIntegerProperty id;
+	private SimpleStringProperty name;
+	private LocalDate dob;
+	private SimpleStringProperty  sex;
+	private SimpleStringProperty  profession;
 	private Blob photo;
-	private String sex;
-	private String nie;
-	private boolean active;
-	private Integer dep_id;
-	private Integer contract_id;
-	
-	
-	
-	
-	public Staff(Integer id, String name, Date dob, String profession, String email, String adress, int phoneNumber,
-			String sex, String nie, boolean active, Integer dep_id, Integer contract_id) {
+	private SimpleStringProperty  email;
+	private SimpleStringProperty  adress;
+	private SimpleIntegerProperty phoneNumber;
+	private SimpleStringProperty  nif;
+	private SimpleIntegerProperty dep_id;
+	private SimpleStringProperty  department;
+	private SimpleIntegerProperty contract_id;
+
+
+
+
+
+	public Staff(String name, LocalDate dob, String sex, String profession, String email,
+			String adress, int phoneNumber, String nif, Integer dep_id, String department, Integer contract_id) {
 		super();
-		this.id = id;
-		this.name = name;
+		//this.id  = new SimpleIntegerProperty(id);
+		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
-		this.profession = profession;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.sex = sex;
-		this.nie = nie;
-		this.active = active;
-		this.dep_id = dep_id;
-		this.contract_id = contract_id;
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif =new SimpleStringProperty(nif);
+		this.dep_id = new SimpleIntegerProperty(dep_id);
+		this.department = new SimpleStringProperty(department);
+		this.contract_id = new SimpleIntegerProperty(contract_id);
 	}
-	public Staff(Integer id, String name, Date dob, String email, String adress, int phoneNumber, String sex,
-			String nie, boolean active) {
+	public Staff(String name, LocalDate dob, String sex, String profession, String email,
+			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
-		this.id = id;
-		this.name = name;
+
+		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.sex = sex;
-		this.nie = nie;
-		this.active = active;
-	}
-	public Staff(String name, String profession, String email, String adress, int phoneNumber, String sex, String nie,
-			boolean active, Integer dep_id) {
-		super();
-		this.name = name;
-		this.profession = profession;
-		this.email = email;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		this.sex = sex;
-		this.nie = nie;
-		this.active = active;
-		this.dep_id = dep_id;
-	}
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif = new SimpleStringProperty(nif);
+		this.dep_id = new SimpleIntegerProperty(dep_id);
+			}
+
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -92,57 +89,47 @@ public class Staff implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "Staff [id=" + id + ", name=" + name + ", dob=" + dob + ", profession=" + profession + ", email=" + email
-				+ ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", photo=" + photo + ", sex=" + sex + ", nie="
-				+ nie + ", active=" + active + ", dep_id=" + dep_id + ", contract_id=" + contract_id + "]";
+
+
+
+
+	public String getNif() {
+		return nif.get();
 	}
-	
-	
+
+	public void setNif(String nif) {
+		this.nif = new SimpleStringProperty(nif);
+	}
+
 	public Integer getId() {
-		return id;
+		return id.get();
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.id = new SimpleIntegerProperty(id);
 	}
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = new SimpleStringProperty(name);
 	}
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
+	public String getSex() {
+		return sex.get();
+	}
+	public void setSex(String sex) {
+		this.sex = new SimpleStringProperty(sex);
+	}
 	public String getProfession() {
-		return profession;
+		return profession.get();
 	}
 	public void setProfession(String profession) {
-		this.profession = profession;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.profession = new SimpleStringProperty(profession);
 	}
 	public Blob getPhoto() {
 		return photo;
@@ -150,42 +137,60 @@ public class Staff implements Serializable{
 	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
-	public String getSex() {
-		return sex;
+	public String getEmail() {
+		return email.get();
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setEmail(String email) {
+		this.email = new SimpleStringProperty(email);
 	}
-	public String getNie() {
-		return nie;
+	public String getAdress() {
+		return adress.get();
 	}
-	public void setNie(String nie) {
-		this.nie = nie;
+	public void setAdress(String adress) {
+		this.adress = new SimpleStringProperty(adress);
 	}
-	public boolean getActive() {
-		return active;
+	public int getPhoneNumber() {
+		return phoneNumber.get();
 	}
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = new SimpleIntegerProperty(phoneNumber);
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Staff [id=" + id + ", name=" + name + ", dob=" + dob + ", sex=" + sex + ", profession=" + profession
+				+ ", photo=" + photo + ", email=" + email + ", adress=" + adress + ", phoneNumber=" + phoneNumber
+				+ ", nif=" + nif + ", dep_id=" + dep_id + ", department=" + department + "]";
 	}
 	public Integer getDep_id() {
-		return dep_id;
+		return dep_id.get();
 	}
+
+
 	public void setDep_id(Integer dep_id) {
-		this.dep_id = dep_id;
+		this.dep_id = new SimpleIntegerProperty(dep_id);
 	}
+
 	public Integer getContract_id() {
-		return contract_id;
+		return contract_id.get();
 	}
+
+
 	public void setContract_id(Integer contract_id) {
-		this.contract_id = contract_id;
+		this.contract_id = new SimpleIntegerProperty(contract_id);
 	}
-	
-	
 
-	
+	public String getDepartment(){
+		return this.department.get();
+	}
 
-	
-	
+	public void setDepartment(String department){
+		this.department = new SimpleStringProperty(department);
+	}
+
+
 }
 

@@ -1,6 +1,5 @@
 package application;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class DBConnection {
 	private static MedicalProfessionalManager medicalProfessionalManager;
 
 
+
 	public void addPacient (Pacient pacient){
 
 		dbManager = new SQLiteManager();
@@ -30,18 +30,6 @@ public class DBConnection {
 		pacientManager.add(pacient);
 		dbManager.disconnect();
 
-	}
-
-	public void addMedicaLProfessional(MedicalProfessional medicalProfessional){
-
-		dbManager = new SQLiteManager();
-		dbManager.connect();
-
-		//dbManager.createTables();
-
-		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
-		medicalProfessionalManager.add(medicalProfessional);
-		dbManager.disconnect();
 	}
 
 	public void updatePacient(Pacient pacient){
@@ -123,7 +111,6 @@ public class DBConnection {
 		return list;
 
 	}
-
 
 
 }

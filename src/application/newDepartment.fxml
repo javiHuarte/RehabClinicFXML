@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewDepartmentController">
    <top>
@@ -18,9 +16,10 @@
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
           <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Back" />
-            <Region prefHeight="31.0" prefWidth="336.0" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Clear" />
-            <Button mnemonicParsing="false" onAction="#addDepartment" prefHeight="31.0" prefWidth="73.0" text="Add" />
+            <Region prefHeight="31.0" prefWidth="267.0" />
+            <Button mnemonicParsing="false" onAction="#clear" prefHeight="31.0" prefWidth="74.0" text="Clear" />
+            <Button fx:id="updateButton" mnemonicParsing="false" text="Update" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addDepartment" prefHeight="31.0" prefWidth="73.0" text="Add" />
         </items>
       </ToolBar>
    </bottom>
@@ -43,9 +42,10 @@
                   <Label prefHeight="21.0" prefWidth="147.0" text="Floor:" GridPane.rowIndex="1" />
                   <Label prefHeight="21.0" prefWidth="163.0" text="Budget:" GridPane.rowIndex="2" />
                   <Label prefHeight="21.0" prefWidth="127.0" text="Boss:" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtName" promptText="Department´s name" GridPane.columnIndex="1" />
-                  <TextField fx:id="txtFloor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtBudget" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtName" prefHeight="31.0" prefWidth="189.0" promptText="Department´s name" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtFloor" promptText="Department´s floor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtBudget" promptText="Department´s budget" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

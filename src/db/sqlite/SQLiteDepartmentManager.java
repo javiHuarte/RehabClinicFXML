@@ -29,13 +29,11 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 	public void add(Department department) {
 
 		try {
-
-			String sql = "INSERT INTO department (name, budget ,floor,boss_id)"
-					+ "VALUES (?,?,?,?);";
-
-
+			String sql = "INSERT INTO department (name, budget ,floor) "
+					+ "VALUES (?,?,?);";
 
 			PreparedStatement prep = c.prepareStatement(sql);
+
 			prep.setString(1, department.getName());
 			prep.setFloat(2, department.getBudget());
 			prep.setInt(3, department.getFloor());
@@ -132,9 +130,9 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 			String staffSex = rs.getString(28);
 			int staffcontract_id = rs.getInt(29);
 			int staffdep_id = rs.getInt(30);
-			Staff newStaff = new Staff(staffId,staffName,null,staffProfession,staffEmail,staffAdress,staffPhone,staffSex,
-					staffNIE,staffActive,staffdep_id,staffcontract_id);
-			listStaff.add(newStaff);
+			/*Staff newStaff = new Staff(staffId,staffName,null,staffProfession,staffEmail,staffAdress,staffPhone,staffSex,
+					staffNIE,staffActive,staffdep_id,staffcontract_id);*/
+			//listStaff.add(newStaff);
 		}
 	} catch (Exception e) {
 		e.printStackTrace();

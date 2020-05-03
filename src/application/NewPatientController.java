@@ -38,6 +38,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import pojos.Department;
 import pojos.Pacient;
 import pojos.Patientfxml;
 
@@ -63,7 +64,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 	private File imageFile;
 	private Pacient patient;
-	private funciones funciones = new funciones();
+	private Funciones funciones = new Funciones();
 	private DBConnection dbConnection = new DBConnection();
 
 	@Override
@@ -344,6 +345,12 @@ public class NewPatientController implements Initializable, ControllerClass {
 		}else this.internChoiceBox.setValue("No");
 
 		// load the image
+
+	}
+
+	@Override
+	public void preloadDepartment(Department department) {
+		// TODO Auto-generated method stub
 
 	}
 

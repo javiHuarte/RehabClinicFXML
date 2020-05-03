@@ -2,7 +2,7 @@ package application;
 
 import javafx.scene.control.Alert;
 
-public class funciones {
+public class Funciones {
 
 	public boolean validarInteger (String string){
 

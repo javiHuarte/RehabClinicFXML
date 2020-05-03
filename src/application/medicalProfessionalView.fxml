@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="391.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
+   <children>
+      <BorderPane prefHeight="391.0" prefWidth="1117.0">
+         <center>
+            <TableView fx:id="medicalProfessionalTable" prefHeight="303.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="47.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Name" />
+                  <TableColumn fx:id="nifColumn" minWidth="0.0" prefWidth="100.0" text="Nif" />
+                  <TableColumn fx:id="sexColumn" prefWidth="68.0" text="Sex" />
+                  <TableColumn fx:id="dobColumn" minWidth="9.0" prefWidth="106.0" text="Dob" />
+                  <TableColumn fx:id="adressColumn" minWidth="9.0" prefWidth="157.0" text="Adress" />
+                  <TableColumn fx:id="phoneColumn" minWidth="9.0" prefWidth="152.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" minWidth="9.0" prefWidth="105.0" text="Email" />
+                  <TableColumn fx:id="specialtyColumn" minWidth="9.0" prefWidth="89.0" text="Speciality" />
+                  <TableColumn fx:id="departmentColumn" minWidth="9.0" prefWidth="114.0" text="Department" />
+              </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" text="Back" />
+                  <Region prefHeight="31.0" prefWidth="693.0" />
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
+                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
+              </items>
+            </ToolBar>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="43.0" prefWidth="1124.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="23.0" layoutY="11.0" prefHeight="21.0" prefWidth="123.0" text="Search By Name:" />
+                  <TextField fx:id="txtSearch" layoutX="146.0" layoutY="6.0" onKeyReleased="#search" />
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
