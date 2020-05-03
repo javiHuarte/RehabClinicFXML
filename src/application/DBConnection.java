@@ -32,6 +32,19 @@ public class DBConnection {
 
 	}
 
+	public void addMedicalProfessional (MedicalProfessional medicalProfessional){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		dbManager.createTables();
+
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.add(medicalProfessional);
+		dbManager.disconnect();
+
+	}
+
 	public void updatePacient(Pacient pacient){
 
 		dbManager = new SQLiteManager();

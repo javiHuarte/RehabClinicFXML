@@ -62,7 +62,7 @@ public class DirectorLoginController implements Initializable{
 	public void ListMedicalProffesional(ActionEvent event){
 
 		SceneChanger sc = new SceneChanger();
-		sc.changeScenes(event, "mdView.fxml", "List Medical Professionals");
+		sc.changeScenes(event, "medicalProfessionalView.fxml", "List Medical Professionals");
 	}
 	//
 

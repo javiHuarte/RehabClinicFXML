@@ -58,7 +58,7 @@ public class NewMedicalProfessionalController implements Initializable {
 		String department = txtDepartment.getText();
 
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
-		dbConnection.addMedicaLProfessional(newMedicalProfessional);
+		dbConnection.addMedicalProfessional(newMedicalProfessional);
 	}
 
 	//Method to go back to the log in set scene
