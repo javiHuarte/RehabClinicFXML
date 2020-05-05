@@ -37,8 +37,9 @@ public class DBConnection {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
-		dbManager.createTables();
-
+		//dbManager.createTables();
+		
+		System.out.println(medicalProfessional);
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		medicalProfessionalManager.add(medicalProfessional);
 		dbManager.disconnect();
@@ -64,7 +65,7 @@ public class DBConnection {
 
 		pacientManager = dbManager.getPacientManager();
 
-		pacientList = pacientManager.listAllPacients();
+		//pacientList = pacientManager.listAllPacients();
 
 		return pacientList;
 
@@ -81,12 +82,12 @@ public class DBConnection {
 	}
 
 
-	public List<Pacient> listAllPacients (){
+	/*public List<Pacient> listAllPacients (){
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 		pacientManager = dbManager.getPacientManager();
-		return pacientManager.listAllPacients() ;
-	}
+		//return pacientManager.listAllPacients() ;
+	}*/
 
 	public void addDepartment(Department department){
 

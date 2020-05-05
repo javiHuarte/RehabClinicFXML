@@ -76,7 +76,6 @@ public class SQLitePacientManager implements PacientManager {
 				//Pacient newPacient = new Pacient(id, pacientName, dob, intern, nie, active, email, phone, adress, sex);
 
 			Pacient newPacient = new Pacient(id, pacientName,LocalDate.now(), intern, nie,active, email,phone,adress,sex);
-			Pacient newPacient = new Pacient(id, pacientName,LocalDate.now(), intern, nie,active, email,phone,adress,sex); //catar esto
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
@@ -161,36 +160,15 @@ public class SQLitePacientManager implements PacientManager {
 
 	}
 
-	public List<Pacient> listAll(){
-		List<Pacient> pacientList = new ArrayList<Pacient>();
-		Pacient newPacient;
 
-		try{
-			String sql = "SELECT * FROM pacient;";
-			PreparedStatement prep = c.prepareStatement(sql);
-			ResultSet rs = prep.executeQuery();
-
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String pacientName = rs.getString("name");
-				String sex = rs.getString("sex");
-				//Date dob = rs.getDate("dob");
-				String nie = rs.getString("nie");
-				String email = rs.getString("email");
-				Boolean active = rs.getBoolean("active");
-				Boolean intern = rs.getBoolean("intern");
-				String adress = rs.getString("adress");
-				int phone = rs.getInt("phone");
-		@Override
-		public List<Pacient> listAll() {
+	@Override
+	public List<Pacient> listAll() {
 			// TODO Auto-generated method stub
 
 				//LocalDate localDate = dob.toLocalDate();
 			List<Pacient> pacients = new ArrayList();
 			Pacient newPacient;
 
-				newPacient = new Pacient(id,pacientName,LocalDate.of(1995, Month.APRIL, 9),nie,email,sex,phone, adress, active, intern);
-				pacientList.add(newPacient);
 
 			try {
 				String sql = "SELECT * FROM pacient";
@@ -222,18 +200,6 @@ public class SQLitePacientManager implements PacientManager {
 
 
 			return pacients;
-		}
-
-
-
-
-
-
-
-	@Override
-	public List<Pacient> listAllPacients() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
