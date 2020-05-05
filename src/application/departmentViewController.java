@@ -89,7 +89,7 @@ public class departmentViewController implements Initializable {
 
 
 
-	//inicializamos la tabla aa
+	//inicializamos la tabla
 
 	departmentsTable.setItems(loadDepartments());
 
@@ -116,6 +116,8 @@ public class departmentViewController implements Initializable {
 
 		SceneChanger sc = new SceneChanger();
 		sc.changeScenes(event, "newDepartment.fxml", "New Department");
+
+
 	}
 
 	public void loadData(Department department){
@@ -128,13 +130,13 @@ public class departmentViewController implements Initializable {
 
 		//--------------------------------------------------------------------
 
-		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
+		//MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
 		//Staff staff = new Staff("juan", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T", 1, "human resources", 1);
 
 		List<MedicalProfessional> mpList = new ArrayList<MedicalProfessional>();
 		List<Staff> st = new ArrayList<Staff>();
 
-		mpList.add(mp);
+		//mpList.add(mp);
 		//st.add(staff);
 
 		medicalProfessionalList.addAll(mpList);
