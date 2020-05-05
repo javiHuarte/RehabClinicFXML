@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="689.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="780.0">
+         <top>
+            <TitledPane fx:id="titlePane" animated="false" text="New Staff" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <GridPane prefHeight="256.0" prefWidth="420.0" vgap="5.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Name:" />
+                  <Label text="Nif:" GridPane.rowIndex="1" />
+                  <Label text="Phone Number:" GridPane.rowIndex="2" />
+                  <Label text="Adress:" GridPane.rowIndex="4" />
+                  <Label text="Date of Birth:" GridPane.rowIndex="5" />
+                  <Label prefHeight="21.0" prefWidth="82.0" text="Profession" GridPane.rowIndex="7" />
+                  <TextField fx:id="txtName" prefHeight="21.0" prefWidth="226.0" promptText="Introduce name" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNif" prefHeight="11.0" prefWidth="205.0" promptText="introduce Nif" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtAdress" promptText="Introduce adress" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtPhoneNumber" promptText="Introduce a phone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="dobPicker" promptText="DD/MM/YYYY" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label text="Sex:" GridPane.rowIndex="6" />
+                  <ChoiceBox fx:id="sexChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtProfession" promptText="Profession" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="txtEmail" promptText="Email adress" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label prefHeight="21.0" prefWidth="78.0" text="Email:" GridPane.rowIndex="3" />
+                  <Label prefHeight="21.0" prefWidth="94.0" text="Department:" GridPane.rowIndex="8" />
+                  <ChoiceBox fx:id="departmentChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label text=" New Contract :" GridPane.rowIndex="10">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" GridPane.rowIndex="9" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                  <Label text="Holidays:" GridPane.rowIndex="11" />
+                  <Label text="Finishing Date:" GridPane.rowIndex="13" />
+                  <Label text="Week/Hours:" GridPane.rowIndex="14" />
+                  <Label text="Starting Date:" GridPane.rowIndex="12" />
+                  <Label text="Salary:" GridPane.rowIndex="15" />
+                  <TextField promptText="Nº Days Holidays" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <TextField promptText=" Working Hours Per Week" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                  <TextField promptText="Salary Per Month" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                  <DatePicker promptText="Contact Starting Date" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <DatePicker promptText="Contract Finish Date" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </GridPane>
+         </center>
+         <bottom>
+            <HBox prefHeight="19.0" prefWidth="610.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="backButton" mnemonicParsing="false" text="Back">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Region prefHeight="31.0" prefWidth="368.0" />
+                  <Button fx:id="clearButton" mnemonicParsing="false" text="Clear" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onMouseClicked="#addNewMedicalProfessional" text="Add" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
