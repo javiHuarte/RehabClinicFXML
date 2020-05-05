@@ -2,8 +2,6 @@ package application;
 
 import java.awt.List;
 import java.net.URL;
-import java.util.ResourceBundle;
-
 import java.sql.*;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -15,8 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -59,20 +55,32 @@ public class NewMedicalProfessionalController implements Initializable {
 		String specialty = txtSpecialty.getText();
 		String department = txtDepartment.getText();
 		String dep = departmentChoicebox.getValue();
-		
+
 		if ( dep == null){
-			
+
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("No Such Department");
-			alert.setContentText("There are no departments created");
-			
-		}
+			alert.setContentText("There are no departments created"
+								 + "Create a new department first");
+			ButtonType newDepartementButton = new ButtonType("Create new department");
+
+			alert.getButtonTypes().setAll(newDepartementButton);
+			Optional<ButtonType> result = alert.showAndWait();
+
+			if(result.get() == newDepartementButton){
+
+				SceneChanger sc = new SceneChanger();
+				sc.changeScenes(event, "newDepartment.fxml", "New Departement");
+
+			}
+
+		}else{
 
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
 		System.out.println(newMedicalProfessional);
 		dbConnection.addMedicalProfessional(newMedicalProfessional);
-		
-		
+
+		}
 
 	}
 
@@ -103,12 +111,10 @@ public void initialize(URL location, ResourceBundle resources) {
 	for(Department department: dep){
 
 		departmentList.add(department.getName());
-		
+
 		}
 	departmentChoicebox.setItems(departmentList);
-	
+
 	}
-
-
 
 }
