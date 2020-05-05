@@ -16,7 +16,6 @@ public class DBConnection {
 	private static PacientManager pacientManager;
 	private static DepartmentManager departmentManager;
 	private static MedicalProfessionalManager medicalProfessionalManager;
-	private static StaffManager staffManager;
 
 
 
@@ -29,6 +28,19 @@ public class DBConnection {
 
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.add(pacient);
+		dbManager.disconnect();
+
+	}
+
+	public void addMedicalProfessional (MedicalProfessional medicalProfessional){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		dbManager.createTables();
+
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.add(medicalProfessional);
 		dbManager.disconnect();
 
 	}
@@ -52,7 +64,7 @@ public class DBConnection {
 
 		pacientManager = dbManager.getPacientManager();
 
-		pacientList = pacientManager.listAll();
+		pacientList = pacientManager.listAllPacients();
 
 		return pacientList;
 
@@ -66,6 +78,14 @@ public class DBConnection {
 		pacientManager = dbManager.getPacientManager();
 		return pacientManager.searchByName(name) ;
 
+	}
+
+
+	public List<Pacient> listAllPacients (){
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		pacientManager = dbManager.getPacientManager();
+		return pacientManager.listAllPacients() ;
 	}
 
 	public void addDepartment(Department department){
@@ -93,15 +113,6 @@ public class DBConnection {
 		return list;
 	}
 
-	public void deleteDepartment(Integer id){
-
-		dbManager = new SQLiteManager();
-		dbManager.connect();
-		departmentManager = dbManager.getDepartmentManager();
-		departmentManager.deleteById(id);
-		dbManager.disconnect();
-	}
-
 	public List<MedicalProfessional> listAllMedicalProfessionals(){
 
 		List<MedicalProfessional> list = new ArrayList();
@@ -114,19 +125,5 @@ public class DBConnection {
 
 	}
 
-	public void addStaff(Staff staff){
-
-		dbManager = new SQLiteManager();
-		dbManager.connect();
-
-		System.out.println(staff);
-
-		//dbManager.createTables();
-
-		staffManager = dbManager.getStaffManager();
-		staffManager.add(staff);
-		dbManager.disconnect();
-
-	}
 
 }

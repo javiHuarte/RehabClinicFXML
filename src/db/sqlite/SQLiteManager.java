@@ -13,7 +13,7 @@ public class SQLiteManager implements DBManager {
 	private Connection c;
 	private PacientManager pacient;
 	private DepartmentManager department;
-	private MedicalProfessionalManager medical_professional;
+	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
 
 	@Override
@@ -26,7 +26,7 @@ public class SQLiteManager implements DBManager {
 
 			pacient = new SQLitePacientManager(c);
 			department = new SQLiteDepartmentManager(c);
-			medical_professional = new SQLiteMedicalProfessional(c);
+			medicalProfessional = new SQLiteMedicalProfessional(c);
 			staff = new SQLiteStaffManager(c);
 			//We could initialize other manager here
 			System.out.println("Database connection opened.");
@@ -50,7 +50,7 @@ public class SQLiteManager implements DBManager {
 	public void createTables() {
 		// TODO Auto-generated method stub
 
-		// Create tables: begin
+		//Create tables: begin
 		Statement stmt1;
 		try {
 			stmt1 = c.createStatement();
@@ -126,9 +126,9 @@ public class SQLiteManager implements DBManager {
 			String sql6 = "CREATE TABLE medical_professional" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
 					+ "name TEXT NOT NULL," + "dob TEXT NOT NULL," + "profession TEXT NOT NULL,"
 					+ "email TEXT NOT NULL," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB,"
-					+ "sex TEXT NOT NULL,"
-					+ "contract_id INTEGER NOT NULL REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
-					+ "dep_id INTEGER NOT NULL REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
+					+ "sex TEXT NOT NULL," + "nif TEXT NOT NULL,"
+					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
+					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 			stmt6.executeUpdate(sql6);
 			stmt6.close();
 		} catch (SQLException e) {
@@ -209,7 +209,7 @@ public class SQLiteManager implements DBManager {
 	@Override
 	public MedicalProfessionalManager getMedicalProfessionalManager() {
 		// TODO Auto-generated method stub
-		return null;
+		return medicalProfessional;
 	}
 
 	@Override

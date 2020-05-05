@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
 
-<AnchorPane prefHeight="391.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
+<AnchorPane prefHeight="391.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalProfessionalViewController">
    <children>
       <BorderPane prefHeight="391.0" prefWidth="1117.0">
          <center>
@@ -26,10 +32,10 @@
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" text="Back" />
-                  <Region prefHeight="31.0" prefWidth="693.0" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="153.0" text="Edit Patient" />
-                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="New Patient" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToLoginButton" prefHeight="31.0" prefWidth="85.0" text="Back" />
+                  <Region prefHeight="0.0" prefWidth="687.0" />
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="153.0" text="Edit Medical Professional" />
+                <Button fx:id="addNew" mnemonicParsing="false" onAction="#newMedicalProffesional" prefHeight="31.0" prefWidth="160.0" text="New Medical Professional" />
               </items>
             </ToolBar>
          </bottom>

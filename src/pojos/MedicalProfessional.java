@@ -10,6 +10,25 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class MedicalProfessional implements Serializable {
 
+	public MedicalProfessional(SimpleStringProperty name, LocalDate dob, SimpleStringProperty sex,
+			SimpleStringProperty profession, Blob photo, SimpleStringProperty email, SimpleStringProperty adress,
+			SimpleIntegerProperty phoneNumber, SimpleStringProperty nif, SimpleStringProperty department) {
+		super();
+		this.name = name;
+		this.dob = dob;
+		this.sex = sex;
+		this.profession = profession;
+		this.photo = photo;
+		this.email = email;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+		this.nif = nif;
+		this.department = department;
+	}
+
+
+
+
 	/**
 	 *
 	 */
@@ -32,9 +51,14 @@ public class MedicalProfessional implements Serializable {
 
 
 	public MedicalProfessional(String name, LocalDate dob, String sex, String profession, String email,
+
+
+	public MedicalProfessional(Integer id,String name, LocalDate dob, String sex, String profession, String email,
 			String adress, int phoneNumber, String nif, Integer dep_id, String department) {
 		super();
 		//this.id  = new SimpleIntegerProperty(id);
+
+		this.id = new SimpleIntegerProperty(id);
 		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
 		this.sex = new SimpleStringProperty(sex);
@@ -83,6 +107,20 @@ public class MedicalProfessional implements Serializable {
 
 
 
+
+	public MedicalProfessional(String name, LocalDate dob, String sex, String profession, String email, String adress, int phoneNumber,
+			String nif, String department) {
+		super();
+		this.name =new SimpleStringProperty(name);
+		this.dob = dob;
+		this.sex = new SimpleStringProperty(sex);
+		this.profession = new SimpleStringProperty(profession);
+		this.email =new SimpleStringProperty(email);
+		this.adress =new SimpleStringProperty(adress);
+		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
+		this.nif =new SimpleStringProperty(nif);
+		this.department = new SimpleStringProperty(department);
+	}
 
 
 
