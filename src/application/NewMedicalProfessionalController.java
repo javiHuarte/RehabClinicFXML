@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.*;
@@ -32,6 +33,7 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private TextField txtPhoneNumber;
 	@FXML private TextField txtEmail;
 	@FXML private ChoiceBox<String> sexChoiceBox;
+	@FXML private ChoiceBox<String> departmentChoicebox;
 	@FXML private TextField txtSpecialty;
 	@FXML private TextField txtDepartment;
 
@@ -56,9 +58,22 @@ public class NewMedicalProfessionalController implements Initializable {
 		String sex = sexChoiceBox.getValue();
 		String specialty = txtSpecialty.getText();
 		String department = txtDepartment.getText();
+		String dep = departmentChoicebox.getValue();
+		
+		if ( dep == null){
+			
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("No Such Department");
+			alert.setContentText("There are no departments created");
+			
+		}
 
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
+		System.out.println(newMedicalProfessional);
 		dbConnection.addMedicalProfessional(newMedicalProfessional);
+		
+		
+
 	}
 
 	//Method to go back to the log in set scene
@@ -81,15 +96,19 @@ public void initialize(URL location, ResourceBundle resources) {
 			sexChoiceBox.setValue("Male");
 
 	//departmentList.addAll(dbConnection.listAllDepartments().getClass().getName());
-	ObservableList<String> departmentList1 = FXCollections.observableArrayList();
+	ObservableList<String> departmentList = FXCollections.observableArrayList();
+	ArrayList<Department> dep = new ArrayList();
+	dep.addAll(dbConnection.listAllDepartments());
+
+	for(Department department: dep){
+
+		departmentList.add(department.getName());
+		
+		}
+	departmentChoicebox.setItems(departmentList);
+	
+	}
 
 
-Department dep;
-
-	//sexChoiceBox.setValue("");
-
-	//departmentsChoiceBox.setItems(departmentList);
-
-}
 
 }
