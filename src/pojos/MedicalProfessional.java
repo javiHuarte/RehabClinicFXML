@@ -49,10 +49,6 @@ public class MedicalProfessional implements Serializable {
 
 
 
-
-	public MedicalProfessional(String name, LocalDate dob, String sex, String profession, String email,
-
-
 	public MedicalProfessional(Integer id,String name, LocalDate dob, String sex, String profession, String email,
 			String adress, int phoneNumber, String nif, Integer dep_id, String department) {
 		super();

@@ -167,7 +167,7 @@ public void deleteDepartment(ActionEvent event){
 
 	Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
 
-	this.dbConnection.deleteDepartment(dep.getId());
+	//this.dbConnection.deleteDepartment(dep.getId());
 
 	this.departmentsTable.getItems().removeAll(departmentsTable.getSelectionModel().getSelectedItem());
 

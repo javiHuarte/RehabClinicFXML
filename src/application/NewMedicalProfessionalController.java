@@ -31,13 +31,11 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private TextField txtAdress;
 	@FXML private TextField txtPhoneNumber;
 	@FXML private TextField txtEmail;
-	@FXML private ChoiceBox<String> sexChoiceBox;
 	@FXML private TextField txtSpecialty;
 	@FXML private TextField txtDepartment;
 
 	@FXML private ChoiceBox<String> sexChoiceBox, departmentChoiceBox;
 
-	@FXML private DatePicker dobPicker;
 
 	@FXML private ImageView imageView;
 	@FXML private Button backButton;
@@ -88,9 +86,6 @@ public void initialize(URL location, ResourceBundle resources) {
 	ObservableList<String> departmentList = FXCollections.observableArrayList();
 
 	ArrayList<Department> dep = new ArrayList();
-			ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
-			sexChoiceBox.setItems(sexList);
-			sexChoiceBox.setValue("Male");
 
 	dep.addAll(dbConnection.listAllDepartments());
 
