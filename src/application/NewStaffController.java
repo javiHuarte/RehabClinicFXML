@@ -62,7 +62,7 @@ public class NewStaffController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-		//Para que es esto?
+
 		// set update button disable
 		//this.updateButton.setDisable(true);
 
