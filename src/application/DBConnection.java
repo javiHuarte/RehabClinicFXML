@@ -38,7 +38,7 @@ public class DBConnection {
 		dbManager.connect();
 
 		//dbManager.createTables();
-		
+
 		System.out.println(medicalProfessional);
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		medicalProfessionalManager.add(medicalProfessional);
@@ -54,6 +54,17 @@ public class DBConnection {
 		pacientManager.updatePacient(pacient);
 		dbManager.disconnect();
 
+	}
+
+	public void updateMedicalProfessional(MedicalProfessional medicalProfessional){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.updateMedicalProfessional(medicalProfessional);
+
+		dbManager.disconnect();
 	}
 
 	public List<Pacient> listPacients(){
