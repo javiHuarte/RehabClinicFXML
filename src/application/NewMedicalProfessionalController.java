@@ -99,8 +99,9 @@ public class NewMedicalProfessionalController implements Initializable {
 		String holidays = txtHolidays.getText();
 		LocalDate startingDate = startingDatePicker.getValue();
 		LocalDate finishingDate = finisingDatePicker.getValue();
-		String sala = txtHolidays.getText();
-
+		String sal = txtHolidays.getText();
+		
+		Employee_Contract newcontract = new Employee_Contract();
 
 	}
 
