@@ -26,7 +26,7 @@ public class Main extends Application {
 
 	Stage stage;
 
-	private static DBManager dbManager;
+	private static DBManager dbManager = new SQLiteManager();
 	private static PacientManager pacientManager;
 
 
@@ -62,7 +62,10 @@ public class Main extends Application {
 
 
 public static void main(String[] args) {
+	
+	dbManager.connect();
 		launch(args);
+	dbManager.disconnect();
 
 
 	}

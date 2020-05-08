@@ -315,9 +315,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 		txtEmail.clear();
 		txtPhoneNumber.clear();
 		sexChoiceBox.setValue("Male");
-		this.dobPicker.setValue(LocalDate.now());;
+		this.dobPicker.setValue(LocalDate.now());
 		this.internChoiceBox.setValue("No");
-		this.sexChoiceBox.setValue("Male");
+
 	}
 
 	@Override

@@ -13,6 +13,8 @@ import pojos.Department;
 import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Patientfxml;
+import pojos.Treatment;
+
 
 public class SceneChanger {
 
