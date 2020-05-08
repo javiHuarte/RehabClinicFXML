@@ -1,20 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.listAllPatientsViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.listAllPatientsViewController">
    <top>
-      <TitledPane animated="false" prefHeight="26.0" prefWidth="600.0" text="untitled" BorderPane.alignment="CENTER">
+      <TitledPane animated="false" prefHeight="14.0" prefWidth="600.0" text="List Patients" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
       </TitledPane>
    </top>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" onAction="#backButton" text="Back" />
+            <Separator prefHeight="30.0" prefWidth="597.0" />
+            <Button fx:id="editPatientButton" mnemonicParsing="false" onAction="#editButtonPushed" text="Edit" />
+        </items>
+      </ToolBar>
+   </bottom>
    <center>
-      <ListView fx:id="listViewAllPatients" prefHeight="370.0" prefWidth="830.0" BorderPane.alignment="CENTER" />
+      <GridPane prefHeight="334.0" prefWidth="856.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="899.0" minWidth="10.0" prefWidth="899.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="104.0" minHeight="2.0" prefHeight="2.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="17.0" prefWidth="97.0" text="Search By Name:" />
+            <TableView fx:id="patientTable" onMouseClicked="#patientSelected" prefHeight="199.0" prefWidth="713.0" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="nifColumn" prefWidth="75.0" text="Nif" />
+                  <TableColumn fx:id="sexColumn" prefWidth="75.0" text="Sex" />
+                  <TableColumn fx:id="dobColumn" prefWidth="75.0" text="Dob" />
+                  <TableColumn fx:id="adressColumn" prefWidth="75.0" text="Adress" />
+                  <TableColumn fx:id="phoneNumberColumn" prefWidth="118.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" prefWidth="81.0" text="Email" />
+                  <TableColumn fx:id="internColumn" prefWidth="70.0" text="Intern" />
+                  <TableColumn fx:id="activeColumn" prefWidth="66.0" text="Active" />
+              </columns>
+            </TableView>
+            <GridPane prefHeight="43.0" prefWidth="740.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="106.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="712.0" minWidth="0.0" prefWidth="230.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="712.0" minWidth="6.0" prefWidth="88.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="712.0" minWidth="0.0" prefWidth="48.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="712.0" minWidth="10.0" prefWidth="320.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txtNameSearch" onAction="#search" onKeyReleased="#search" prefHeight="25.0" prefWidth="94.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="91.0" text="  Search By Id:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtIdSearch" onAction="#searchById" onKeyReleased="#searchById" prefHeight="25.0" prefWidth="118.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
    </center>
 </BorderPane>

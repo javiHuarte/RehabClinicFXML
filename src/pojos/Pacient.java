@@ -15,8 +15,8 @@ public class Pacient implements Serializable{
 	/**
 	 *
 	 */
-	
-	
+
+
 	private static final long serialVersionUID = 2071328715533081411L;
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty name;
@@ -29,6 +29,7 @@ public class Pacient implements Serializable{
 	private SimpleIntegerProperty phoneNumber;
 	private SimpleStringProperty  adress;
 	private ArrayList<Dissability> dissabilityList = new ArrayList<Dissability> ();
+	private ArrayList<Treatment> treatmentList = new ArrayList<Treatment>();
 	private SimpleStringProperty  sex;
 
 	public Pacient() {

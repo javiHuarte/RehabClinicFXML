@@ -13,7 +13,8 @@ public interface PacientManager {
 	public Pacient searchById (Integer id);
 	public void deleteById(Integer id);
 	public List<Pacient> listAllPacients ();
-
+	public List<Treatment> searchPatientAndTreatments (Integer id);
+	public void insertIntoTreatmentPatient  (Integer patientId, Integer treatmentId);
 
 
 }
