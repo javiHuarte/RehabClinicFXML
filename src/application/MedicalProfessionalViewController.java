@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -46,6 +47,8 @@ public class MedicalProfessionalViewController implements Initializable {
 	@FXML private TableColumn<MedicalProfessional, String> nifColumn;
 
 	@FXML private Button backButton;
+	@FXML private Button addNew;
+	@FXML private Button edit;
 	@FXML TextField txtSearch;
 
 	@Override
@@ -63,7 +66,7 @@ public class MedicalProfessionalViewController implements Initializable {
 		emailColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("email"));
 		//contractColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("employee_contractId"));
 	departmentColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("department"));
-		//nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
+	nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
 
 
 	medicalProfessionalTable.setItems(loadMedicalProfessional());
@@ -118,5 +121,22 @@ public class MedicalProfessionalViewController implements Initializable {
 		});
 	}
 
+	//Method to go back to the log in set scene
+
+		public void backToLoginButton(ActionEvent event) {
+
+			SceneChanger sceneChanger = new SceneChanger();
+			sceneChanger.changeScenes(event, "directorLogin.fxml", "Director Login");
+
+		}
+
+	//Method to add a new medical professional if selected in the scene
+	//this will open the scence for a new medical professional
+
+		public void newMedicalProffesional(ActionEvent event){
+
+			SceneChanger sc = new SceneChanger();
+			sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
+		}
 
 }

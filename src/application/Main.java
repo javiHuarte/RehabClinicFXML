@@ -43,7 +43,12 @@ public class Main extends Application {
 
 		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
 
+<<<<<<< HEAD
 		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("medicalProfessionalLogin.fxml"));
+=======
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("directorLogin.fxml"));
+
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 		Scene newMenu = new Scene(menuSceneRoot);
 
 		stage.setScene(newMenu);

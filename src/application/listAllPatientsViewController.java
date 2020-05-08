@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package application;
 
 import java.io.IOException;
@@ -184,3 +185,5 @@ public class listAllPatientsViewController implements Initializable {
 
 
 }
+=======
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
