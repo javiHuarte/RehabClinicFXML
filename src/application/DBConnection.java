@@ -50,7 +50,7 @@ public class DBConnection {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
-		dbManager.createTables();
+		//dbManager.createTables();
 
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		medicalProfessionalManager.add(medicalProfessional);
@@ -138,6 +138,32 @@ public class DBConnection {
 
 	}
 
+	public Department searchDepartmentById(Integer id){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		departmentManager = dbManager.getDepartmentManager();
+		Department dep;
+
+		dep = departmentManager.searchById(id);
+
+		System.out.println(dep);
+
+		dbManager.disconnect();
+
+		return dep;
+
+	}
+
+	public void deleteDepartment(Integer id){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		departmentManager = dbManager.getDepartmentManager();
+		departmentManager.deleteById(id);;
+		dbManager.disconnect();
+	}
 
 
 
