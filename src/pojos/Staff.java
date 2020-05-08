@@ -33,7 +33,7 @@ public class Staff implements Serializable{
 
 
 	public Staff(String name, LocalDate dob, String sex, String profession, String email,
-			String adress, int phoneNumber, String nif, Integer dep_id, String department, Integer contract_id) {
+			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
 		//this.id  = new SimpleIntegerProperty(id);
 		this.name =new SimpleStringProperty(name);
@@ -45,13 +45,14 @@ public class Staff implements Serializable{
 		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
 		this.nif =new SimpleStringProperty(nif);
 		this.dep_id = new SimpleIntegerProperty(dep_id);
-		this.department = new SimpleStringProperty(department);
-		this.contract_id = new SimpleIntegerProperty(contract_id);
+		//this.department = new SimpleStringProperty(department);
+		//this.contract_id = new SimpleIntegerProperty(contract_id);
 	}
-	public Staff(String name, LocalDate dob, String sex, String profession, String email,
+	public Staff(Integer id, String name, LocalDate dob, String sex, String profession, String email,
 			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
 
+		this.id = this.dep_id = new SimpleIntegerProperty(id);
 		this.name =new SimpleStringProperty(name);
 		this.dob = dob;
 		this.sex = new SimpleStringProperty(sex);

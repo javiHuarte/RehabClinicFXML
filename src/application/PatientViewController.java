@@ -30,16 +30,26 @@ public class PatientViewController implements Initializable {
 
 	@FXML private TableView<Pacient> patientTable = null;
 
-	@FXML private TableColumn<Pacient, Integer> idColumn;
-	@FXML private TableColumn<Pacient, String> nameColumn;
-	@FXML private TableColumn<Pacient, String> sexColumn;
-	@FXML private TableColumn<Pacient, String> nifColumn;
-	@FXML private TableColumn<Pacient, String> emailColumn;
-	@FXML private TableColumn<Pacient, String> adressColumn;
-	@FXML private TableColumn<Pacient, Boolean> internColumn; ///antes era un string
-	@FXML private TableColumn<Pacient, Integer> phoneNumberColumn;
-	@FXML private TableColumn<Pacient, LocalDate> dobColumn;
-	@FXML private TableColumn<Pacient, Boolean> activeColumn;
+	@FXML
+	private TableColumn<Pacient, Integer> idColumn;
+	@FXML
+	private TableColumn<Pacient, String> nameColumn;
+	@FXML
+	private TableColumn<Pacient, String> sexColumn;
+	@FXML
+	private TableColumn<Pacient, String> nifColumn;
+	@FXML
+	private TableColumn<Pacient, String> emailColumn;
+	@FXML
+	private TableColumn<Pacient, String> adressColumn;
+	@FXML
+	private TableColumn<Pacient, Boolean> internColumn; /// antes era un string
+	@FXML
+	private TableColumn<Pacient, Integer> phoneNumberColumn;
+	@FXML
+	private TableColumn<Pacient, LocalDate> dobColumn;
+	@FXML
+	private TableColumn<Pacient, Boolean> activeColumn;
 
 	private DBConnection dbConnection = new DBConnection();
 

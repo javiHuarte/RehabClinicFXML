@@ -49,12 +49,10 @@ public class MedicalProfessional implements Serializable {
 
 
 
-
-
-
 	public MedicalProfessional(Integer id,String name, LocalDate dob, String sex, String profession, String email,
-			String adress, int phoneNumber, String nif, Integer dep_id, String department) {
+			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
+		//this.id  = new SimpleIntegerProperty(id);
 
 		this.id = new SimpleIntegerProperty(id);
 		this.name =new SimpleStringProperty(name);
@@ -65,10 +63,9 @@ public class MedicalProfessional implements Serializable {
 		this.adress =new SimpleStringProperty(adress);
 		this.phoneNumber =new SimpleIntegerProperty(phoneNumber);
 		this.nif =new SimpleStringProperty(nif);
-		//this.dep_id = new SimpleIntegerProperty(dep_id);
-		this.department = new SimpleStringProperty(department);
-	}
+		this.dep_id = new SimpleIntegerProperty(dep_id);
 
+	}
 
 
 

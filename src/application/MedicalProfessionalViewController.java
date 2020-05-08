@@ -71,6 +71,8 @@ public class MedicalProfessionalViewController implements Initializable {
 
 	medicalProfessionalTable.setItems(loadMedicalProfessional());
 
+	this.edit.setDisable(true);
+
 	}
 
 	//Method to load/ list the medical professionals into the the TableView
@@ -133,10 +135,77 @@ public class MedicalProfessionalViewController implements Initializable {
 	//Method to add a new medical professional if selected in the scene
 	//this will open the scence for a new medical professional
 
-		public void newMedicalProffesional(ActionEvent event){
+	public void newMedicalProffesional(ActionEvent event){
 
 			SceneChanger sc = new SceneChanger();
 			sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
+		}
+
+	//when the edit button is pushed it passes the selected medical Professional
+	//to the newMedicalProfesisonal and loads the date into the scene
+
+	public void editButtonPushed(ActionEvent event){
+
+		SceneChanger sc = new SceneChanger();
+		MedicalProfessional mp = this.medicalProfessionalTable.getSelectionModel().getSelectedItem();//It gets the medical professional from the table
+		mpSelected();
+		NewMedicalProfessionalController nmpc = new NewMedicalProfessionalController();
+		sc.changeScenesWithMedicalProfessional(event, "newMedicalProfessional.fxml","Edit Medical Professional", mp, nmpc);
+	}
+
+	//If a medical professional is selected
+	public void mpSelected(){
+
+		edit.setDisable(false);
+	}
+
+	public void changeNameCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setName(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeNifCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setNif(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeSexCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setSex(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeEmailCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setEmail(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeAdressCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setAdress(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeSpecialtyCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setProfession(edditedCell.getNewValue().toString());
+
+		}
+
+	public void changeDepartmentCellEvent (CellEditEvent edditedCell){
+
+		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
+		mpSelected.setDepartment(edditedCell.getNewValue().toString());
+
 		}
 
 }

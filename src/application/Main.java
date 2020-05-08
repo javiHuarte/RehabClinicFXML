@@ -26,7 +26,7 @@ public class Main extends Application {
 
 	Stage stage;
 
-	private static DBManager dbManager;
+	private static DBManager dbManager = new SQLiteManager();
 	private static PacientManager pacientManager;
 
 
@@ -43,7 +43,7 @@ public class Main extends Application {
 
 		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
 
-		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("directorLogin.fxml"));
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("departmentView.fxml"));
 
 		Scene newMenu = new Scene(menuSceneRoot);
 
@@ -62,7 +62,10 @@ public class Main extends Application {
 
 
 public static void main(String[] args) {
+	
+	dbManager.connect();
 		launch(args);
+	dbManager.disconnect();
 
 
 	}
