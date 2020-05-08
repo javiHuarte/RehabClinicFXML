@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -23,12 +24,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+import pojos.Employee_Contract;
 import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Staff;
 
 public class NewStaffController implements Initializable {
 
+	// Staff
 	@FXML
 	private TextField txtName, txtNif, txtPhoneNumber, txtAdress, txtEmail, txtProfession;
 	@FXML
@@ -57,6 +60,14 @@ public class NewStaffController implements Initializable {
 	private Staff staff;
 	private Funciones funciones = new Funciones();
 	private DBConnection dbConnection = new DBConnection();
+
+
+	// Contract
+	@FXML
+	private TextField txtHolidays, txtStartingDate, txtFinishDate, txtWorkingHours, txtSalary;
+
+	@FXML
+	private DatePicker dStartingDate, dFinishDate;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -94,6 +105,18 @@ public class NewStaffController implements Initializable {
 		//como cojer el department y contract
 
 		int department = 0;
+
+
+		//contract
+
+		int holidays = Integer.parseInt(txtHolidays.getText());
+		LocalDate startingDate = dStartingDate.getValue();
+		LocalDate finishDate = dFinishDate.getValue();
+		int workingHours = Integer.parseInt(txtWorkingHours.getText());
+		float salary = Float.parseFloat(txtSalary.getText());
+
+		Employee_Contract newContract = new Employee_Contract(holidays, startingDate, finishDate,  workingHours, salary);
+		dbConnection.addContract(newContract);
 
 
 		Staff newStaff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, department);

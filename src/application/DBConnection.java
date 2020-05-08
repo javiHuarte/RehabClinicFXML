@@ -3,9 +3,6 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.interfaces.DBManager;
-import db.interfaces.DepartmentManager;
-import db.interfaces.PacientManager;
 import db.interfaces.*;
 import db.sqlite.SQLiteManager;
 import pojos.*;
@@ -16,7 +13,7 @@ public class DBConnection {
 	private static PacientManager pacientManager;
 	private static DepartmentManager departmentManager;
 	private static MedicalProfessionalManager medicalProfessionalManager;
-
+	private static Employee_ContractManager employee_ContractManager;
 
 
 	public void addPacient (Pacient pacient){
@@ -32,13 +29,26 @@ public class DBConnection {
 
 	}
 
+	public void addContract (Employee_Contract employee_Contract){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+
+		dbManager.createTables();
+
+		employee_ContractManager = dbManager.getEmployee_ContractManager();
+		employee_ContractManager.add(employee_Contract);
+		dbManager.disconnect();
+
+	}
+
 	public void addMedicalProfessional (MedicalProfessional medicalProfessional){
 
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 
 		//dbManager.createTables();
-		
+
 		System.out.println(medicalProfessional);
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		medicalProfessionalManager.add(medicalProfessional);
