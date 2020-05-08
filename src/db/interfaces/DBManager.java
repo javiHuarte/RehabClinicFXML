@@ -10,5 +10,6 @@ public interface DBManager {
 	public DepartmentManager getDepartmentManager();
 	public MedicalProfessionalManager getMedicalProfessionalManager();
 	public StaffManager getStaffManager();
+	public Employee_ContractManager getEmployee_ContractManager();
 	public TreatmentManager getTreatmentManager();
 }

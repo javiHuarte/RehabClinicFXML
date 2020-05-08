@@ -30,8 +30,8 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 
 		try {
 			//String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif,dep_id, dob)"
-			String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif, dob)"
-					+ "VALUES (?,?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO medical_professional(name, sex, profession, email, adress, phone, nif, dob, dep_id)"
+					+ "VALUES (?,?,?,?,?,?,?,?,?);";
 			PreparedStatement prep = c.prepareStatement(sql);
 			LocalDate bob = LocalDate.now();
 
@@ -43,8 +43,9 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 			prep.setString(5, medicalProfessional.getAdress());
 			prep.setInt(6, medicalProfessional.getPhoneNumber());
 			prep.setString(7, medicalProfessional.getNif());
-			//prep.setInt(8, medicalProfessional.getDep_id());
+
 			prep.setDate(8, Date.valueOf(bob));
+			prep.setInt(9, medicalProfessional.getDep_id());
 
 			prep.executeUpdate();
 			prep.close();

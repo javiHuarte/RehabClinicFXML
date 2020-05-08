@@ -1,5 +1,7 @@
 package db.interfaces;
 
-public interface Employee_ContractManager {
+import pojos.Employee_Contract;
 
+public interface Employee_ContractManager {
+	public void add (Employee_Contract employee_Contract);
 }

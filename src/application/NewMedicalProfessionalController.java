@@ -2,6 +2,8 @@ package application;
 
 import java.awt.List;
 import java.net.URL;
+import java.util.ResourceBundle;
+
 import java.sql.*;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -28,7 +30,6 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private TextField txtAdress;
 	@FXML private TextField txtPhoneNumber;
 	@FXML private TextField txtEmail;
-	@FXML private ChoiceBox<String> sexChoiceBox;
 	@FXML private ChoiceBox<String> departmentChoicebox;
 	@FXML private TextField txtSpecialty;
 	@FXML private TextField txtDepartment;
@@ -38,6 +39,9 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private DatePicker startingDatePicker;
 	@FXML private DatePicker finisingDatePicker;
 	
+
+	@FXML private ChoiceBox<String> sexChoiceBox, departmentChoiceBox;
+
 
 
 	@FXML private ImageView imageView;
@@ -54,7 +58,7 @@ public class NewMedicalProfessionalController implements Initializable {
 
 	public void addButton(ActionEvent event){
 
-		//Data for the new medical Professional
+		//Pedir datos
 		String name = txtName.getText();
 		String nie = txtNif.getText();
 		LocalDate dob = dobPicker.getValue();
@@ -185,10 +189,24 @@ public void initialize(URL location, ResourceBundle resources) {
 
 	//We create the ChoiceBox for departments
 
-			ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
-			sexChoiceBox.setItems(sexList);
-			sexChoiceBox.setValue("Male");
+	ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
+	sexChoiceBox.setItems(sexList);
+	sexChoiceBox.setValue("Male");
 
+
+	ObservableList<String> departmentList = FXCollections.observableArrayList();
+
+	ArrayList<Department> dep = new ArrayList();
+
+	dep.addAll(dbConnection.listAllDepartments());
+
+	for (Department department: dep){
+
+		departmentList.add(department.getName());
+
+	}
+
+	departmentChoiceBox.setItems(departmentList);
 	//departmentList.addAll(dbConnection.listAllDepartments().getClass().getName());
 	ObservableList<String> departmentList = FXCollections.observableArrayList();
 	ArrayList<Department> dep = new ArrayList();
@@ -203,6 +221,7 @@ public void initialize(URL location, ResourceBundle resources) {
 
 
 	//we set the update button disabled
+
 
 	this.updateButton.setDisable(false);
 

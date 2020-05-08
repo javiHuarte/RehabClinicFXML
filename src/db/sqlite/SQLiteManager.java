@@ -149,7 +149,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt7 = c.createStatement();
 			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
-					+ "dob TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
+					+ "dob TEXT NOT NULL," + "nie TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
 					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB," + "sex TEXT NOT NULL,"
 					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
 					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
@@ -203,10 +203,6 @@ public class SQLiteManager implements DBManager {
 		System.out.println("Tables created.");
 	}
 
-	/*
-	 * public SQLiteManager() { this.connect(); }
-	 */
-
 	@Override
 	public PacientManager getPacientManager() {
 
@@ -229,7 +225,6 @@ public class SQLiteManager implements DBManager {
 	public StaffManager getStaffManager() {
 		// TODO Auto-generated method stub
 		return staff;
-
 	}
 
 	@Override
