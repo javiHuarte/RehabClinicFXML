@@ -30,6 +30,7 @@ public class departmentViewController implements Initializable {
 	@FXML
 	private TableView departmentsTable;
 
+
 	@FXML
 	private TableColumn<Department, Integer> idColumn;
 	@FXML
