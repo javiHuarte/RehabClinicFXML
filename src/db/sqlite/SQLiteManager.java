@@ -7,6 +7,7 @@ import db.interfaces.DepartmentManager;
 import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
+import db.interfaces.TreatmentManager;
 
 public class SQLiteManager implements DBManager {
 
@@ -15,6 +16,11 @@ public class SQLiteManager implements DBManager {
 	private DepartmentManager department;
 	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
+	private TreatmentManager treatment;
+
+	public SQLiteManager() {
+		this.connect();
+	}
 
 	@Override
 	public void connect() {
@@ -28,7 +34,8 @@ public class SQLiteManager implements DBManager {
 			department = new SQLiteDepartmentManager(c);
 			medicalProfessional = new SQLiteMedicalProfessional(c);
 			staff = new SQLiteStaffManager(c);
-			//We could initialize other manager here
+			treatment = new SQLiteTreatmentManager(c);
+			// We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,6 +47,7 @@ public class SQLiteManager implements DBManager {
 	public void disconnect() {
 		try {
 			c.close();
+			System.out.println("Database disconnected.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -69,7 +77,8 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt2 = c.createStatement();
 			String sql2 = "CREATE TABLE dissability " + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+"name TEXT NOT NULL,"+ "type TEXT NOT NULL," + "severity TEXT," + "affected_area TEXT NOT NULL," + "extra_info TEXT,"
+					+ "name TEXT NOT NULL," + "type TEXT NOT NULL," + "severity TEXT," + "affected_area TEXT NOT NULL,"
+					+ "extra_info TEXT,"
 					+ "pacient_id INTEGER NOT NULL REFERENCES pacient(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 
 			stmt2.executeUpdate(sql2);
@@ -97,9 +106,9 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt4 = c.createStatement();
 			String sql4 = "CREATE TABLE pacient" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "name TEXT NOT NULL," + "sex TEXT," + "dob TEXT," + "nie TEXT NOT NULL,"
-					+ "email TEXT NOT NULL," + "active BOOLEAN," + "intern BOOLEAN,"
-					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB)";
+					+ "name TEXT NOT NULL," + "sex TEXT," + "dob DATE," + "nie TEXT NOT NULL," + "email TEXT NOT NULL,"
+					+ "active BOOLEAN," + "intern BOOLEAN," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL,"
+					+ "photo BLOB)";
 			stmt4.executeUpdate(sql4);
 			stmt4.close();
 		} catch (SQLException e) {
@@ -111,8 +120,8 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt5 = c.createStatement();
 			String sql5 = "CREATE TABLE treatment" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "type TEXT NOT NULL," + "starting_date DATE NOT NULL," + "finishing_date DATE NOT NULL,"
-					+ "extra_info TEXT)";
+					+ "type TEXT NOT NULL," + "starting_date DATE," + "finishing_date DATE," + "extra_info TEXT,"
+					+ "patient_extra_info TEXT)";
 			stmt5.executeUpdate(sql5);
 			stmt5.close();
 		} catch (SQLException e) {
@@ -218,4 +227,9 @@ public class SQLiteManager implements DBManager {
 		return staff;
 	}
 
+	@Override
+	public TreatmentManager getTreatmentManager() {
+		// TODO Auto-generated method stub
+		return treatment;
+	}
 }

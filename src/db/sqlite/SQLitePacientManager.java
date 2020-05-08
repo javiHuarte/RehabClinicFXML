@@ -12,6 +12,7 @@ import java.util.List;
 
 import db.interfaces.PacientManager;
 import pojos.Pacient;
+import pojos.Treatment;
 
 public class SQLitePacientManager implements PacientManager {
 
@@ -61,7 +62,8 @@ public class SQLitePacientManager implements PacientManager {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				// Date sqlDob = rs.getDate("dob");
+				Date sqlDob = rs.getDate("dob");
+				LocalDate dob = sqlDob.toLocalDate();
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -158,7 +160,7 @@ public class SQLitePacientManager implements PacientManager {
 
 	}
 
-	public List<Pacient> listAll() {
+	public List<Pacient> listAllPacients() {
 		List<Pacient> pacientList = new ArrayList<Pacient>();
 		Pacient newPacient;
 

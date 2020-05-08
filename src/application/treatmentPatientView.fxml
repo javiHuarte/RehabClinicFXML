@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="804.0" prefWidth="1062.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TreatmentPatientViewController">
+   <children>
+      <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="568.0" prefWidth="732.0">
+         <children>
+            <BorderPane layoutX="6.0" layoutY="7.0" prefHeight="805.0" prefWidth="1062.0">
+               <top>
+                  <TitledPane animated="false" prefHeight="12.0" prefWidth="725.0" text="untitled" BorderPane.alignment="CENTER">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </TitledPane>
+               </top>
+               <bottom>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <items>
+                      <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" text="Back" />
+                    </items>
+                  </ToolBar>
+               </bottom>
+               <left>
+                  <GridPane prefHeight="739.0" prefWidth="745.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="0.0" prefWidth="112.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="633.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="288.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="330.0" minHeight="5.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="422.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="623.0" minHeight="10.0" prefHeight="602.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Name:" />
+                        <TextField fx:id="textFieldName" prefHeight="25.0" prefWidth="118.0" GridPane.columnIndex="1" />
+                        <Label text="Sex:" GridPane.rowIndex="1" />
+                        <TextField fx:id="textFieldSex" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Dob" GridPane.rowIndex="2" />
+                        <Label text="Patient Treatments:" GridPane.rowIndex="3" />
+                        <TableView fx:id="patientTreatmentsTable" onMouseClicked="#patientTreatmentSelected" prefHeight="609.0" prefWidth="503.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                          <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="42.0" text="Id" />
+                            <TableColumn fx:id="typeColumn" prefWidth="79.0" text="Type" />
+                              <TableColumn fx:id="startColumn" prefWidth="102.0" text="Finishing Date" />
+                              <TableColumn fx:id="finishColumn" prefWidth="92.0" text="Starting Date" />
+                              <TableColumn fx:id="patientExtraInfoColumn" prefWidth="142.0" text="Patient Extra Info" />
+                              <TableColumn fx:id="extraInfoColumn" prefWidth="175.0" text="Extra Info" />
+                          </columns>
+                        </TableView>
+                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <DatePicker fx:id="datePicker" />
+                              <Button fx:id="deleteTreatmentButton" mnemonicParsing="false" onMouseClicked="#deleteTreatment" text="Delete Treatment" GridPane.columnIndex="1" />
+                              <Button fx:id="editTreatmentButton" mnemonicParsing="false" onAction="#editButtonPushed" text="Edit Treatment" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+               </left>
+               <right>
+                  <GridPane prefHeight="739.0" prefWidth="319.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="216.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="383.0" minHeight="10.0" prefHeight="247.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="403.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="492.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="513.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="492.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TableView fx:id="genericTreatmentsTable" onMouseClicked="#treatmentSelected" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="idGenericColumn" prefWidth="75.0" text="Id" />
+                            <TableColumn fx:id="typeGenericColumn" prefWidth="75.0" text="Type" />
+                              <TableColumn fx:id="extraInfoGenericColumn" prefWidth="168.0" text="Extra Info" />
+                          </columns>
+                        </TableView>
+                        <GridPane GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Starting Date:" />
+                              <DatePicker fx:id="startDataPicker" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="2">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Finishing Date" />
+                              <DatePicker fx:id="finishDataPicker" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="3">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="96.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Patient Extra Info" />
+                              <TextArea fx:id="patientExtraInfoTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Button fx:id="addTreatmentButton" mnemonicParsing="false" onMouseClicked="#addTreatment" text="Add Treatment" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

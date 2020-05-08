@@ -39,6 +39,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import pojos.Department;
+import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Patientfxml;
 
@@ -314,9 +315,9 @@ public class NewPatientController implements Initializable, ControllerClass {
 		txtEmail.clear();
 		txtPhoneNumber.clear();
 		sexChoiceBox.setValue("Male");
-		this.dobPicker.setValue(LocalDate.now());;
+		this.dobPicker.setValue(LocalDate.now());
 		this.internChoiceBox.setValue("No");
-		this.sexChoiceBox.setValue("Male");
+
 	}
 
 	@Override
@@ -350,6 +351,12 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 	@Override
 	public void preloadDepartment(Department department) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void preloadMedicalProfessional(MedicalProfessional medicalProfessional) {
 		// TODO Auto-generated method stub
 
 	}
