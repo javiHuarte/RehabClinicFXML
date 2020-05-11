@@ -4,6 +4,7 @@ import java.sql.*;
 
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
+import db.interfaces.Employee_ContractManager;
 import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
@@ -52,6 +53,19 @@ public class SQLiteManager implements DBManager {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public Integer getLastId() {
+		try{
+		String query = "SELECT last_insert_rowid() AS lastId";
+		PreparedStatement p = c.prepareStatement(query);
+		ResultSet rs = p.executeQuery();
+		Integer lastId = rs.getInt("lastId");
+		return lastId;
+		}catch (SQLException e) {
+			e.printStackTrace();}
+		return null;
 	}
 
 	@Override

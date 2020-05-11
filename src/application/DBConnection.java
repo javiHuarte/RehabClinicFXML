@@ -1,5 +1,8 @@
 package application;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,6 @@ public class DBConnection {
 	private static Employee_ContractManager employee_ContractManager;
 	private static StaffManager staffManager;
 	private  TreatmentManager treatmentManager;
-	
 
 
 	public void addPacient (Pacient pacient){
@@ -98,17 +100,34 @@ public class DBConnection {
 
 	}
 
-	
+
 	public List<Pacient> searchPacientByName (String name){
 
-	
+
 		pacientManager = dbManager.getPacientManager();
 		List<Pacient> lista = pacientManager.searchByName(name);
 		
 		return lista;
 
 	}
-	
+
+	public Integer getLastId() {
+		dbManager = new SQLiteManager();
+		return dbManager.getLastId();
+	}
+
+
+	public Integer getDepartmentId (String name){
+
+
+		departmentManager = dbManager.getDepartmentManager();
+		Department department = departmentManager.searchByName(name);
+		Integer dep_id = department.getId();
+		return dep_id;
+
+	}
+
+
 	public List<Treatment> listTreatments(){
 
 		List<Treatment> treatmentList = null;
