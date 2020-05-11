@@ -30,7 +30,7 @@ public class Staff implements Serializable{
 
 
 	public Staff(String name, LocalDate dob, String sex, String profession, String email,
-			String adress, int phoneNumber, String nif, Integer dep_id) {
+			String adress, int phoneNumber, String nif, Integer dep_id, Integer contract_id) {
 		super();
 		//this.id  = new SimpleIntegerProperty(id);
 		this.name =new SimpleStringProperty(name);

@@ -246,4 +246,10 @@ public class SQLiteManager implements DBManager {
 		// TODO Auto-generated method stub
 		return treatment;
 	}
+
+	@Override
+	public Employee_ContractManager getEmployee_ContractManager() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
