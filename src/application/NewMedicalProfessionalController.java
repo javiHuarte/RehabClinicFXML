@@ -18,7 +18,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.*;
 import java.util.*;
+
+import db.interfaces.UserManager;
+import db.jpa.JPAUserManager;
 import pojos.*;
+import pojos.users.Role;
+import pojos.users.User;
 
 public class NewMedicalProfessionalController implements Initializable {
 
@@ -39,6 +44,8 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private Button Add;
 
 	private DBConnection dbConnection = new DBConnection();
+	private static UserManager userManager = new JPAUserManager();
+	Funciones functions;
 
 	//method that introduces a new medical professional
 
@@ -78,7 +85,17 @@ public class NewMedicalProfessionalController implements Initializable {
 
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
 		System.out.println(newMedicalProfessional);
-		dbConnection.addMedicalProfessional(newMedicalProfessional);
+
+		byte[] password = functions.createPassword();
+		System.out.println("Password: " +password);
+		
+		Role role = userManager.getRoleByName("MedicalProfessional");
+		System.out.println("Role: " +role);
+		
+		User user = new User(name,password,role);
+		userManager.createUser(user);
+		System.out.println("Usuario creado");
+		//dbConnection.addMedicalProfessional(newMedicalProfessional);
 
 		}
 

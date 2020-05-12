@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import pojos.Department;
 import pojos.Pacient;
 import pojos.Patientfxml;
 import pojos.Treatment;
@@ -141,7 +142,7 @@ public class SceneChanger {
 		window.show();
 
 	}
-	
+
 	public void loadDepartmentWithData(ActionEvent event, String viewName, String title, Department department, ControllerClass controllerClass){
 
 		FXMLLoader loader = new FXMLLoader();
