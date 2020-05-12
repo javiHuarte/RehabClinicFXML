@@ -86,7 +86,7 @@ public class NewMedicalProfessionalController implements Initializable {
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
 		System.out.println(newMedicalProfessional);
 
-		byte[] password = functions.createPassword();
+		/*byte[] password = functions.createPassword();
 		System.out.println("Password: " +password);
 		
 		Role role = userManager.getRoleByName("MedicalProfessional");
@@ -94,8 +94,8 @@ public class NewMedicalProfessionalController implements Initializable {
 		
 		User user = new User(name,password,role);
 		userManager.createUser(user);
-		System.out.println("Usuario creado");
-		//dbConnection.addMedicalProfessional(newMedicalProfessional);
+		System.out.println("Usuario creado");*/
+		dbConnection.addMedicalProfessional(newMedicalProfessional);
 
 		}
 

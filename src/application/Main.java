@@ -57,12 +57,12 @@ public static void main(String[] args) throws Exception {
 	dbManager.connect();
 	userManager.connect();
 	//System.out.println(functions.createPassword());
-	System.out.println(userManager.getRoleByName("MedicalProfessional"));
+	//System.out.println(userManager.getRoleByName("MedicalProfessional"));
 	//Comprobar si están creados los roles
-	List<Role> roles = userManager.getRoles();
-	if (roles.size() == 0){
+	//List<Role> roles = userManager.getRoles();
+	/*if (roles.size() == 0){
 		userManager.createRoles();
-	}
+	}*/
 		launch(args);
 	dbManager.disconnect();
 	userManager.disconnect();
