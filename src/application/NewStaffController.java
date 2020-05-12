@@ -131,27 +131,25 @@ public class NewStaffController implements Initializable {
 		dbConnection.addContract(newContract);
 		int contract_id = dbConnection.getLastId();
 
-		Staff newStaff = new Staff( name, dob,  sex,  profession, email,  adress, phoneNumber,nif, dep_id,contract_id);
-		dbConnection.addStaff(newStaff);
 
 		//comprobar que se ha introducido un departamento
 		if ( department == null){
 
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("No Such Department");
-			alert.setContentText("There are no departments created"
+			Alert alertDep = new Alert(Alert.AlertType.ERROR);
+			alertDep.setTitle("No Such Department");
+			alertDep.setContentText("There are no departments created"
 								 + "Create a new department first");
 			ButtonType newDepartementButton = new ButtonType("Create new department");
 
-			alert.getButtonTypes().setAll(newDepartementButton);
-			Optional<ButtonType> result = alert.showAndWait();
+			alertDep.getButtonTypes().setAll(newDepartementButton);
+			Optional<ButtonType> resultDep = alertDep.showAndWait();
 
-			if(result.get() == newDepartementButton){
+			if(resultDep.get() == newDepartementButton){
 
 				SceneChanger sc = new SceneChanger();
 				sc.changeScenes(event, "newDepartment.fxml", "New Departement");
 			}
-
+		}
 
 		Boolean validData = comprobarData();
 
@@ -175,11 +173,11 @@ public class NewStaffController implements Initializable {
 
 			if (result.get() == okButton) {
 
-				Staff staff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, department);
-				dbConnection.addStaff(staff);
-
+				Staff newStaff = new Staff( name, dob,  sex,  profession, email,  adress, phoneNumber,nif, dep_id,contract_id);
+				dbConnection.addStaff(newStaff);
 			}
-		}
+			}
+
 	}
 
 	public void updateStaff(ActionEvent event) {

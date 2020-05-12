@@ -21,7 +21,6 @@ public class DBConnection {
 	private  TreatmentManager treatmentManager;
 
 
-
 	public void addPacient (Pacient pacient){
 
 		dbManager = new SQLiteManager();
@@ -39,8 +38,6 @@ public class DBConnection {
 
 		dbManager = new SQLiteManager();
 		dbManager.connect();
-
-		dbManager.createTables();
 
 		employee_ContractManager = dbManager.getEmployee_ContractManager();
 		employee_ContractManager.add(employee_Contract);
@@ -85,16 +82,6 @@ public class DBConnection {
 
 	}
 
-	public void updateMedicalProfessional(MedicalProfessional medicalProfessional){
-
-		dbManager = new SQLiteManager();
-		dbManager.connect();
-		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
-		medicalProfessionalManager.updateMedicalProfessional(medicalProfessional);
-		dbManager.disconnect();
-
-	}
-
 	public List<Pacient> listPacients(){
 
 		List<Pacient> pacientList = null;
@@ -121,7 +108,6 @@ public class DBConnection {
 		return lista;
 
 	}
-
 
 	public Integer getLastId() {
 		dbManager = new SQLiteManager();

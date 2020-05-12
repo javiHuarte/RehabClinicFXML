@@ -18,6 +18,7 @@ public class SQLiteManager implements DBManager {
 	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
 	private TreatmentManager treatment;
+	private Employee_ContractManager employeeContract;
 
 	public SQLiteManager() {
 		this.connect();
@@ -250,6 +251,6 @@ public class SQLiteManager implements DBManager {
 	@Override
 	public Employee_ContractManager getEmployee_ContractManager() {
 		// TODO Auto-generated method stub
-		return null;
+		return employeeContract;
 	}
 }
