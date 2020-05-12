@@ -71,12 +71,6 @@ public class NewMedicalProfessionalController implements Initializable {
 		String specialty = txtSpecialty.getText();
 		String dep = departmentChoicebox.getValue();
 
-		//we take the last id introduced into the data base which will be the id from the contract associated to this
-		//medical professional
-		int contract_id = dbConnection.getLastId();
-		//get the id associated with the departement name chosen
-		int dep_id = dbConnection.getDepartmentId(dep);
-
 
 		if ( dep == null){
 
@@ -100,7 +94,13 @@ public class NewMedicalProfessionalController implements Initializable {
 
 		//we create the contract when we add the medical professional
 		employeeContract();
-
+		
+		//we take the last id introduced into the data base which will be the id from the contract associated to this
+		//medical professional
+		int contract_id = dbConnection.getLastId();
+		//get the id associated with the departement name chosen
+		int dep_id = dbConnection.getDepartmentId(dep);
+		
 		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, sex, specialty , email, adress, Integer.parseInt(phoneNumber), nie, dep_id, contract_id);
 		System.out.println(newMedicalProfessional);
 		dbConnection.addMedicalProfessional(newMedicalProfessional);
@@ -141,7 +141,6 @@ public class NewMedicalProfessionalController implements Initializable {
 		String email = txtEmail.getText();
 		String sex = sexChoiceBox.getValue();
 		String specialty = txtSpecialty.getText();
-		String department = txtDepartment.getText();
 		String dep = departmentChoicebox.getValue();
 
 		//we take the last id introduced into the data base which will be the id from the contract associated to this
@@ -171,7 +170,7 @@ public class NewMedicalProfessionalController implements Initializable {
 		}else{
 
 		MedicalProfessional md = new MedicalProfessional(name, dob, sex, specialty , email, adress, Integer.parseInt(phoneNumber), nie, dep_id, contract_id);
-		dbConnection.updateMedicalProfessional(md);
+		//dbConnection.updateMedicalProfessional(md);
 
 		}
 	}
@@ -195,7 +194,7 @@ public class NewMedicalProfessionalController implements Initializable {
 		this.txtEmail.setText(medicalProfessional.getEmail());
 		this.txtSpecialty.setText(medicalProfessional.getProfession());
 		this.sexChoiceBox.setValue(medicalProfessional.getSex());
-		this.txtDepartment.setText(medicalProfessional.getDepartment());
+		//this.txtDepartment.setText(medicalProfessional.getDepartment());
 		//this.departmentChoicebox.setValue(medicalProfessional.getDep_id().name);
 
 	}

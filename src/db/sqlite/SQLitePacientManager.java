@@ -197,4 +197,22 @@ public class SQLitePacientManager implements PacientManager {
 		return pacientList;
 	}
 
+	@Override
+	public List<Treatment> searchPatientAndTreatments(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertIntoTreatmentPatient(Integer patientId, Integer treatmentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Pacient> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
