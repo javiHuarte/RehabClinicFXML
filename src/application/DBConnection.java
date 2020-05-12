@@ -16,7 +16,7 @@ public class DBConnection {
 	private static Employee_ContractManager employee_ContractManager;
 	private static StaffManager staffManager;
 	private  TreatmentManager treatmentManager;
-	
+
 
 
 	public void addPacient (Pacient pacient){
@@ -82,6 +82,16 @@ public class DBConnection {
 
 	}
 
+	public void updateMedicalProfessional(MedicalProfessional medicalProfessional){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.updateMedicalProfessional(medicalProfessional);
+		dbManager.disconnect();
+
+	}
+
 	public List<Pacient> listPacients(){
 
 		List<Pacient> pacientList = null;
@@ -98,25 +108,25 @@ public class DBConnection {
 
 	}
 
-	
+
 	public List<Pacient> searchPacientByName (String name){
 
-	
+
 		pacientManager = dbManager.getPacientManager();
 		List<Pacient> lista = pacientManager.searchByName(name);
-		
+
 		return lista;
 
 	}
-	
+
 	public List<Treatment> listTreatments(){
 
 		List<Treatment> treatmentList = null;
 
-		
+
 		treatmentManager = dbManager.getTreatmentManager();
 		treatmentList = treatmentManager.listAllTreatments();
-	
+
 		return treatmentList;
 	}
 
@@ -165,44 +175,44 @@ public class DBConnection {
 
 	}
 	public void updateTreatment (Treatment treatment){
-		
+
 		treatmentManager = dbManager.getTreatmentManager();
 		treatmentManager.updateTreatment(treatment);
-		
+
 	}
-	
+
 	public void addTreatment (Treatment treatment){
 
-	
+
 
 		treatmentManager = dbManager.getTreatmentManager();
 		treatmentManager.add(treatment);
-		
+
 	}
-	
+
 	public void deleteTreatment(Integer id){
-		
-		
+
+
 		treatmentManager = dbManager.getTreatmentManager();
 		treatmentManager.deleteById(id);
-		
+
 	}
-	
+
 	public List<Treatment> listPatientTreatments (Integer id){
 		List<Treatment> list = new ArrayList();
 		pacientManager = dbManager.getPacientManager();
 		list = pacientManager.searchPatientAndTreatments(id);
-		
+
 		return list;
 
 	}
-	
+
 	public void addTreatmentToPatient (Integer treatmentId, Integer patientId){
-		
+
 
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.insertIntoTreatmentPatient(patientId, treatmentId);
-		
+
 	}
 
 	public Department searchDepartmentById(Integer id){

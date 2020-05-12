@@ -4,6 +4,7 @@ import java.sql.*;
 
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
+import db.interfaces.Employee_ContractManager;
 import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
@@ -231,5 +232,11 @@ public class SQLiteManager implements DBManager {
 	public TreatmentManager getTreatmentManager() {
 		// TODO Auto-generated method stub
 		return treatment;
+	}
+
+	@Override
+	public Employee_ContractManager getEmployee_ContractManager() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
