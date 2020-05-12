@@ -131,11 +131,11 @@ public class DBConnection {
 
 	public Integer getDepartmentId (String name){
 
+		System.out.println(name);
 
 		departmentManager = dbManager.getDepartmentManager();
-		Department department = departmentManager.searchByName(name);
-		Integer dep_id = department.getId();
-		return dep_id;
+		List<Department> department = departmentManager.searchByName(name);
+		return department.get(0).getId();
 
 	}
 
@@ -189,6 +189,8 @@ public class DBConnection {
 		List<MedicalProfessional> list = new ArrayList();
 		dbManager = new SQLiteManager();
 		dbManager.connect();
+
+		//dbManager.createTables();
 
 		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
 		list = medicalProfessionalManager.listAll();

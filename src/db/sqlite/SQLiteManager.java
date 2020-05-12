@@ -10,6 +10,7 @@ import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
 import db.interfaces.TreatmentManager;
 
+
 public class SQLiteManager implements DBManager {
 
 	private Connection c;
@@ -18,6 +19,7 @@ public class SQLiteManager implements DBManager {
 	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
 	private TreatmentManager treatment;
+	private Employee_ContractManager employeeContract;
 
 	public SQLiteManager() {
 		this.connect();
@@ -36,6 +38,7 @@ public class SQLiteManager implements DBManager {
 			medicalProfessional = new SQLiteMedicalProfessional(c);
 			staff = new SQLiteStaffManager(c);
 			treatment = new SQLiteTreatmentManager(c);
+			employeeContract = new SQLiteContract(c);
 			// We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
@@ -147,11 +150,11 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt6 = c.createStatement();
 			String sql6 = "CREATE TABLE medical_professional" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "name TEXT NOT NULL," + "dob TEXT NOT NULL," + "profession TEXT NOT NULL,"
+					+ "name TEXT NOT NULL," + "dob DATE NOT NULL," + "profession TEXT NOT NULL,"
 					+ "email TEXT NOT NULL," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB,"
 					+ "sex TEXT NOT NULL," + "nif TEXT NOT NULL,"
-					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
-					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
+					+ "contract_id NOT NULL INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
+					+ "dep_id NOT NULL INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 			stmt6.executeUpdate(sql6);
 			stmt6.close();
 		} catch (SQLException e) {
@@ -163,7 +166,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt7 = c.createStatement();
 			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
-					+ "dob TEXT NOT NULL," + "nie TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
+					+ "dob DATE NOT NULL," + "nie TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
 					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB," + "sex TEXT NOT NULL,"
 					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
 					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
@@ -250,6 +253,6 @@ public class SQLiteManager implements DBManager {
 	@Override
 	public Employee_ContractManager getEmployee_ContractManager() {
 		// TODO Auto-generated method stub
-		return null;
+		return employeeContract;
 	}
 }

@@ -35,7 +35,6 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 			prep.setString(1, department.getName());
 			prep.setFloat(2, department.getBudget());
 			prep.setInt(3, department.getFloor());
-			// prep.setInt(4, department.getBoss_id());
 
 			prep.executeUpdate();
 			prep.close();

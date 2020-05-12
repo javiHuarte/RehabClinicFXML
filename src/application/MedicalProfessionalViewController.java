@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -88,40 +89,11 @@ public class MedicalProfessionalViewController implements Initializable {
 
 	public ObservableList<MedicalProfessional> loadMedicalProfessional(){
 
-		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
-
-		mp.setDepartment("oncology");
-
-		this.medicalProfessionals.add(mp);
-
-		System.out.print(medicalProfessionals);
-
+		List<MedicalProfessional> md = dbConnection.listAllMedicalProfessionals();
+		medicalProfessionals.addAll(md);
+		
 		return medicalProfessionals;
-
 }
-
-	public void search(KeyEvent event){
-
-		txtSearch.textProperty().addListener((observable, oldValue, newValue) ->{
-
-			filter.setPredicate((Predicate<? super MedicalProfessional>) (MedicalProfessional mp) -> {
-
-					if(newValue.isEmpty() || newValue==null){
-						return true;
-					}
-					else if(mp.getName().contains(newValue)){
-						return true;
-					}
-
-			return false;
-			});
-
-			SortedList sort = new SortedList(filter);
-			sort.comparatorProperty().bind(medicalProfessionalTable.comparatorProperty());
-			medicalProfessionalTable.setItems(sort);
-
-		});
-	}
 
 	//Method to go back to the log in set scene
 
@@ -159,53 +131,27 @@ public class MedicalProfessionalViewController implements Initializable {
 		edit.setDisable(false);
 	}
 
-	public void changeNameCellEvent (CellEditEvent edditedCell){
+	public void search(KeyEvent event){
 
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setName(edditedCell.getNewValue().toString());
+		txtSearch.textProperty().addListener((observable, oldValue, newValue) ->{
 
-		}
+			filter.setPredicate((Predicate<? super MedicalProfessional>) (MedicalProfessional mp) -> {
 
-	public void changeNifCellEvent (CellEditEvent edditedCell){
+					if(newValue.isEmpty() || newValue==null){
+						return true;
+					}
+					else if(mp.getName().contains(newValue)){
+						return true;
+					}
 
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setNif(edditedCell.getNewValue().toString());
+			return false;
+			});
 
-		}
+			SortedList sort = new SortedList(filter);
+			sort.comparatorProperty().bind(medicalProfessionalTable.comparatorProperty());
+			medicalProfessionalTable.setItems(sort);
 
-	public void changeSexCellEvent (CellEditEvent edditedCell){
-
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setSex(edditedCell.getNewValue().toString());
-
-		}
-
-	public void changeEmailCellEvent (CellEditEvent edditedCell){
-
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setEmail(edditedCell.getNewValue().toString());
-
-		}
-
-	public void changeAdressCellEvent (CellEditEvent edditedCell){
-
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setAdress(edditedCell.getNewValue().toString());
-
-		}
-
-	public void changeSpecialtyCellEvent (CellEditEvent edditedCell){
-
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setProfession(edditedCell.getNewValue().toString());
-
-		}
-
-	public void changeDepartmentCellEvent (CellEditEvent edditedCell){
-
-		MedicalProfessional mpSelected = medicalProfessionalTable.getSelectionModel().getSelectedItem();
-		mpSelected.setDepartment(edditedCell.getNewValue().toString());
-
-		}
+		});
+	}
 
 }

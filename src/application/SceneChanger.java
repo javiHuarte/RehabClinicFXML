@@ -22,19 +22,19 @@ public class SceneChanger {
 
 	public void changeScenes(ActionEvent event, String viewName, String title){
 
-		Parent addPatientRoot = null;
+		Parent addRoot = null;
 		try {
-			addPatientRoot = FXMLLoader.load(getClass().getResource(viewName));
+			addRoot = FXMLLoader.load(getClass().getResource(viewName));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		Scene newPatientScene = new Scene(addPatientRoot);
+		Scene newScene = new Scene(addRoot);
 
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-		window.setScene(newPatientScene);
+		window.setScene(newScene);
 		window.setTitle(title);
 		window.show();
 	}

@@ -32,13 +32,14 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private TextField txtEmail;
 	@FXML private ChoiceBox<String> departmentChoicebox;
 	@FXML private TextField txtSpecialty;
-	@FXML private TextField txtDepartment;
-	//contract 
+
+	//contract
 	@FXML private TextField txtHolidays;
 	@FXML private TextField txtSalary;
+	@FXML private TextField txtWeekh;
 	@FXML private DatePicker startingDatePicker;
 	@FXML private DatePicker finisingDatePicker;
-	
+
 
 	@FXML private ChoiceBox<String> sexChoiceBox, departmentChoiceBox;
 
@@ -58,6 +59,7 @@ public class NewMedicalProfessionalController implements Initializable {
 
 	public void addButton(ActionEvent event){
 
+
 		//Pedir datos
 		String name = txtName.getText();
 		String nie = txtNif.getText();
@@ -67,9 +69,14 @@ public class NewMedicalProfessionalController implements Initializable {
 		String email = txtEmail.getText();
 		String sex = sexChoiceBox.getValue();
 		String specialty = txtSpecialty.getText();
-		String department = txtDepartment.getText();
 		String dep = departmentChoicebox.getValue();
-		
+
+		//we take the last id introduced into the data base which will be the id from the contract associated to this
+		//medical professional
+		int contract_id = dbConnection.getLastId();
+		//get the id associated with the departement name chosen
+		int dep_id = dbConnection.getDepartmentId(dep);
+
 
 		if ( dep == null){
 
@@ -91,22 +98,26 @@ public class NewMedicalProfessionalController implements Initializable {
 
 		}else{
 
-		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
+		//we create the contract when we add the medical professional
+		employeeContract();
+
+		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, sex, specialty , email, adress, Integer.parseInt(phoneNumber), nie, dep_id, contract_id);
 		System.out.println(newMedicalProfessional);
 		dbConnection.addMedicalProfessional(newMedicalProfessional);
 
 		}
 
 	}
-	
+
 	public void employeeContract(){
 		String holidays = txtHolidays.getText();
 		LocalDate startingDate = startingDatePicker.getValue();
 		LocalDate finishingDate = finisingDatePicker.getValue();
-		String sal = txtHolidays.getText();
-		
-		Employee_Contract newcontract = new Employee_Contract();
+		String weeklyHours = txtWeekh.getText();
+		String salary = txtSalary.getText();
 
+		Employee_Contract newContract = new Employee_Contract(Integer.parseInt(holidays), startingDate, finishingDate, Integer.parseInt(weeklyHours),Float.parseFloat(salary));
+		dbConnection.addContract(newContract);
 	}
 
 	//Method to go back to the log in set scene
@@ -133,6 +144,12 @@ public class NewMedicalProfessionalController implements Initializable {
 		String department = txtDepartment.getText();
 		String dep = departmentChoicebox.getValue();
 
+		//we take the last id introduced into the data base which will be the id from the contract associated to this
+		//medical professional
+		int contract_id = dbConnection.getLastId();
+		//get the id associated with the departement name chosen
+		int dep_id = dbConnection.getDepartmentId(dep);
+
 		if ( dep == null){
 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -153,7 +170,7 @@ public class NewMedicalProfessionalController implements Initializable {
 
 		}else{
 
-		MedicalProfessional md = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
+		MedicalProfessional md = new MedicalProfessional(name, dob, sex, specialty , email, adress, Integer.parseInt(phoneNumber), nie, dep_id, contract_id);
 		dbConnection.updateMedicalProfessional(md);
 
 		}
@@ -195,21 +212,15 @@ public void initialize(URL location, ResourceBundle resources) {
 
 
 	ObservableList<String> departmentList = FXCollections.observableArrayList();
-
 	ArrayList<Department> dep = new ArrayList();
-
-	dep.addAll(dbConnection.listAllDepartments());
-
 	for (Department department: dep){
 
 		departmentList.add(department.getName());
 
 	}
 
-	departmentChoiceBox.setItems(departmentList);
+
 	//departmentList.addAll(dbConnection.listAllDepartments().getClass().getName());
-	ObservableList<String> departmentList = FXCollections.observableArrayList();
-	ArrayList<Department> dep = new ArrayList();
 	dep.addAll(dbConnection.listAllDepartments());
 
 	for(Department department: dep){
