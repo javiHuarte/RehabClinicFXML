@@ -30,24 +30,21 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 
 		try {
 			//String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif,dep_id, dob)"
-			String sql = "INSERT INTO medical_professional(name, sex, profession, email, adress, phone, nif, dob, dep_id,contract_id)"
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO medical_professional(name,sex, profession, email, adress, phone, nif, dob)"
+					+ "VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement prep = c.prepareStatement(sql);
-
-
+			LocalDate bob = LocalDate.now();
 
 			prep.setString(1, medicalProfessional.getName());
+			//prep.setDate(2, medicalProfessional.getDob());
 			prep.setString(2, medicalProfessional.getSex());
 			prep.setString(3,medicalProfessional.getProfession());
 			prep.setString(4, medicalProfessional.getEmail());
 			prep.setString(5, medicalProfessional.getAdress());
 			prep.setInt(6, medicalProfessional.getPhoneNumber());
 			prep.setString(7, medicalProfessional.getNif());
-
-			prep.setDate(8, Date.valueOf(medicalProfessional.getDob()));
-			prep.setInt(9, medicalProfessional.getDep_id());
-			prep.setInt(10, medicalProfessional.getEmployee_contractId());
-
+			//prep.setInt(8, medicalProfessional.getDep_id());
+			prep.setDate(8, Date.valueOf(bob));
 
 			prep.executeUpdate();
 			prep.close();
@@ -178,10 +175,8 @@ public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 				Integer phone = rs.getInt("phoneNumber");
 				Integer dep_id = rs.getInt("dep_id");
 
-				LocalDate birth = dob.toLocalDate();
-
-				MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, name, birth,  sex,  profession, email,adress,phone, nif, dep_id);
-				medicalProfessionalList.add(newMedicalProfessional);
+				//MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, name, dob,  sex,  profession, email,adress,phone, nif, dep_id);
+				//medicalProfessionalList.add(newMedicalProfessional);
 			}
 
 		}catch(Exception e){

@@ -26,8 +26,8 @@ public class SQLiteStaffManager implements StaffManager {
 
 		try {
 
-			String sql = "INSERT INTO staff (name, profession, sex ,dob, nie, email, adress , phone, dep_id) " //contract_id) "
-					+ "VALUES (?,?,?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO staff (name, profession, sex ,dob, nie, email, adress , phone) "// dep_id, contract_id) "
+					+ "VALUES (?,?,?,?,?,?,?,?);";
 
 			System.out.print("heello");
 			LocalDate dob = staff.getDob();
@@ -41,7 +41,7 @@ public class SQLiteStaffManager implements StaffManager {
 			prep.setString(6, staff.getEmail());
 			prep.setString(7, staff.getAdress());
 			prep.setInt(8, staff.getPhoneNumber());
-			prep.setInt(9, staff.getDep_id());
+			//prep.setInt(9, staff.getDep_id());
 		//	prep.setInt(10, staff.getContract_id());
 
 			prep.executeUpdate();

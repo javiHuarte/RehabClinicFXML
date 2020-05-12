@@ -4,13 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -24,19 +23,16 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-import pojos.Department;
-import pojos.Employee_Contract;
 import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Staff;
 
 public class NewStaffController implements Initializable {
 
-	// Staff
 	@FXML
 	private TextField txtName, txtNif, txtPhoneNumber, txtAdress, txtEmail, txtProfession;
 	@FXML
-	private ChoiceBox<String> sexChoiceBox, departmentChoiceBox;
+	private ChoiceBox<String> sexChoiceBox, departmentChoiceBox, contractChoiceBox;
 	/*
 	 * @FXML private RadioButton radioButtonYes, radioButtonNo;
 	 *
@@ -62,21 +58,13 @@ public class NewStaffController implements Initializable {
 	private Funciones funciones = new Funciones();
 	private DBConnection dbConnection = new DBConnection();
 
-
-	// Contract
-	@FXML
-	private TextField txtHolidays, txtStartingDate, txtFinishDate, txtWorkingHours, txtSalary;
-
-	@FXML
-	private DatePicker dStartingDate, dFinishDate;
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-
+		//Para que es esto?
 		// set update button disable
-		this.updateButton.setDisable(true);
+		//this.updateButton.setDisable(true);
 
 		// set addButton not not disable
 		this.addButton.setDisable(false);
@@ -87,18 +75,7 @@ public class NewStaffController implements Initializable {
 		sexChoiceBox.setItems(sexList);
 		sexChoiceBox.setValue("Male");
 
-		//Creamos el choicebox de departmet
-		ObservableList<String> departmentList = FXCollections.observableArrayList();
-
-		//bucle for each para sacar el nombre de todos los departamentos
-		ArrayList<Department> dep = new ArrayList();
-		dep.addAll(dbConnection.listAllDepartments());
-		for (Department department: dep){
-			departmentList.add(department.getName());
-		}
-
-		departmentChoiceBox.setItems(departmentList);
-		//departmentList.addAll(dbConnection.listAllDepartments().getClass().getName());
+		//falta crear el choicebox de departmet y contract a ver como lo hacemos
 
 	}
 
@@ -114,42 +91,13 @@ public class NewStaffController implements Initializable {
 		int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
 		String profession = txtProfession.getText();
 
-		//obtener el id del departemnt seleccionado
-		String department = departmentChoiceBox.getValue();
-		Integer dep_id = dbConnection.getDepartmentId(department);
+		//como cojer el department y contract
 
-		//contract
-
-		int holidays = Integer.parseInt(txtHolidays.getText());
-		LocalDate startingDate = dStartingDate.getValue();
-		LocalDate finishDate = dFinishDate.getValue();
-		int workingHours = Integer.parseInt(txtWorkingHours.getText());
-		float salary = Float.parseFloat(txtSalary.getText());
-
-		//Guardamos el contract en la tabla y recuperamos su id
-		Employee_Contract newContract = new Employee_Contract(holidays, startingDate, finishDate,  workingHours, salary);
-		dbConnection.addContract(newContract);
-		int contract_id = dbConnection.getLastId();
+		int department = 0;
 
 
-		//comprobar que se ha introducido un departamento
-		if ( department == null){
-
-			Alert alertDep = new Alert(Alert.AlertType.ERROR);
-			alertDep.setTitle("No Such Department");
-			alertDep.setContentText("There are no departments created"
-								 + "Create a new department first");
-			ButtonType newDepartementButton = new ButtonType("Create new department");
-
-			alertDep.getButtonTypes().setAll(newDepartementButton);
-			Optional<ButtonType> resultDep = alertDep.showAndWait();
-
-			if(resultDep.get() == newDepartementButton){
-
-				SceneChanger sc = new SceneChanger();
-				sc.changeScenes(event, "newDepartment.fxml", "New Departement");
-			}
-		}
+		Staff newStaff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, department);
+		dbConnection.//A parte de añadir el dbconction recordar que hay que cambiar department y que no pille un entero
 
 		Boolean validData = comprobarData();
 
@@ -173,11 +121,11 @@ public class NewStaffController implements Initializable {
 
 			if (result.get() == okButton) {
 
-				Staff newStaff = new Staff( name, dob,  sex,  profession, email,  adress, phoneNumber,nif, dep_id,contract_id);
-				dbConnection.addStaff(newStaff);
-			}
-			}
+				Staff staff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, department);
+				dbConnection.addStaff(staff);
 
+			}
+		}
 	}
 
 	public void updateStaff(ActionEvent event) {

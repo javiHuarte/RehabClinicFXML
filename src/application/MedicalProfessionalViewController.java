@@ -3,7 +3,6 @@ package application;
 import java.net.URL;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -72,8 +71,6 @@ public class MedicalProfessionalViewController implements Initializable {
 
 	medicalProfessionalTable.setItems(loadMedicalProfessional());
 
-	this.edit.setDisable(true);
-
 	}
 
 	//Method to load/ list the medical professionals into the the TableView
@@ -89,47 +86,17 @@ public class MedicalProfessionalViewController implements Initializable {
 
 	public ObservableList<MedicalProfessional> loadMedicalProfessional(){
 
-		List<MedicalProfessional> md = dbConnection.listAllMedicalProfessionals();
-		medicalProfessionals.addAll(md);
-		
+		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
+
+		mp.setDepartment("oncology");
+
+		this.medicalProfessionals.add(mp);
+
+		System.out.print(medicalProfessionals);
+
 		return medicalProfessionals;
+
 }
-
-	//Method to go back to the log in set scene
-
-		public void backToLoginButton(ActionEvent event) {
-
-			SceneChanger sceneChanger = new SceneChanger();
-			sceneChanger.changeScenes(event, "directorLogin.fxml", "Director Login");
-
-		}
-
-	//Method to add a new medical professional if selected in the scene
-	//this will open the scence for a new medical professional
-
-	public void newMedicalProffesional(ActionEvent event){
-
-			SceneChanger sc = new SceneChanger();
-			sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
-		}
-
-	//when the edit button is pushed it passes the selected medical Professional
-	//to the newMedicalProfesisonal and loads the date into the scene
-
-	public void editButtonPushed(ActionEvent event){
-
-		SceneChanger sc = new SceneChanger();
-		MedicalProfessional mp = this.medicalProfessionalTable.getSelectionModel().getSelectedItem();//It gets the medical professional from the table
-		mpSelected();
-		NewMedicalProfessionalController nmpc = new NewMedicalProfessionalController();
-		sc.changeScenesWithMedicalProfessional(event, "newMedicalProfessional.fxml","Edit Medical Professional", mp, nmpc);
-	}
-
-	//If a medical professional is selected
-	public void mpSelected(){
-
-		edit.setDisable(false);
-	}
 
 	public void search(KeyEvent event){
 
@@ -153,5 +120,23 @@ public class MedicalProfessionalViewController implements Initializable {
 
 		});
 	}
+
+	//Method to go back to the log in set scene
+
+		public void backToLoginButton(ActionEvent event) {
+
+			SceneChanger sceneChanger = new SceneChanger();
+			sceneChanger.changeScenes(event, "directorLogin.fxml", "Director Login");
+
+		}
+
+	//Method to add a new medical professional if selected in the scene
+	//this will open the scence for a new medical professional
+
+		public void newMedicalProffesional(ActionEvent event){
+
+			SceneChanger sc = new SceneChanger();
+			sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
+		}
 
 }

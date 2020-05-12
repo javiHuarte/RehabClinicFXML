@@ -2,8 +2,6 @@ package application;
 
 import java.awt.List;
 import java.net.URL;
-import java.util.ResourceBundle;
-
 import java.sql.*;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -20,7 +18,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.*;
 import java.util.*;
+
+import db.interfaces.UserManager;
+import db.jpa.JPAUserManager;
 import pojos.*;
+import pojos.users.Role;
+import pojos.users.User;
 
 public class NewMedicalProfessionalController implements Initializable {
 
@@ -30,37 +33,26 @@ public class NewMedicalProfessionalController implements Initializable {
 	@FXML private TextField txtAdress;
 	@FXML private TextField txtPhoneNumber;
 	@FXML private TextField txtEmail;
+	@FXML private ChoiceBox<String> sexChoiceBox;
 	@FXML private ChoiceBox<String> departmentChoicebox;
 	@FXML private TextField txtSpecialty;
-
-	//contract
-	@FXML private TextField txtHolidays;
-	@FXML private TextField txtSalary;
-	@FXML private TextField txtWeekh;
-	@FXML private DatePicker startingDatePicker;
-	@FXML private DatePicker finisingDatePicker;
-
-
-	@FXML private ChoiceBox<String> sexChoiceBox, departmentChoiceBox;
-
-
+	@FXML private TextField txtDepartment;
 
 	@FXML private ImageView imageView;
 	@FXML private Button backButton;
 	@FXML private Button clearButton;
 	@FXML private Button Add;
-	@FXML private Button updateButton;
-
-	private MedicalProfessional medicalProfessional;
 
 	private DBConnection dbConnection = new DBConnection();
+	private static UserManager userManager = new JPAUserManager();
+	Funciones functions;
 
 	//method that introduces a new medical professional
 
 	public void addButton(ActionEvent event){
 
-
 		//Pedir datos
+<<<<<<< HEAD
 		String name = txtName.getText();
 		String nie = txtNif.getText();
 		LocalDate dob = dobPicker.getValue();
@@ -133,6 +125,8 @@ public class NewMedicalProfessionalController implements Initializable {
 	public void updateMedicalProffesional(ActionEvent event){
 
 		//New data
+=======
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
 		String name = txtName.getText();
 		String nie = txtNif.getText();
 		LocalDate dob = dobPicker.getValue();
@@ -142,12 +136,6 @@ public class NewMedicalProfessionalController implements Initializable {
 		String sex = sexChoiceBox.getValue();
 		String specialty = txtSpecialty.getText();
 		String dep = departmentChoicebox.getValue();
-
-		//we take the last id introduced into the data base which will be the id from the contract associated to this
-		//medical professional
-		int contract_id = dbConnection.getLastId();
-		//get the id associated with the departement name chosen
-		int dep_id = dbConnection.getDepartmentId(dep);
 
 		if ( dep == null){
 
@@ -169,18 +157,34 @@ public class NewMedicalProfessionalController implements Initializable {
 
 		}else{
 
+<<<<<<< HEAD
 		MedicalProfessional md = new MedicalProfessional(name, dob, sex, specialty , email, adress, Integer.parseInt(phoneNumber), nie, dep_id, contract_id);
 		//dbConnection.updateMedicalProfessional(md);
+=======
+		MedicalProfessional newMedicalProfessional = new MedicalProfessional(name, dob, "female", specialty , email, adress, Integer.parseInt(phoneNumber), nie, department);
+		System.out.println(newMedicalProfessional);
+
+		/*byte[] password = functions.createPassword();
+		System.out.println("Password: " +password);
+		
+		Role role = userManager.getRoleByName("MedicalProfessional");
+		System.out.println("Role: " +role);
+		
+		User user = new User(name,password,role);
+		userManager.createUser(user);
+		System.out.println("Usuario creado");*/
+		dbConnection.addMedicalProfessional(newMedicalProfessional);
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
 
 		}
+
 	}
 
-	//method to load the medical Professional information
-	public void preloadMedicalProfessional(MedicalProfessional medicalProfessional) {
-		// TODO Auto-generated method stub
+	//Method to go back to the log in set scene
 
-		this.medicalProfessional = medicalProfessional;
+	public void backToLoginButton(ActionEvent event) {
 
+<<<<<<< HEAD
 		this.updateButton.setDisable(false);
 		this.Add.setDisable(true);
 
@@ -196,6 +200,10 @@ public class NewMedicalProfessionalController implements Initializable {
 		this.sexChoiceBox.setValue(medicalProfessional.getSex());
 		//this.txtDepartment.setText(medicalProfessional.getDepartment());
 		//this.departmentChoicebox.setValue(medicalProfessional.getDep_id().name);
+=======
+		SceneChanger sceneChanger = new SceneChanger();
+		sceneChanger.changeScenes(event, "directorLogin.fxml", "Director Login");
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
 
 	}
 
@@ -203,23 +211,15 @@ public class NewMedicalProfessionalController implements Initializable {
 public void initialize(URL location, ResourceBundle resources) {
 	// TODO Auto-generated method stub
 
-	//We create the ChoiceBox for departments
+	//We create the ChoiceBox
 
-	ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
-	sexChoiceBox.setItems(sexList);
-	sexChoiceBox.setValue("Male");
-
-
-	ObservableList<String> departmentList = FXCollections.observableArrayList();
-	ArrayList<Department> dep = new ArrayList();
-	for (Department department: dep){
-
-		departmentList.add(department.getName());
-
-	}
-
+			ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female", "Other");
+			sexChoiceBox.setItems(sexList);
+			sexChoiceBox.setValue("Male");
 
 	//departmentList.addAll(dbConnection.listAllDepartments().getClass().getName());
+	ObservableList<String> departmentList = FXCollections.observableArrayList();
+	ArrayList<Department> dep = new ArrayList();
 	dep.addAll(dbConnection.listAllDepartments());
 
 	for(Department department: dep){
@@ -229,16 +229,6 @@ public void initialize(URL location, ResourceBundle resources) {
 		}
 	departmentChoicebox.setItems(departmentList);
 
-
-	//we set the update button disabled
-
-
-	this.updateButton.setDisable(false);
-
-	//we set the update add button not disabled
-
-		this.Add.setDisable(false);
 	}
-
 
 }
