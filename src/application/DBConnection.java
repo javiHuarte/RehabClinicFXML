@@ -1,5 +1,8 @@
 package application;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,6 +121,24 @@ public class DBConnection {
 		return lista;
 
 	}
+
+
+	public Integer getLastId() {
+		dbManager = new SQLiteManager();
+		return dbManager.getLastId();
+	}
+
+
+	public Integer getDepartmentId (String name){
+
+
+		departmentManager = dbManager.getDepartmentManager();
+		Department department = departmentManager.searchByName(name);
+		Integer dep_id = department.getId();
+		return dep_id;
+
+	}
+
 
 	public List<Treatment> listTreatments(){
 

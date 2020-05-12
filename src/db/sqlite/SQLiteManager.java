@@ -56,6 +56,19 @@ public class SQLiteManager implements DBManager {
 	}
 
 	@Override
+	public Integer getLastId() {
+		try{
+		String query = "SELECT last_insert_rowid() AS lastId";
+		PreparedStatement p = c.prepareStatement(query);
+		ResultSet rs = p.executeQuery();
+		Integer lastId = rs.getInt("lastId");
+		return lastId;
+		}catch (SQLException e) {
+			e.printStackTrace();}
+		return null;
+	}
+
+	@Override
 	public void createTables() {
 		// TODO Auto-generated method stub
 
