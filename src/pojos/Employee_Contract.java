@@ -2,29 +2,25 @@ package pojos;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
 
-/**
- * @author Ignacio
- *
- */
 public class Employee_Contract implements Serializable {
-
+	
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = -2122101848221178012L;
-
+	
 	private Integer id;
 	private int free_days;
-	private LocalDate starting_date;
-	private LocalDate finishing_date;
+	private Date starting_date;
+	private Date finishing_date;
 	private int week_working_hours;
 	private float salary;
-
+	
 	public Employee_Contract() {
 		super();
 	}
+<<<<<<< HEAD
 
 
 	public Employee_Contract(int free_days, LocalDate startingDate, LocalDate finishDate, int week_working_hours,
@@ -50,6 +46,9 @@ public class Employee_Contract implements Serializable {
 	}
 
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,40 +78,25 @@ public class Employee_Contract implements Serializable {
 	public int getFree_days() {
 		return free_days;
 	}
-
-	public LocalDate getStarting_date() {
+	public Date getStarting_date() {
 		return starting_date;
 	}
-
-
-	public void setStarting_date(LocalDate starting_date) {
-		this.starting_date = starting_date;
-	}
-
-
-	public LocalDate getFinishing_date() {
+	public Date getFinishing_date() {
 		return finishing_date;
 	}
-
-
-	public void setFinishing_date(LocalDate finishing_date) {
-		this.finishing_date = finishing_date;
-	}
-
-
 	public int getWeek_working_hours() {
 		return week_working_hours;
 	}
 	public float getSalary() {
 		return salary;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Employee_Contract [id=" + id + ", free_days=" + free_days + ", starting_date=" + starting_date
 				+ ", finishing_date=" + finishing_date + ", week_working_hours=" + week_working_hours + ", salary="
 				+ salary + "]";
 	}
-
+	
 
 }

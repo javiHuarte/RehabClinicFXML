@@ -55,7 +55,7 @@
                       <Button mnemonicParsing="false" text="Delete" />
                         <Region prefHeight="31.0" prefWidth="135.0" />
                         <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Edit" />
-                        <Button mnemonicParsing="false" onAction="#addMedicalProfessional" prefHeight="31.0" prefWidth="69.0" text="Add" />
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" text="Add" />
                     </items>
                   </ToolBar>
                   <Separator layoutX="882.0" layoutY="14.0" orientation="VERTICAL" prefHeight="453.0" prefWidth="4.0" />

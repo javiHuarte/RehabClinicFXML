@@ -25,6 +25,8 @@ public class SQLitePacientManager implements PacientManager {
 	@Override
 	public void add(Pacient pacient) {
 
+
+
 		try {
 			String sql = "INSERT INTO pacient (name, sex, dob, nie, email, active ,intern, adress , phone) "
 					+ "VALUES (?,?,?,?,?,?,?,?,?);";
@@ -73,8 +75,20 @@ public class SQLitePacientManager implements PacientManager {
 
 
 
-				Pacient newPacient = new Pacient(id, pacientName, LocalDate.now(), intern, nie, active, email, phone,
-						adress, sex);
+
+
+
+				// Pacient newPacient = new Pacient(id, pacientName, dob,
+				// intern, nie, active, email, phone, adress, sex); // catar
+				// esto
+
+				Pacient newPacient = new Pacient(id, pacientName, dob, intern, nie, active, email, phone,
+						adress, sex); // catar esto
+
+
+				//Pacient newPacient = new Pacient(id, pacientName, dob, intern, nie, active, email, phone, adress, sex);
+
+
 
 				pacientList.add(newPacient);
 			}
@@ -85,7 +99,7 @@ public class SQLitePacientManager implements PacientManager {
 	}
 
 	@Override
-	public Pacient searchById(Integer id) {
+	public Pacient searchById (Integer id) {
 
 		Pacient newPacient = null;
 
@@ -95,10 +109,12 @@ public class SQLitePacientManager implements PacientManager {
 			prep.setInt(1, id);
 			ResultSet rs = prep.executeQuery();
 
+
 			int pacient_id = rs.getInt("id");
 			String pacientName = rs.getString("name");
 			String sex = rs.getString("sex");
 			Date sqlDob = rs.getDate("dob");
+			LocalDate dob = sqlDob.toLocalDate();
 			String nie = rs.getString("nie");
 			String email = rs.getString("email");
 			Boolean active = rs.getBoolean("active");
@@ -106,31 +122,29 @@ public class SQLitePacientManager implements PacientManager {
 			String adress = rs.getString("adress");
 			int phone = rs.getInt("phone");
 
-			LocalDate dob = sqlDob.toLocalDate();
-
-			newPacient = new Pacient(pacient_id, pacientName, dob, nie, email, sex, phone, adress, active, intern);
+			newPacient = new Pacient(pacient_id, pacientName,dob,nie,email,sex,phone, adress, active, intern);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
-		return newPacient;
+	 return newPacient;
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById (Integer id) {
 
 		try {
-			String sql = "DELETE FROM pacient WHERE id= ?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, id);
-			prep.executeUpdate();
-		} catch (Exception e) {
+		String sql = "DELETE FROM pacient WHERE id= ?";
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, id);
+		prep.executeUpdate();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Override
+		@Override
 	public void updatePacient(Pacient pacient) {
 
 		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=?, dob = ? WHERE id=?";
@@ -160,20 +174,19 @@ public class SQLitePacientManager implements PacientManager {
 
 	}
 
-	public List<Pacient> listAllPacients() {
-		List<Pacient> pacientList = new ArrayList<Pacient>();
-		Pacient newPacient;
 
-		try {
+	public List<Pacient> listAllPacients (){
+		List<Pacient> pacientList = new ArrayList<Pacient>();
+		try{
 			String sql = "SELECT * FROM pacient;";
 			PreparedStatement prep = c.prepareStatement(sql);
 			ResultSet rs = prep.executeQuery();
-
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
 				String sex = rs.getString("sex");
-				// Date dob = rs.getDate("dob");
+				Date sqlDob = rs.getDate("dob");
+				LocalDate dob = sqlDob.toLocalDate();
 				String nie = rs.getString("nie");
 				String email = rs.getString("email");
 				Boolean active = rs.getBoolean("active");
@@ -181,20 +194,112 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-				// LocalDate localDate = dob.toLocalDate();
-				List<Pacient> pacients = new ArrayList();
-
-				newPacient = new Pacient(id, pacientName, LocalDate.of(1995, Month.APRIL, 9), nie, email, sex, phone,
-						adress, active, intern);
+				Pacient newPacient = new Pacient(id,pacientName,dob,nie,email,sex,phone, adress, active, intern);
 				pacientList.add(newPacient);
 			}
-		} catch (Exception e) {
 
+		}catch(Exception e){
 			e.printStackTrace();
-
 		}
-
 		return pacientList;
 	}
 
+<<<<<<< HEAD
+	@Override
+	public List<Treatment> searchPatientAndTreatments(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertIntoTreatmentPatient(Integer patientId, Integer treatmentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Pacient> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+=======
+
+	//Getting all the treatments for a patient
+	public List<Treatment> searchPatientAndTreatments (Integer id){
+		List<Treatment> treatmentList = new ArrayList<Treatment>();
+		try{
+			String sql = "SELECT * FROM treatment_pacient AS tp JOIN treatment AS t ON tp.treatment_id = t.id"
+					+ " WHERE tp.pacient_id LIKE ?;";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setInt(1, id);
+			ResultSet rs = prep.executeQuery();
+
+
+			while(rs.next()){
+
+				int treatmentId = rs.getInt(3);
+				String treatmentType = rs.getString(4);
+				Date sqlStart = rs.getDate(5);
+				LocalDate startDate = sqlStart.toLocalDate();
+				Date sqlFinish = rs.getDate(6);
+				LocalDate finishDate = sqlFinish.toLocalDate();
+				String extra_info = rs.getString(7);
+				String patient_extra_info = rs.getString(8);
+
+				Treatment treatment = new Treatment (treatmentId,treatmentType,startDate,finishDate,extra_info,patient_extra_info);
+				treatmentList.add(treatment);
+			}
+
+
+			/*boolean patientCreated = false;
+
+			while(rs.next()){
+
+				if(!patientCreated){
+					int patientId = rs.getInt(1);
+					String patientName = rs.getString(2);
+					String patientSex = rs.getString(3);
+					Date sqlDob = rs.getDate(4);
+					LocalDate dob = sqlDob.toLocalDate();
+					String patientNie = rs.getString(6);
+					String patientEmail = rs.getString(7);
+					Boolean active = rs.getBoolean(8);
+					Boolean intern = rs.getBoolean(9);
+					String patientAdress = rs.getString(10);
+					int phone = rs.getInt(11);
+				}
+
+
+			}*/
+
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return treatmentList;
+	}
+
+
+
+	public void insertIntoTreatmentPatient (Integer patientId, Integer treatmentId){
+		try{
+		String sql = "INSERT INTO treatment_pacient(pacient_id, treatment_id) "
+				+ "VALUES (?,?);";
+
+		System.out.println("Intoduciendo"+patientId+""+treatmentId);
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, patientId);
+		prep.setInt(2, treatmentId);
+
+		prep.executeUpdate();
+		prep.close();
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
+
 }
+
+

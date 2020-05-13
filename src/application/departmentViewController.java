@@ -27,88 +27,79 @@ import pojos.Staff;
 
 public class departmentViewController implements Initializable {
 
-	@FXML
-	private TableView departmentsTable;
+
+	@FXML private TableView departmentsTable;
 
 
-	@FXML
-	private TableColumn<Department, Integer> idColumn;
-	@FXML
-	private TableColumn<Department, String> nameColumn;
-	@FXML
-	private TableColumn<Department, Integer> floorColumn;
-	@FXML
-	private TableColumn<Department, Integer> budgetColumn;
+	@FXML private TableColumn<Department, Integer> idColumn;
+	@FXML private TableColumn<Department, String> nameColumn;
+	@FXML private TableColumn<Department, Integer> floorColumn;
+	@FXML private TableColumn<Department, Integer> budgetColumn;
 
-	@FXML
-	private TableView medicalProfessionalTable;
+	@FXML private TableView medicalProfessionalTable;
 
-	@FXML
-	private TableColumn<MedicalProfessional, Integer> mpIdColumn;
-	@FXML
-	private TableColumn<MedicalProfessional, String> mpNameColumn;
-	@FXML
-	private TableColumn<MedicalProfessional, String> mpProfessionColumn;
+	@FXML private TableColumn<MedicalProfessional, Integer> mpIdColumn;
+	@FXML private TableColumn<MedicalProfessional, String> mpNameColumn;
+	@FXML private TableColumn<MedicalProfessional, String> mpProfessionColumn;
 
-	@FXML
-	private TableView staffTable;
+	@FXML private TableView staffTable;
 
-	@FXML
-	private TableColumn<Staff, Integer> stIdColumn;
-	@FXML
-	private TableColumn<Staff, String> stNameColumn;
-	@FXML
-	private TableColumn<Staff, String> stProfessionColumn;
+	@FXML private TableColumn<Staff, Integer> stIdColumn;
+	@FXML private TableColumn<Staff, String> stNameColumn;
+	@FXML private TableColumn<Staff, String> stProfessionColumn;
 
-	@FXML
-	private TextField txtSearch;
 
-	@FXML
-	private Button deleteDep, editDep;
+
+	@FXML private TextField txtSearch;
+
+	@FXML private Button deleteDep, editDep;
 
 	private ObservableList<Department> departmentList = FXCollections.observableArrayList();
-	FilteredList departmentFilter = new FilteredList(departmentList, e -> true);
+	FilteredList departmentFilter = new FilteredList(departmentList, e->true);
 
 	private ObservableList<MedicalProfessional> medicalProfessionalList = FXCollections.observableArrayList();
-	FilteredList mpFilter = new FilteredList(medicalProfessionalList, e -> true);
+	FilteredList mpFilter = new FilteredList(medicalProfessionalList, e->true);
 
 	private ObservableList<Staff> staffList = FXCollections.observableArrayList();
-	FilteredList staffFilter = new FilteredList(staffList, e -> true);
+	FilteredList staffFilter = new FilteredList(staffList, e->true);
 
 	private DBConnection dbConnection = new DBConnection();
+
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		// disable the edit button until the department has been selected
-		this.editDep.setDisable(true);
-		this.deleteDep.setDisable(true);
+	//disable the edit button until the department has been selected
+	this.editDep.setDisable(true);
+	this.deleteDep.setDisable(true);
 
-		idColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("id"));
-		nameColumn.setCellValueFactory(new PropertyValueFactory<Department, String>("name"));
-		floorColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("floor"));
-		budgetColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("budget"));
+	idColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("id"));
+	nameColumn.setCellValueFactory(new PropertyValueFactory<Department, String>("name"));
+	floorColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("floor"));
+	budgetColumn.setCellValueFactory(new PropertyValueFactory<Department, Integer>("budget"));
 
-		mpIdColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("id"));
-		mpNameColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("name"));
-		mpProfessionColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("profession"));
+	mpIdColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("id"));
+	mpNameColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("name"));
+	mpProfessionColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("profession"));
 
-		stIdColumn.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("id"));
-		stNameColumn.setCellValueFactory(new PropertyValueFactory<Staff, String>("name"));
-		stProfessionColumn.setCellValueFactory(new PropertyValueFactory<Staff, String>("profession"));
+	stIdColumn.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("id"));
+	stNameColumn.setCellValueFactory(new PropertyValueFactory<Staff, String>("name"));
+	stProfessionColumn.setCellValueFactory(new PropertyValueFactory<Staff, String>("profession"));
 
-		// inicializamos la tabla
 
-		departmentsTable.setItems(loadDepartments());
 
-		// Staff staf = new Staff("maria", LocalDate.now(), "male",
-		// "receptionits", "email", "calle", 5667778, "555555T", 1, "human
-		// resources", 1);
-		// staffList.add(staf);
-		// staffTable.setItems(staffList);
+	//inicializamos la tabla
+
+	departmentsTable.setItems(loadDepartments());
+
+	//Staff staf = new Staff("maria", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T", 1, "human resources", 1);
+	//staffList.add(staf);
+	//staffTable.setItems(staffList);
 	}
 
-	public ObservableList<Department> loadDepartments() {
+
+	public ObservableList<Department> loadDepartments(){
 
 		List<Department> departments = null;
 
@@ -119,87 +110,80 @@ public class departmentViewController implements Initializable {
 		return departmentList;
 	}
 
-	public void addButton(ActionEvent event) {
+
+
+	public void addButton(ActionEvent event){
 
 		SceneChanger sc = new SceneChanger();
 		sc.changeScenes(event, "newDepartment.fxml", "New Department");
-
 	}
 
-	public void loadData(Department department) {
+	public void loadData(Department department){
 
-		// lo primero limpiamos las tables
+		//lo primero limpiamos las tables
 
 		this.staffTable.getItems().clear();
 		this.medicalProfessionalTable.getItems().clear();
 
-		// --------------------------------------------------------------------
-//System.out.println(department);
 
+		//--------------------------------------------------------------------
 
-		this.medicalProfessionalList.clear();
-		this.staffList.clear();
+		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
+		//Staff staff = new Staff("juan", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T", 1, "human resources", 1);
 
-		medicalProfessionalList.addAll(department.getMedicalProfessionalList());
-		staffList.addAll(department.getStaffList());
+		List<MedicalProfessional> mpList = new ArrayList<MedicalProfessional>();
+		List<Staff> st = new ArrayList<Staff>();
 
+		mpList.add(mp);
+		//st.add(staff);
 
+		medicalProfessionalList.addAll(mpList);
+		staffList.addAll(st);
 
 		this.medicalProfessionalTable.setItems(medicalProfessionalList);
-		this.staffTable.setItems(staffList);
-	}
+		//this.staffTable.setItems(staffList);
+}
 
-	public void departmentSelected() {
 
-		this.editDep.setDisable(false);
-		this.deleteDep.setDisable(false);
+public void departmentSelected(){
 
-		Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
 
-		Integer id = dep.getId();
+	this.editDep.setDisable(false);
+	this.deleteDep.setDisable(false);
 
-		System.out.println(id);
+	Department department = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
+	loadData(department);
+}
 
-		Department department = this.dbConnection.searchDepartmentById(id);
+public void addStaff(ActionEvent event){
 
-		loadData(department);
-	}
+	Staff staff = new Staff("juan", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T", 1, "human resources", 1);
+	this.dbConnection.addStaff(staff);
+}
 
-	public void addStaff(ActionEvent event) {
+public void deleteDepartment(ActionEvent event){
 
-		Staff staff = new Staff("juan", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T",
-				2,2);
-		this.dbConnection.addStaff(staff);
-	}
+	Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
 
-	public void addMedicalProfessional(ActionEvent event) {
+	this.dbConnection.deleteDepartment(dep.getId());
 
-			//SceneChanger sc = new SceneChanger();
-			//sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
+	this.departmentsTable.getItems().removeAll(departmentsTable.getSelectionModel().getSelectedItem());
 
-		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email",
-				"calle", 5667778, "555555T", 3);
-		this.dbConnection.addMedicalProfessional(mp);
+}
 
-	}
+public void editDepartment(ActionEvent event){
 
-	public void deleteDepartment(ActionEvent event) {
+	SceneChanger sc = new SceneChanger();
+	Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
+	NewDepartmentController ndc = new NewDepartmentController();
+	sc.loadDepartmentWithData(event, "newDepartment.fxml", "Edit Department", dep, ndc);
+}
 
-		Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
 
-		this.dbConnection.deleteDepartment(dep.getId());
 
-		this.departmentsTable.getItems().removeAll(departmentsTable.getSelectionModel().getSelectedItem());
-		this.medicalProfessionalTable.getItems().clear();
-		this.staffTable.getItems().clear();
-	}
 
-	public void editDepartment(ActionEvent event) {
 
-		SceneChanger sc = new SceneChanger();
-		Department dep = (Department) this.departmentsTable.getSelectionModel().getSelectedItem();
-		NewDepartmentController ndc = new NewDepartmentController();
-		sc.loadDepartmentWithData(event, "newDepartment.fxml", "Edit Department", dep, ndc);
-	}
+
+
 
 }

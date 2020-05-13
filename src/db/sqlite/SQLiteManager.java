@@ -4,7 +4,6 @@ import java.sql.*;
 
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
-import db.interfaces.Employee_ContractManager;
 import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
@@ -18,7 +17,6 @@ public class SQLiteManager implements DBManager {
 	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
 	private TreatmentManager treatment;
-	private Employee_ContractManager employeeContract;
 
 	public SQLiteManager() {
 		this.connect();
@@ -54,19 +52,6 @@ public class SQLiteManager implements DBManager {
 			e.printStackTrace();
 		}
 
-	}
-
-	@Override
-	public Integer getLastId() {
-		try{
-		String query = "SELECT last_insert_rowid() AS lastId";
-		PreparedStatement p = c.prepareStatement(query);
-		ResultSet rs = p.executeQuery();
-		Integer lastId = rs.getInt("lastId");
-		return lastId;
-		}catch (SQLException e) {
-			e.printStackTrace();}
-		return null;
 	}
 
 	@Override
@@ -164,7 +149,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt7 = c.createStatement();
 			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
-					+ "dob TEXT NOT NULL," + "nie TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
+					+ "dob TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
 					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB," + "sex TEXT NOT NULL,"
 					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
 					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
@@ -218,6 +203,10 @@ public class SQLiteManager implements DBManager {
 		System.out.println("Tables created.");
 	}
 
+	/*
+	 * public SQLiteManager() { this.connect(); }
+	 */
+
 	@Override
 	public PacientManager getPacientManager() {
 
@@ -240,17 +229,12 @@ public class SQLiteManager implements DBManager {
 	public StaffManager getStaffManager() {
 		// TODO Auto-generated method stub
 		return staff;
+
 	}
 
 	@Override
 	public TreatmentManager getTreatmentManager() {
 		// TODO Auto-generated method stub
 		return treatment;
-	}
-
-	@Override
-	public Employee_ContractManager getEmployee_ContractManager() {
-		// TODO Auto-generated method stub
-		return employeeContract;
 	}
 }
