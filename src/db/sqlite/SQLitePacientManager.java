@@ -199,77 +199,6 @@ public class SQLitePacientManager implements PacientManager {
 
 		}catch(Exception e){
 			e.printStackTrace();
-		}
-		return pacientList;
-	}
-
-<<<<<<< HEAD
-	@Override
-	public List<Treatment> searchPatientAndTreatments(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insertIntoTreatmentPatient(Integer patientId, Integer treatmentId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Pacient> listAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-=======
-
-	//Getting all the treatments for a patient
-	public List<Treatment> searchPatientAndTreatments (Integer id){
-		List<Treatment> treatmentList = new ArrayList<Treatment>();
-		try{
-			String sql = "SELECT * FROM treatment_pacient AS tp JOIN treatment AS t ON tp.treatment_id = t.id"
-					+ " WHERE tp.pacient_id LIKE ?;";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, id);
-			ResultSet rs = prep.executeQuery();
-
-
-			while(rs.next()){
-
-				int treatmentId = rs.getInt(3);
-				String treatmentType = rs.getString(4);
-				Date sqlStart = rs.getDate(5);
-				LocalDate startDate = sqlStart.toLocalDate();
-				Date sqlFinish = rs.getDate(6);
-				LocalDate finishDate = sqlFinish.toLocalDate();
-				String extra_info = rs.getString(7);
-				String patient_extra_info = rs.getString(8);
-
-				Treatment treatment = new Treatment (treatmentId,treatmentType,startDate,finishDate,extra_info,patient_extra_info);
-				treatmentList.add(treatment);
-			}
-
-
-			/*boolean patientCreated = false;
-
-			while(rs.next()){
-
-				if(!patientCreated){
-					int patientId = rs.getInt(1);
-					String patientName = rs.getString(2);
-					String patientSex = rs.getString(3);
-					Date sqlDob = rs.getDate(4);
-					LocalDate dob = sqlDob.toLocalDate();
-					String patientNie = rs.getString(6);
-					String patientEmail = rs.getString(7);
-					Boolean active = rs.getBoolean(8);
-					Boolean intern = rs.getBoolean(9);
-					String patientAdress = rs.getString(10);
-					int phone = rs.getInt(11);
-				}
-
-
-			}*/
 
 		}catch (Exception e){
 			e.printStackTrace();
@@ -296,8 +225,25 @@ public class SQLitePacientManager implements PacientManager {
 		}
 	}
 
+	@Override
+	public List<Treatment> searchPatientAndTreatments(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML
+	@Override
+	public void insertIntoTreatmentPatient(Integer patientId, Integer treatmentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Pacient> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
 
