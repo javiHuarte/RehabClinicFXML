@@ -77,6 +77,7 @@ public class SQLitePacientManager implements PacientManager {
 
 
 
+
 				// Pacient newPacient = new Pacient(id, pacientName, dob,
 				// intern, nie, active, email, phone, adress, sex); // catar
 				// esto

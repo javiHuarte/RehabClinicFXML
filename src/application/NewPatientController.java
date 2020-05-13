@@ -305,7 +305,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 		}
 
 	}
-
+	
 	public void clear() {
 
 		txtName.clear();

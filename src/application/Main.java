@@ -7,8 +7,12 @@ import java.util.List;
 import application.*;
 import db.interfaces.DBManager;
 import db.interfaces.PacientManager;
+<<<<<<< HEAD
+import db.interfaces.PacientManager;
+=======
 import db.interfaces.UserManager;
 import db.jpa.JPAUserManager;
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -38,7 +42,22 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
+
+			//BorderPane root = new BorderPane();
+		//	Scene scene = new Scene(root,400,400);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//primaryStage.setScene(scene);
+			//primaryStage.show();
+
+
+		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
+
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newStaff.fxml"));
+		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("departmentView.fxml"));
+
+==
 		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newDepartment.fxml"));
+>>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
 		Scene newMenu = new Scene(menuSceneRoot);
 		stage.setScene(newMenu);
 		stage.show();
