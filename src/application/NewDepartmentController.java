@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import pojos.Department;
+import pojos.MedicalProfessional;
 import pojos.Pacient;
 
 public class NewDepartmentController implements Initializable, ControllerClass {
@@ -66,6 +67,12 @@ public class NewDepartmentController implements Initializable, ControllerClass {
 		this.txtName.setText(dep.getName());
 		this.txtBudget.setText(String.valueOf(dep.getBudget()));
 		this.txtFloor.setText(String.valueOf(dep.getFloor()));
+
+	}
+
+	@Override
+	public void preloadMedicalProfessional(MedicalProfessional medicalProfessional) {
+		// TODO Auto-generated method stub
 
 	}
 

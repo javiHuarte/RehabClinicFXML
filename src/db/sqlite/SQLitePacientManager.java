@@ -71,7 +71,7 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 
-				Date dob = rs.getDate("dob");
+
 
 				Pacient newPacient = new Pacient(id, pacientName, LocalDate.now(), intern, nie, active, email, phone,
 						adress, sex);

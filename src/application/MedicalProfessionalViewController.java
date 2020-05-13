@@ -88,7 +88,6 @@ public class MedicalProfessionalViewController implements Initializable {
 
 	public ObservableList<MedicalProfessional> loadMedicalProfessional(){
 
-		MedicalProfessional mp = new MedicalProfessional(1, "marta", LocalDate.now(), "female", "surgeon", "email", "calle", 5667778, "555555T", 1, "psicology");
 
 		mp.setDepartment("oncology");
 

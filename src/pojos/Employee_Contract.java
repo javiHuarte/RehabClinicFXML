@@ -38,6 +38,18 @@ public class Employee_Contract implements Serializable {
 	}
 
 
+	public Employee_Contract(Integer mpId, Integer free_days, LocalDate starting_date, LocalDate finishing_date,
+			Integer week_hours, Float salary) {
+		super();
+		this.id = mpId;
+		this.free_days = free_days;
+		this.starting_date = starting_date;
+		this.finishing_date = finishing_date;
+		this.week_working_hours = week_hours;
+		this.salary = salary;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

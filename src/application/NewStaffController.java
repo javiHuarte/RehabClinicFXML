@@ -65,7 +65,7 @@ public class NewStaffController implements Initializable {
 
 	// Contract
 	@FXML
-	private TextField txtHolidays, txtStartingDate, txtFinishDate, txtWorkingHours, txtSalary;
+	private TextField txtHolidays, txtWorkingHours, txtSalary;
 
 	@FXML
 	private DatePicker dStartingDate, dFinishDate;
@@ -76,7 +76,7 @@ public class NewStaffController implements Initializable {
 
 
 		// set update button disable
-		this.updateButton.setDisable(true);
+		//this.updateButton.setDisable(true);
 
 		// set addButton not not disable
 		this.addButton.setDisable(false);
@@ -180,7 +180,7 @@ public class NewStaffController implements Initializable {
 
 	}
 
-	public void updateStaff(ActionEvent event) {
+/*	public void updateStaff(ActionEvent event) {
 
 		// Pedir datos del Staff
 		String name = txtName.getText();
@@ -191,12 +191,25 @@ public class NewStaffController implements Initializable {
 		String adress = txtAdress.getText();
 		int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
 		String profession = txtProfession.getText();
-		int department = 0;
+		Integer dep_id = dbConnection.getDepartmentId(departmentChoiceBox.getValue());
 
-		Staff newStaff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, department);
+		//contract
+
+		int holidays = Integer.parseInt(txtHolidays.getText());
+		LocalDate startingDate = dStartingDate.getValue();
+		LocalDate finishDate = dFinishDate.getValue();
+		int workingHours = Integer.parseInt(txtWorkingHours.getText());
+		float salary = Float.parseFloat(txtSalary.getText());
+
+				//Guardamos el contract en la tabla y recuperamos su id
+				Employee_Contract newContract = new Employee_Contract(holidays, startingDate, finishDate,  workingHours, salary);
+				dbConnection.addContract(newContract);
+				int contract_id = dbConnection.getLastId();
+
+		Staff newStaff = new Staff(name, dob, sex, profession, email, adress, phoneNumber, nif, dep_id);
 		dbConnection.//A parte de añadir el dbconction recordar que hay que cambiar department y que no pille un entero
 
-	}
+	}*/
 
 	public void backToLogin(ActionEvent event) {
 
@@ -327,7 +340,8 @@ public class NewStaffController implements Initializable {
 		}
 
 	}
-//Aqui en limpiar faltan añadir la que limpia el department y contract.
+
+
 	public void clear() {
 
 		//departmentChoiceBox
@@ -340,6 +354,14 @@ public class NewStaffController implements Initializable {
 		sexChoiceBox.setValue("Male");
 		txtProfession.clear();
 		this.dobPicker.setValue(LocalDate.now());
+
+		departmentChoiceBox.setValue(null);
+
+		txtHolidays.clear();
+		this.dStartingDate.setValue(LocalDate.now());
+		this.dFinishDate.setValue(LocalDate.now());
+		txtWorkingHours.clear();
+		txtSalary.clear();
 
 	}
 // falta cargar imagen y departamento y contract
@@ -362,6 +384,18 @@ public class NewStaffController implements Initializable {
 		this.txtPhoneNumber.setText(phone);
 		this.dobPicker.setValue(staff.getDob());
 		this.sexChoiceBox.setValue(staff.getSex());
+
+
+		Employee_Contract newContract = dbConnection.searchContractById(staff.getContract_id());
+
+		int freedays = newContract.getFree_days();
+		String holiday = String.valueOf(freedays);
+		this.txtHolidays.setText(holiday);
+		this.dStartingDate.setValue(newContract.getStarting_date());
+		this.dFinishDate.setValue(newContract.getFinishing_date());
+		this.txtWorkingHours.setText(String.valueOf(newContract.getWeek_working_hours()));
+		this.txtSalary.setText(String.valueOf(newContract.getSalary()));
+
 
 		// load the image
 

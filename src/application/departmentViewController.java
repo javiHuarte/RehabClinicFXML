@@ -168,7 +168,7 @@ public class departmentViewController implements Initializable {
 	public void addStaff(ActionEvent event) {
 
 		Staff staff = new Staff("juan", LocalDate.now(), "male", "receptionits", "email", "calle", 5667778, "555555T",
-				2);
+				2,2);
 		this.dbConnection.addStaff(staff);
 	}
 

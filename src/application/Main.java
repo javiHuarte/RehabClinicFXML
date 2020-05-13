@@ -7,6 +7,7 @@ import java.util.List;
 import application.*;
 import db.interfaces.DBManager;
 import db.interfaces.PacientManager;
+import db.interfaces.PacientManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -43,7 +44,7 @@ public class Main extends Application {
 
 		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("listAllPatientsView.fxml"));
 
-		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("directorLogin.fxml"));
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newStaff.fxml"));
 		//Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("departmentView.fxml"));
 
 		Scene newMenu = new Scene(menuSceneRoot);

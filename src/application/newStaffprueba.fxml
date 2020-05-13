@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewStaffControllerPrueba">
+   <children>
+      <BorderPane layoutX="145.0" layoutY="136.0" prefHeight="200.0" prefWidth="200.0" />
+      <TitledPane fx:id="titlePane" animated="false" prefHeight="336.0" prefWidth="345.0" text="newStaff">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <GridPane layoutX="2.0" layoutY="-1.0" prefHeight="306.0" prefWidth="339.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="name" />
+                        <Label text="nif" GridPane.rowIndex="1" />
+                        <Label text="email" GridPane.rowIndex="3" />
+                        <Label text="adress" GridPane.rowIndex="4" />
+                        <Label text="dob" GridPane.rowIndex="5" />
+                        <Label text="sex" GridPane.rowIndex="6" />
+                        <Label text="profesion" GridPane.rowIndex="7" />
+                        <TextField fx:id="txtName" promptText="txtName" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtNif" promptText="txtNif" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtPhoneNumber" promptText="txtPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtAdress" promptText="txtAdress" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtProfession" promptText="txtProfession" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="number" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtEmail" promptText="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dobPicker" promptText="dobPicker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ChoiceBox fx:id="sexChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
+                           <children>
+                              <Button fx:id="addButton" mnemonicParsing="false" onAction="#introduceStaff" onMouseClicked="#introduceStaff" text="addButton" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

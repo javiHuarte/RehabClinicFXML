@@ -114,17 +114,16 @@ public class DBConnection {
 		return dbManager.getLastId();
 	}
 
-
 	public Integer getDepartmentId (String name){
 
 
 		departmentManager = dbManager.getDepartmentManager();
-		Department department = departmentManager.searchByName(name);
+		List<Department> departmentList = departmentManager.searchByName(name);
+		Department department = departmentList.get(0);
 		Integer dep_id = department.getId();
 		return dep_id;
 
 	}
-
 
 	public List<Treatment> listTreatments(){
 
@@ -136,7 +135,6 @@ public class DBConnection {
 
 		return treatmentList;
 	}
-
 
 	public List<Pacient> listAllPacients (){
 		dbManager = new SQLiteManager();
@@ -181,6 +179,7 @@ public class DBConnection {
 		return list;
 
 	}
+
 	public void updateTreatment (Treatment treatment){
 
 		treatmentManager = dbManager.getTreatmentManager();
@@ -236,6 +235,23 @@ public class DBConnection {
 		dbManager.disconnect();
 
 		return dep;
+
+	}
+
+	public Employee_Contract searchContractById(Integer id){
+
+		dbManager = new SQLiteManager();
+		dbManager.connect();
+		employee_ContractManager = dbManager.getEmployee_ContractManager();
+		Employee_Contract contract;
+
+		contract = employee_ContractManager.searchById(id);
+
+		System.out.println(contract);
+
+		dbManager.disconnect();
+
+		return contract;
 
 	}
 
