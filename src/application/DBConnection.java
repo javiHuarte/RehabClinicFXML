@@ -17,6 +17,7 @@ public class DBConnection {
 	private  DepartmentManager departmentManager;
 	private  MedicalProfessionalManager medicalProfessionalManager;
 	private  TreatmentManager treatmentManager;
+	private Employee_ContractManager contractManager;
 
 
 
@@ -31,12 +32,46 @@ public class DBConnection {
 
 	}
 
+	public void addMedicalProfessional(MedicalProfessional mp){
+
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.add(mp);
+	}
+
+	public void addContract(Employee_Contract contract){
+
+		contractManager = dbManager.getEmployee_ContractManager();
+		contractManager.add(contract);
+	}
+
 	public void updatePacient(Pacient pacient){
 
 
 		pacientManager = dbManager.getPacientManager();
 		pacientManager.updatePacient(pacient);
 
+
+	}
+
+	public void updateContract(Employee_Contract contract){
+
+		contractManager = dbManager.getEmployee_ContractManager();
+		contractManager.updateContract(contract);
+
+	}
+
+	public void updateMedicalProfessional(MedicalProfessional medicalProfessional){
+
+		medicalProfessionalManager =  dbManager.getMedicalProfessionalManager();
+		medicalProfessionalManager.add(medicalProfessional);
+	}
+
+	public void deleteMedicalProfessional(Integer id, Integer contract_id){
+
+		medicalProfessionalManager = dbManager.getMedicalProfessionalManager();
+		contractManager = dbManager.getEmployee_ContractManager();
+		medicalProfessionalManager.deleteById(id);
+		contractManager.deleteById(contract_id);
 
 	}
 
@@ -159,6 +194,14 @@ public class DBConnection {
 		return treatment;
 	}
 
+	public Employee_Contract searchContractById(Integer id){
+
+		contractManager = dbManager.getEmployee_ContractManager();
+		Employee_Contract contract = contractManager.searchById(id);
+
+		return contract;
+	}
+
 	public void updateTreatment (Treatment treatment){
 
 		treatmentManager = dbManager.getTreatmentManager();
@@ -178,7 +221,25 @@ public class DBConnection {
 
 	}
 
+	public int getDepId(String name){
+
+		List<Department> departmentlist = new ArrayList();
+
+		departmentManager = dbManager.getDepartmentManager();
+		departmentlist.addAll(departmentManager.searchByName(name));
+
+		Department dep = departmentlist.get(0);
+		int dep_id = dep.getId();
+
+		return dep_id;
+	}
 
 
+
+	public int lastId(){
+
+		int id = dbManager.getLastId();
+		return id;
+	}
 
 }

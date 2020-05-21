@@ -1,8 +1,11 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -17,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import pojos.Department;
 import pojos.MedicalProfessional;
 import pojos.Pacient;
 
@@ -47,13 +51,19 @@ public class MedicalProfessionalViewController implements Initializable {
 	@FXML private TableColumn<MedicalProfessional, String> nifColumn;
 
 	@FXML private Button backButton;
+	@FXML private Button deleteButton;
 	@FXML private Button addNew;
 	@FXML private Button edit;
 	@FXML TextField txtSearch;
 
+
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+
+	//disable the edit button until the patient has been selected
+	this.edit.setDisable(true);
 
 		//configure the table columns
 		idColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("id"));
@@ -65,9 +75,11 @@ public class MedicalProfessionalViewController implements Initializable {
 		adressColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("adress"));
 		emailColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("email"));
 		//contractColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, Integer>("employee_contractId"));
-	departmentColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("department"));
-	nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
+		departmentColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("department"));
+		nifColumn.setCellValueFactory(new PropertyValueFactory<MedicalProfessional, String>("nif"));
 
+	//set  the table editable in order to update it
+	medicalProfessionalTable.setEditable(true);
 
 	medicalProfessionalTable.setItems(loadMedicalProfessional());
 
@@ -85,16 +97,13 @@ public class MedicalProfessionalViewController implements Initializable {
 	}*/
 
 	public ObservableList<MedicalProfessional> loadMedicalProfessional(){
+		
 
+		List<MedicalProfessional> list = dbConnection.listAllMedicalProfessionals();
 
-		mp.setDepartment("oncology");
-
-		this.medicalProfessionals.add(mp);
-
-		System.out.print(medicalProfessionals);
+		medicalProfessionals.addAll(list);
 
 		return medicalProfessionals;
-
 }
 
 	public void search(KeyEvent event){
@@ -120,6 +129,33 @@ public class MedicalProfessionalViewController implements Initializable {
 		});
 	}
 
+	//method to delete a medical professional
+
+	public void deleteMedicalProfessional(ActionEvent event){
+
+
+		int id = 7;
+		int contract_id = 5;
+		dbConnection.deleteMedicalProfessional(id, contract_id);
+
+	}
+
+	//if the edit button is pushed pass the selected mp to the new medical professional vie
+	//and preload it with the data
+
+	public void editButtonPushed(ActionEvent event) {
+
+		SceneChanger sc = new SceneChanger();
+		MedicalProfessional mp = this.medicalProfessionalTable.getSelectionModel().getSelectedItem(); //return the selected medical professional in the table
+		NewMedicalProfessionalController nmpc = new NewMedicalProfessionalController();
+		sc.changeScenesWithDataMedicalProfessional(event, "newMedicalProfessional.fxml", "Edit Medical Profesional", mp, nmpc);
+	}
+
+	public void medicalprofessionalSelected(){
+
+		edit.setDisable(false);
+	}
+
 	//Method to go back to the log in set scene
 
 		public void backToLoginButton(ActionEvent event) {
@@ -137,5 +173,7 @@ public class MedicalProfessionalViewController implements Initializable {
 			SceneChanger sc = new SceneChanger();
 			sc.changeScenes(event, "newMedicalProfessional.fxml", "New Medical Professional");
 		}
+
+
 
 }

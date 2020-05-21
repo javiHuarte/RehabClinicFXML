@@ -1,10 +1,11 @@
 package db.interfaces;
 
-public interface Employee_ContractManager {
-<<<<<<< HEAD
-	public void add (Employee_Contract employee_Contract);
-	public Employee_Contract searchById(Integer id);
-=======
+import pojos.Employee_Contract;
 
->>>>>>> branch 'master' of https://github.com/javiHuarte/RehabClinicFXML.git
+public interface Employee_ContractManager {
+
+	public void add (Employee_Contract contract);
+	public Employee_Contract searchById(Integer id);
+	public void deleteById(Integer id);
+	public void updateContract(Employee_Contract contract);
 }

@@ -4,6 +4,7 @@ import java.sql.*;
 
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
+import db.interfaces.Employee_ContractManager;
 import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 import db.interfaces.StaffManager;
@@ -17,6 +18,7 @@ public class SQLiteManager implements DBManager {
 	private MedicalProfessionalManager medicalProfessional;
 	private StaffManager staff;
 	private TreatmentManager treatment;
+	private Employee_ContractManager contract;
 
 	public SQLiteManager() {
 		this.connect();
@@ -35,6 +37,7 @@ public class SQLiteManager implements DBManager {
 			medicalProfessional = new SQLiteMedicalProfessional(c);
 			staff = new SQLiteStaffManager(c);
 			treatment = new SQLiteTreatmentManager(c);
+			contract = new SQLiteContract(c);
 			// We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
@@ -133,7 +136,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt6 = c.createStatement();
 			String sql6 = "CREATE TABLE medical_professional" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "name TEXT NOT NULL," + "dob TEXT NOT NULL," + "profession TEXT NOT NULL,"
+					+ "name TEXT NOT NULL," + "dob DATE NOT NULL," + "profession TEXT NOT NULL,"
 					+ "email TEXT NOT NULL," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB,"
 					+ "sex TEXT NOT NULL," + "nif TEXT NOT NULL,"
 					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
@@ -149,7 +152,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt7 = c.createStatement();
 			String sql7 = "CREATE TABLE staff" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
-					+ "dob TEXT NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
+					+ "dob DATE NOT NULL," + "profession TEXT NOT NULL," + "email TEXT NOT NULL,"
 					+ "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB," + "sex TEXT NOT NULL,"
 					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
 					+ "dep_id INTEGER REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
@@ -203,6 +206,25 @@ public class SQLiteManager implements DBManager {
 		System.out.println("Tables created.");
 	}
 
+	public int getLastId(){
+
+		int result = 1;
+
+		try{
+
+			String query = "SELECT last_insert_rowid() AS lastId";
+			PreparedStatement p = c.prepareStatement(query);
+			ResultSet rs = p.executeQuery();
+			result = rs.getInt("lastId");
+
+		}catch(SQLException e){
+			
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 	/*
 	 * public SQLiteManager() { this.connect(); }
 	 */
@@ -236,5 +258,18 @@ public class SQLiteManager implements DBManager {
 	public TreatmentManager getTreatmentManager() {
 		// TODO Auto-generated method stub
 		return treatment;
+	}
+
+
+	@Override
+	public Employee_ContractManager getEmployee_ContractManager() {
+		// TODO Auto-generated method stub
+		return contract;
+	}
+
+	@Override
+	public int lastId() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

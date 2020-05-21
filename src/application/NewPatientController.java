@@ -39,6 +39,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import pojos.Department;
+import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Patientfxml;
 
@@ -305,7 +306,7 @@ public class NewPatientController implements Initializable, ControllerClass {
 		}
 
 	}
-	
+
 	public void clear() {
 
 		txtName.clear();
@@ -350,6 +351,12 @@ public class NewPatientController implements Initializable, ControllerClass {
 
 	@Override
 	public void preloadDepartment(Department department) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void preloadDataMedicalProfessional(MedicalProfessional MedicalProfessional) {
 		// TODO Auto-generated method stub
 
 	}

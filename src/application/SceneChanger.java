@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import pojos.Department;
+import pojos.MedicalProfessional;
 import pojos.Pacient;
 import pojos.Patientfxml;
 import pojos.Treatment;
@@ -59,6 +60,33 @@ public class SceneChanger {
 		// access the controller class and preload the volunteer data
 		controllerClass = loader.getController();
 		controllerClass.preloadData(patient);
+
+		// get the stage from the event that was passed in
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+		window.setTitle(title);
+		window.setScene(scene);
+		window.show();
+	}
+
+	public void changeScenesWithDataMedicalProfessional(ActionEvent event, String viewName, String title, MedicalProfessional mp,
+			ControllerClass controllerClass) {
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(viewName));
+		Parent parent = null;
+		try {
+			parent = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Scene scene = new Scene(parent);
+
+		// access the controller class and preload the volunteer data
+		controllerClass = loader.getController();
+		controllerClass.preloadDataMedicalProfessional(mp);
 
 		// get the stage from the event that was passed in
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
